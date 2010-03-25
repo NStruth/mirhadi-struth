@@ -26,6 +26,7 @@ import com.uni.account.TransactionList;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
 import com.uni.gui.GuiDisplay;
+import com.uni.gui.GuiMain;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
@@ -41,7 +42,7 @@ public class BankSimulator {
 		Log.clearLog();
 		
 		//read in list of accounts and customers
-		FileIO filehandle = new FileIO("/data/accounts.txt","/data/customers.txt");
+		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
 		AccountList al = filehandle.readAccountLines();
 		CustomerList cl = filehandle.readCustomerLines();
 		
@@ -92,24 +93,29 @@ public class BankSimulator {
 		Log.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the teller */
-		Teller teller = new Teller(al);
+		Teller teller = new Teller(al, cq);
 		
 		/* Uncomment for testing */
 		/*for(QueueItem qi: testArray){
 			cq.add(qi);
 		}*/
 		
-		/* Process the queue */
+		/* Process the queue 
 		int size = cq.size();
 		for(int i=0; i<size;i++){
 			teller.processQueueItem(cq.get(i));
-		}
+		}*/
+		
 		
 		Log.writeMessage("State AFTER transactions");
 		Log.writeMessage(al.toString());
 		
 		//display summary results
-		GuiDisplay gd = new GuiDisplay();
+		//GuiDisplay gd = new GuiDisplay();
+		GuiMain gm = new GuiMain();
+		
+		//teller.start();
+		
 		
 	}
 }

@@ -20,19 +20,23 @@ import com.uni.account.Transaction;
 import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
 import com.uni.main.Statistics;
+import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
-public class Teller {
+public class Teller extends Thread{
 	
 	//list of accounts so the teller has access
 	private AccountList al;
+	
+	private CustomerQueue q;
 
 	/**
 	 * Constructor for the teller.
 	 * @param al the list of accounts
 	 */
-	public Teller(AccountList al){
+	public Teller(AccountList al, CustomerQueue q){
 		this.al = al;
+		this.q = q;
 	}
 	
 	/**
@@ -179,4 +183,21 @@ public class Teller {
 		}
 		return message;
 	}
+
+	@Override
+	public void run() {
+		while(true){
+			try{
+				if(q.size() > 0)
+					this.processQueueItem(q.getFirst());
+				Thread.sleep(1000);
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
 }
