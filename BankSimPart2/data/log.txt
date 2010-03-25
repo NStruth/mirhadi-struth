@@ -1,0 +1,308 @@
+Creating account : 60001
+Creating account : 60002
+Creating account : 60003
+Creating account : 60004
+Creating account : 60005
+Creating account : 60006
+Creating account : 60007
+Creating account : 60008
+Creating account : 60009
+Creating account : 60010
+Creating account : 60011
+Creating account : 60012
+Creating account : 60013
+Creating account : 60014
+Creating account : 60015
+
+Printing account list
+60001 : £1000.19
+60002 : £500.23
+60003 : £600.10
+60004 : £500.30
+60005 : £1000.54
+60006 : £200.02
+60007 : £234.20
+60008 : £1234.56
+60009 : £321.32
+60010 : £654.32
+60011 : £872.12
+60012 : £190.21
+60013 : £239.89
+60014 : £478.29
+60015 : £836.10
+
+DISPLAYING CUSTOMER LIST
+Neil Struth 1 Test Street
+Jon Mirhadi 123 Fake Lane
+Frank Sauzee 160 Easter Road
+Barack Obama 1600 Pennsylvania Ave
+Eric Blair Room 101
+Gordon Brown 10 Downing Street
+Ian Khama 1 Botswana Road
+Hassanal Bolkiah The Big Palace
+Steven Harper 34 Canada Ave
+Angela Merkel 73 German Chancellery
+Carlton Banks 13 Bel-Air
+Al Bundy 23 Street With No Name
+Chris Cross 3 Lois Lane
+Constance Noring 43 Street Road
+Dick Face 8 Boss Avenue
+Emma Royds 12 Table Loan
+Mary Christmas 13 North Pole
+Polly Ester 6 Church Street
+Tad Pohl 3 Pond Lane
+Warren Peace 4 Paper Key Street
+
+
+Chris Cross QueueNo:1007
+   Type: WITHDRAW::£33.10::60012
+   Type: WITHDRAW::£170.04::60012
+Dick Face QueueNo:1008
+   Type: CLOSE::0
+Warren Peace QueueNo:1009
+   Type: OPEN
+Emma Royds QueueNo:1010
+   Type: OPEN
+   Type: WITHDRAW::£44.15::60015
+   Type: WITHDRAW::£96.95::60015
+Mary Christmas QueueNo:1011
+   Type: OPEN
+   Type: OPEN
+Polly Ester QueueNo:1012
+   Type: OPEN
+Frank Sauzee QueueNo:1013
+   Type: DEPOSIT::£414.68::60003
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Chris Cross No: 1007 AccountNo:60012
+Withdraw: £33.10 New Balance: £157.11
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Chris Cross No: 1007 AccountNo:60012
+Insufficient Funds
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Dick Face No: 1008 AccountNo:60014
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Dick Face No: 1008 AccountNo:60014
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Warren Peace No: 1009 AccountNo:60016
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Emma Royds No: 1010 AccountNo:60017
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Emma Royds No: 1010 AccountNo:60015
+Withdraw: £44.15 New Balance: £791.95
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Emma Royds No: 1010 AccountNo:60015
+Withdraw: £96.95 New Balance: £695.00
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Mary Christmas No: 1011 AccountNo:60018
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Mary Christmas No: 1011 AccountNo:60019
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Polly Ester No: 1012 AccountNo:60020
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Frank Sauzee No: 1013 AccountNo:60003
+Deposit: £414.68 New Balance: £1014.78
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Barack Obama No: 1001 AccountNo:60004
+Deposit: £100.00 New Balance: £600.30
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Neil Struth No: 1002 AccountNo:60001
+Deposit: £100.00 New Balance: £1100.19
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Neil Struth No: 1002 AccountNo:60002
+Deposit: £100.00 New Balance: £600.23
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Frank Sauzee No: 1003 AccountNo:60003
+Insufficient Funds
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Frank Sauzee No: 1003 AccountNo:60003
+Insufficient Funds
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Gordon Brown No: 1004 AccountNo:60005
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Gordon Brown No: 1004 AccountNo:60005
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Gordon Brown No: 1004 AccountNo:60004
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Gordon Brown No: 1004 AccountNo:60004
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+No Accounts Held
+ *** End of close transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Gordon Brown No: 1005 AccountNo:60005
+Sorry that account doesn't exist
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Eric Blair No: 1006 AccountNo:60021
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Eric Blair No: 1006 AccountNo:60022
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Maximum Number of Accounts is 2
+ *** End of open transaction *** 
+
+State AFTER transactions
+
+Printing account list
+60001 : £1100.19
+60002 : £600.23
+60003 : £1014.78
+60006 : £200.02
+60007 : £234.20
+60008 : £1234.56
+60009 : £321.32
+60010 : £654.32
+60011 : £872.12
+60012 : £157.11
+60013 : £239.89
+60015 : £695.00
+60016 : £100.00
+60017 : £100.00
+60018 : £100.00
+60019 : £100.00
+60020 : £100.00
+60021 : £100.00
+60022 : £100.00
+
