@@ -98,10 +98,6 @@ public class BankSimulator {
 		g = new Generator(cl, al, cq);
 		g.start();
 		
-		Timer time = new Timer();
-		time.start();
-		Thread.sleep(Statistics.SIMULATION_TIME);
-		Statistics.CLOSED = true;
 		
 		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
@@ -136,7 +132,10 @@ public class BankSimulator {
 		for(Teller t: tellerList){
 			t.start();
 		}
-		
+		Timer time = new Timer();
+		time.start();
+		Thread.sleep(Statistics.SIMULATION_TIME);
+		Statistics.CLOSED = true;
 		
 		
 	}
