@@ -11,11 +11,14 @@
 
 package com.uni.main;
 
-import java.text.DecimalFormat;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
+import Observation.Observer;
+import Observation.Subject;
+
 import com.uni.Exceptions.NonExistantAccountException;
-import com.uni.Logging.Log;
 import com.uni.account.Account;
 import com.uni.account.AccountList;
 import com.uni.account.Transaction;
@@ -25,7 +28,7 @@ import com.uni.customer.CustomerList;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
-public class Generator extends Thread{
+public class Generator extends Thread implements Subject{
 	private CustomerList clist; //the list of customers
 	private AccountList aList; //the list of accounts
 	private CustomerQueue queue; // reference to the queue
@@ -265,6 +268,7 @@ public class Generator extends Thread{
 		while(!closed){
 			try{
 				queue.add(generateItem());
+				notifyObservers();
 				Thread.sleep(1000);
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -273,5 +277,27 @@ public class Generator extends Thread{
 		}
 	}
 
+////////////////////////////////////////////////////////
+	//OBSERVER PATTERN
+	//SUBJECT must be able to register, remove and notify observers
+	//list to hold any observers
+	private List<Observer> registeredObservers = new LinkedList<Observer>();
+	//methods to register, remove and notify observers
+	public void registerObserver( Observer obs)
+	{
+		registeredObservers.add( obs);
+	}
+	
+	public void removeObserver( Observer obs)
+	{
+		registeredObservers.remove( obs);
+	}
+	
+	public void notifyObservers()
+	{
+		for( Observer obs : registeredObservers)
+			obs.update();
+	}
+	//////////////////////////////////////////////////////// 	
 
 }

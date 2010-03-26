@@ -1,7 +1,5 @@
 package com.uni.gui;
 
-import java.awt.BorderLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -32,5 +30,10 @@ public class GuiMain extends JFrame{
 		TellerContainer tCont = new TellerContainer(bs.tellerList);
 		tCont.setBounds(this.getWidth() - 750, 0, 750, 100);
 		holderPanel.add(tCont);
+		
+		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
+		holderPanel.add(qList);
+		qList.setBounds(0,0,200,200);
+		
 	}
 }
