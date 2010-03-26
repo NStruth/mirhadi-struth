@@ -94,11 +94,14 @@ public class BankSimulator {
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
+				
 		cq = new CustomerQueue();
+		
+		Timer time = new Timer();
+		time.start();
 		g = new Generator(cl, al, cq);
 		g.start();
-		
-		
+			
 		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
 		
@@ -132,12 +135,7 @@ public class BankSimulator {
 		for(Teller t: tellerList){
 			t.start();
 		}
-		Timer time = new Timer();
-		time.start();
-		Thread.sleep(Statistics.SIMULATION_TIME);
-		Statistics.CLOSED = true;
-		
-		
+
 	}
 	
 	public CustomerQueue getQueue(){
