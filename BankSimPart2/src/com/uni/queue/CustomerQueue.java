@@ -12,9 +12,13 @@ package com.uni.queue;
 
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
+
 import com.uni.customer.Customer;
 
 public class CustomerQueue extends ArrayList<QueueItem>{
+		
 	/**
 	 * Constructor for the customer queue
 	 */
@@ -24,6 +28,7 @@ public class CustomerQueue extends ArrayList<QueueItem>{
 
 	@Override
 	public boolean add(QueueItem arg0) {
+		
 		return super.add(arg0);
 	}
 	

@@ -44,6 +44,10 @@ public class BankSimulator {
 	}*/
 	public TellerList tellerList;
 	public Teller teller;
+	
+	private CustomerQueue cq;
+
+	private Generator g;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -99,8 +103,8 @@ public class BankSimulator {
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
-		CustomerQueue cq = new CustomerQueue();
-		Generator g = new Generator(cl, al, cq);
+		cq = new CustomerQueue();
+		g = new Generator(cl, al, cq);
 		g.start();
 		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
@@ -110,7 +114,7 @@ public class BankSimulator {
 		for(int i = 0; i < NUM_OF_TELLERS; i++){
 			teller = new Teller(al, cq);
 			tellerList.add(teller);
-			teller.start();
+			
 		}
 		
 		
@@ -132,9 +136,19 @@ public class BankSimulator {
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain(this);
+		for(Teller t: tellerList){
+			t.start();
+		}
 		
 		
 		
-		
+	}
+	
+	public CustomerQueue getQueue(){
+		return cq;
+	}
+	
+	public Generator getGenerator(){
+		return g;
 	}
 }
