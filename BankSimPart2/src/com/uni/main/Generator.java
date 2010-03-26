@@ -267,9 +267,14 @@ public class Generator extends Thread implements Subject{
 	{
 		while(!Statistics.CLOSED){
 			try{
-				queue.add(generateItem());
-				notifyObservers();
-				Thread.sleep(1000);
+				if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17)
+				{
+					queue.add(generateItem());
+					notifyObservers();
+					Thread.sleep(1000);
+				}
+				else
+					Statistics.CLOSED = true;
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
