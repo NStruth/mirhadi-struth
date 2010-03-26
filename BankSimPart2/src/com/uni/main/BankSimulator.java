@@ -94,12 +94,14 @@ public class BankSimulator {
 		
 		/* Generate a random queue */
 		
-		Generator g = new Generator(cl, al);
+		
 		Log.writeMessage(al.toString());
 		Log.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
-					
-		CustomerQueue cq = g.generate();
+		CustomerQueue cq = new CustomerQueue();
+		Generator g = new Generator(cl, al, cq);
+		g.start();
+		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the teller */
@@ -124,7 +126,7 @@ public class BankSimulator {
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain();
 		
-		//teller.start();
+		teller.start();
 		
 		
 	}

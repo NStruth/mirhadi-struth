@@ -12,6 +12,8 @@ package com.uni.queue;
 
 import java.util.ArrayList;
 
+import com.uni.customer.Customer;
+
 public class CustomerQueue extends ArrayList<QueueItem>{
 	/**
 	 * Constructor for the customer queue
@@ -30,6 +32,15 @@ public class CustomerQueue extends ArrayList<QueueItem>{
 		String retV = "";
 		for(QueueItem qi:this){
 			retV += qi.toString();
+		}
+		return retV;
+	}
+	
+	public boolean customerInQueue(Customer c){
+		boolean retV = false;
+		for(QueueItem i: this){
+			if(i.getCustomer() == c)
+				return true;
 		}
 		return retV;
 	}

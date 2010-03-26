@@ -19,6 +19,7 @@ import com.uni.account.AccountList;
 import com.uni.account.Transaction;
 import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
+import com.uni.gui.TellerGui;
 import com.uni.main.Statistics;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
@@ -45,7 +46,7 @@ public class Teller extends Thread{
 	 * @param q the queue item
 	 */
 	public void processQueueItem(QueueItem q){
-		
+		System.out.println("Processing");
 		//get the transactions from the queue item
 		TransactionList tList = q.getTransactions();
 		//get the customer from the queue item
@@ -188,6 +189,7 @@ public class Teller extends Thread{
 	public void run() {
 		while(true){
 			try{
+				System.out.println(q.size());
 				if(q.size() > 0)
 					this.processQueueItem(q.getFirst());
 				Thread.sleep(1000);
