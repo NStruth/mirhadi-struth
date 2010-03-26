@@ -1,14 +1,14 @@
 package com.uni.gui;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 
 import Observation.Observer;
 
@@ -29,10 +29,15 @@ public class TellerGui extends JPanel implements Observer{
 	private JLabel typeText = new JLabel(" --- ");
 	
 	
+	private GridBagLayout gbl;
+	private GridBagConstraints c;
+	
 	
 	public TellerGui(Teller t){
-		this.setBounds(0,0 , 250, 200);
-		this.setLayout(null);
+		gbl = new GridBagLayout();
+		c = new GridBagConstraints();
+		this.setLayout(gbl);
+		this.setSize(400,400);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	
 		this.teller = t;
@@ -52,25 +57,48 @@ public class TellerGui extends JPanel implements Observer{
 			status.setText("Closed");
 			status.setForeground(Color.RED);
 		}
-		status.setBounds(this.getWidth() - 40 ,0, 40, 20);
 		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		this.add(status);
+		
+		
 		
 		//
-		this.add(serving);
-		serving.setBounds(0,0,this.getWidth() - 40, 20);
+		c.anchor = GridBagConstraints.LINE_START;
+		c.gridx = 0;
+		c.gridy = 0;
+		this.add(serving,c);
 		
-		this.add(custLabel);
-		custLabel.setBounds(0, 30, 75, 20);
+		c.gridx = 2;
+		this.add(status,c);
 		
-		this.add(custName);
-		custName.setBounds(80, 30, this.getWidth() - 80, 20);
+		c.ipady = 20;
+		c.gridy++;
+		c.gridx=0;
+		this.add(custLabel,c);
 		
-		this.add(typeLabel);
-		typeLabel.setBounds(0, 60, 75, 20);
+		c.ipady = 0;
+		c.gridx = 1;
+		this.add(custName,c);
 		
-		this.add(typeText);
-		typeText.setBounds(80, 60, this.getWidth() - 80, 20);
+		c.gridx = 0;
+		c.gridy++;
+		this.add(typeLabel,c);
+		c.gridx = 1;
+		this.add(typeText,c);
+		
+		
+		JButton open = new JButton("Open");
+		JButton close = new JButton("close");
+		
+		c.gridheight = 20;
+		c.gridx = 0;
+		c.gridy++;
+		
+		this.add(open,c);
+		c.gridx++;
+		this.add(close,c);
+		
+		
+		
 		
 	}
 
