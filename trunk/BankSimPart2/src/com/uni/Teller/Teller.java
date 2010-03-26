@@ -43,6 +43,8 @@ public class Teller extends Thread implements Subject{
 	private int custNumber;
 	private String currentStatus;
 
+	private String transactionType;
+	
 	/**
 	 * Constructor for the teller.
 	 * @param al the list of accounts
@@ -75,6 +77,7 @@ public class Teller extends Thread implements Subject{
 		currentCustomer = cust;
 		System.out.println(cust.getFullName());
 		custNumber = q.getCustNo();
+		transactionType = " --- ";
 		notifyObservers();
 		//process each transaction
 		for(Transaction t: tList){
@@ -89,6 +92,8 @@ public class Teller extends Thread implements Subject{
 
 			switch(t.getChoice()){
 			case WITHDRAW:
+				transactionType = "Withdraw";
+				notifyObservers();
 				//the account number will be the secondary aux value
 				acNo = (Integer)t.getSecondaryAux();
 				
@@ -104,6 +109,8 @@ public class Teller extends Thread implements Subject{
 				message += Language.WITHDRAW_END;
 				break;
 			case DEPOSIT:
+				transactionType = "Deposit";
+				notifyObservers();
 				message += Language.DEPOSIT_START;
 				//account number is secondary aux
 				acNo = (Integer)t.getSecondaryAux();
@@ -126,6 +133,8 @@ public class Teller extends Thread implements Subject{
 				message += Language.DEPOSIT_END;
 				break;
 			case OPEN:
+				transactionType = "Open";
+				notifyObservers();
 				Statistics.ACCOUNTS_OPENED++; //udate stats
 				message += Language.OPEN_START;
 				//try associate account with customer
@@ -142,6 +151,8 @@ public class Teller extends Thread implements Subject{
 				message += Language.OPEN_END;
 				break;
 			case CLOSE:
+				transactionType = "Close";
+				notifyObservers();
 				//update statistics
 				Statistics.ACCOUNTS_CLOSED++;
 				//some boring log stuff
@@ -192,6 +203,10 @@ public class Teller extends Thread implements Subject{
 	
 	public int getCustNumber(){
 		return custNumber;
+	}
+	
+	public String getTranType(){
+		return transactionType;
 	}
 	
 	private String doWithdraw(int acNo, int value){

@@ -22,8 +22,11 @@ public class TellerGui extends JPanel implements Observer{
 	private JLabel status = new JLabel("OPEN");
 	private JLabel serving = new JLabel(" Serving: XXX");
 	
-	private JLabel custLabel = new JLabel("Customer");
+	private JLabel custLabel = new JLabel("Customer:");
 	private JLabel custName = new JLabel(" --- ");
+	
+	private JLabel typeLabel = new JLabel("Type:");
+	private JLabel typeText = new JLabel(" --- ");
 	
 	
 	
@@ -63,6 +66,12 @@ public class TellerGui extends JPanel implements Observer{
 		this.add(custName);
 		custName.setBounds(80, 30, this.getWidth() - 80, 20);
 		
+		this.add(typeLabel);
+		typeLabel.setBounds(0, 60, 75, 20);
+		
+		this.add(typeText);
+		typeText.setBounds(80, 60, this.getWidth() - 80, 20);
+		
 	}
 
 	
@@ -73,6 +82,7 @@ public class TellerGui extends JPanel implements Observer{
 		// TODO Auto-generated method stub
 		custName.setText(teller.getCustomerName());
 		serving.setText("Serving: " + teller.getCustNumber());
+		typeText.setText(teller.getTranType());
 		
 	}
 	
