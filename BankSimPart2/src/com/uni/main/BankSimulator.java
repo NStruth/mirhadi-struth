@@ -37,7 +37,7 @@ public class BankSimulator {
 	 * The main class for this application
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public void run() {
 		//clear the log file				
 		Log.clearLog();
 		
