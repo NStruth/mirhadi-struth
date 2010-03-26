@@ -21,6 +21,10 @@ public class Statistics {
 	
 	public static int TOTALS_WITHDRAW = 0;
 	public static int TOTALS_DEPOSTIT = 0;
+	
+	public static long SIMULATION_TIME = 1000000;
+	
+	public static boolean CLOSED = false;
 
 	/**
 	 * @param value the value to display

@@ -32,16 +32,6 @@ public class BankSimulator {
 	
 	private static final int NUM_OF_TELLERS = 3;
 	
-	//Not sure if this should go here? - Neil
-	/*private boolean closed;
-	
-	public boolean isClosed() {
-		return closed;
-	}
-
-	public void setClosed(boolean closed) {
-		this.closed = closed;
-	}*/
 	public TellerList tellerList;
 	public Teller teller;
 	
@@ -51,8 +41,9 @@ public class BankSimulator {
 	/**
 	 * The main class for this application
 	 * @param args
+	 * @throws InterruptedException 
 	 */
-	public void run() {
+	public void run() throws InterruptedException {
 		//clear the log file				
 		Log.clearLog();
 		
@@ -106,6 +97,12 @@ public class BankSimulator {
 		cq = new CustomerQueue();
 		g = new Generator(cl, al, cq);
 		g.start();
+		
+		Timer time = new Timer();
+		time.start();
+		Thread.sleep(Statistics.SIMULATION_TIME);
+		Statistics.CLOSED = true;
+		
 		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
 		
