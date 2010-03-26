@@ -28,12 +28,20 @@ import com.uni.queue.QueueItem;
 public class Generator extends Thread{
 	private CustomerList clist; //the list of customers
 	private AccountList aList; //the list of accounts
+	private CustomerQueue queue; // reference to the queue
 	
 	/**
 	 * Constructor for the random generator
 	 * @param clist the list of customers
 	 * @param alist the list of accounts
 	 */
+	public Generator(CustomerList clist, AccountList alist, CustomerQueue queue)
+	{
+		this.clist = clist;
+		this.aList = alist;
+		this.queue = queue;
+	}
+	
 	public Generator(CustomerList clist, AccountList alist)
 	{
 		this.clist = clist;
@@ -253,7 +261,17 @@ public class Generator extends Thread{
 	
 	public void run()
 	{
-		
+		boolean closed = false;
+		while(!closed){
+			try{
+				queue.add(generateItem());
+				Thread.sleep(1000);
+			}catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
+
 
 }

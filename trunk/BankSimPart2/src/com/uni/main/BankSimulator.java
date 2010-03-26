@@ -32,7 +32,17 @@ import com.uni.queue.QueueItem;
 
 
 public class BankSimulator {
+	//Not sure if this should go here? - Neil
+	/*private boolean closed;
 	
+	public boolean isClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}*/
+
 	/**
 	 * The main class for this application
 	 * @param args
