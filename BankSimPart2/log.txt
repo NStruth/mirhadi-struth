@@ -52,6 +52,7 @@ Mary Christmas 13 North Pole
 Polly Ester 6 Church Street
 Tad Pohl 3 Pond Lane
 Warren Peace 4 Paper Key Street
+SIMULATION STARTED
 
 
 
@@ -76,66 +77,18 @@ Printing account list
 
 
 
- *** Processing deposit transaction *** 
-
-Customer: Steven Harper No: 1001 AccountNo:60008
-Deposit: £981.26 New Balance: £2215.82
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Al Bundy No: 1002 AccountNo:60011
-Deposit: £397.42 New Balance: £1269.54
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Al Bundy No: 1002 AccountNo:60010
-	
-
  *** Processing withdraw transaction *** 
 
-Insufficient FundsCustomer: Al Bundy No: 1002 AccountNo:60010
-Successfully removed	
+Customer: Frank Sauzee No: 1001 AccountNo:60003
+Withdraw: £170.08 New Balance: £430.02
+
  *** End of withdraw transaction *** 
 
- *** End of close transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Carlton Banks No: 1003 AccountNo:60010
-Sorry that account doesn't exist
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Carlton Banks No: 1003 AccountNo:60010
-Sorry that account doesn't exist
- *** End of deposit transaction *** 
-
 
 
  *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1004 AccountNo:60016
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Warren Peace No: 1004 AccountNo:60017
+Customer: Polly Ester No: 1002 AccountNo:60016
 
  *** End of open transaction *** 
 
@@ -143,74 +96,40 @@ Customer: Warren Peace No: 1004 AccountNo:60017
 
  *** Processing deposit transaction *** 
 
-Customer: Neil Struth No: 1005 AccountNo:60002
-Deposit: £414.57 New Balance: £914.80
+Customer: Hassanal Bolkiah No: 1003 AccountNo:60007
+Deposit: £377.06 New Balance: £611.26
 
  *** End of deposit transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Henry Cooper No: 1006 AccountNo:60015
-	
-
- *** Processing withdraw transaction *** 
-
-Insufficient FundsCustomer: Henry Cooper No: 1006 AccountNo:60015
-Successfully removed	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
 
 
 
  *** Processing open transaction *** 
 
-Customer: Henry Cooper No: 1006 AccountNo:60018
+Customer: Mary Christmas No: 1004 AccountNo:60017
 
  *** End of open transaction *** 
 
 
 
- *** Processing withdraw transaction *** 
+ *** Processing open transaction *** 
 
-Customer: Emma Royds No: 1007 AccountNo:60015
-Sorry that account doesn't exist
- *** End of withdraw transaction *** 
+Customer: Mary Christmas No: 1004 AccountNo:60018
 
-
-
- *** Processing deposit transaction *** 
-
-Customer: Emma Royds No: 1007 AccountNo:60015
-Sorry that account doesn't exist
- *** End of deposit transaction *** 
+ *** End of open transaction *** 
 
 
 
- *** Processing withdraw transaction *** 
+ *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1008 AccountNo:60016
-Withdraw: £62.50 New Balance: £37.50
-
- *** End of withdraw transaction *** 
+Maximum Number of Accounts is 2
+ *** End of open transaction *** 
 
 
 
  *** Processing deposit transaction *** 
 
-Customer: Warren Peace No: 1008 AccountNo:60017
-Deposit: £192.17 New Balance: £292.17
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Angela Merkel No: 1009 AccountNo:60009
-Deposit: £784.55 New Balance: £1105.87
+Customer: Angela Merkel No: 1005 AccountNo:60009
+Deposit: £651.00 New Balance: £972.32
 
  *** End of deposit transaction *** 
 
@@ -218,17 +137,9 @@ Deposit: £784.55 New Balance: £1105.87
 
  *** Processing withdraw transaction *** 
 
-Customer: Hassanal Bolkiah No: 1010 AccountNo:60007
-Withdraw: £59.80 New Balance: £174.40
+Customer: Angela Merkel No: 1005 AccountNo:60009
+Withdraw: £183.59 New Balance: £788.73
 
  *** End of withdraw transaction *** 
 
-
-
- *** Processing deposit transaction *** 
-
-Customer: Hassanal Bolkiah No: 1010 AccountNo:60007
-Deposit: £73.96 New Balance: £248.36
-
- *** End of deposit transaction *** 
-
+BANK CLOSED

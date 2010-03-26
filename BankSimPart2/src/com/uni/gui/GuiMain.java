@@ -1,5 +1,8 @@
 package com.uni.gui;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -9,16 +12,24 @@ public class GuiMain extends JFrame{
 	
 	private JPanel holderPanel;
 	BankSimulator bs;
+	private GridBagConstraints c;
 	
 	public GuiMain(BankSimulator bs){
 		super();
 		this.bs = bs;
+		//this.add(new JLabel("Bank Simulator"), BorderLayout.NORTH);
+		
 		holderPanel = new JPanel();
-		holderPanel.setLayout(null);
+		GridBagLayout gbl = new GridBagLayout();
+		c = new GridBagConstraints();
 		
-		this.setBounds(50, 50, 1000, 600);
+
+		holderPanel.setLayout(gbl);
+		
+		this.setSize(900,500);
 		this.setVisible(true);
-		
+
+		this.setLayout(gbl);
 		this.add(holderPanel);
 		initComponents();
 		
@@ -28,12 +39,17 @@ public class GuiMain extends JFrame{
 	
 	private void initComponents(){
 		TellerContainer tCont = new TellerContainer(bs.tellerList);
-		tCont.setBounds(this.getWidth() - 750, 0, 750, 100);
-		holderPanel.add(tCont);
+		c.anchor = c.FIRST_LINE_START;
+		c.gridx = 1;
+		c.gridy = 0;
+		//tCont.setBounds(this.getWidth() - 750, 0, 750, 200);
+		holderPanel.add(tCont, c);
 		
 		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
-		holderPanel.add(qList);
-		qList.setBounds(0,0,200,200);
+		c.gridx = 0;
+		c.gridy++;
+		holderPanel.add(qList,c);
+		//qList.setBounds(0,0,200,200);
 		
 	}
 }
