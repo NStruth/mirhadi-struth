@@ -17,12 +17,7 @@ public class Customer {
 	private String fName, lName;
 	private String address;
 	private ArrayList<Integer> accList;
-	
-	//Status indicates whether customer is in the queue or not
-	//0 = not 1 = in queue
-	//initially a customer is not in the queue
-	private int status = 0;
-	
+		
 	
 	/**
 	 * @param fName the customers first name
@@ -38,10 +33,10 @@ public class Customer {
 	
 
 	/**
-	 * Add an account only if the use does not
+	 * Add an account only if the user does not
 	 * already have 2 accounts. Redundant check.
 	 * 
-	 * @param c the accound number to add
+	 * @param c the account number to add
 	 * @return true if it can be added
 	 */
 	public boolean addAccount(int c){
@@ -52,21 +47,6 @@ public class Customer {
 		}
 	}
 	
-	/**
-	 * Get the customer queue status
-	 * 
-	 * @return the queue status
-	 */
-	public int getStatus(){
-		return this.status;
-	}
-	/**
-	 * Set the queue status
-	 * @param s the new status
-	 */
-	public void setStatus(int s){
-		this.status = s;
-	}
 	/**
 	 * Get the customers full name
 	 * @return the customers full name

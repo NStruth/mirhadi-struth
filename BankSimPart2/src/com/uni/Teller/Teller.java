@@ -11,6 +11,13 @@
  */
 package com.uni.Teller;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+import Observation.Observer;
+import Observation.Subject;
+
 import com.uni.Exceptions.NonExistantAccountException;
 import com.uni.Logging.Language;
 import com.uni.Logging.Log;
@@ -19,15 +26,15 @@ import com.uni.account.AccountList;
 import com.uni.account.Transaction;
 import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
-import com.uni.gui.TellerGui;
 import com.uni.main.Statistics;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
-public class Teller extends Thread{
+public class Teller extends Thread implements Subject{
 	
 	//list of accounts so the teller has access
 	private AccountList al;
+	private String message;
 	
 	private CustomerQueue q;
 
@@ -56,7 +63,7 @@ public class Teller extends Thread{
 		for(Transaction t: tList){
 			//form a message to write to the log
 			Statistics.TRANSACTION_TOTAL += 1;
-			String message = "";
+			message = "";
 			
 			int acNo;
 			Account ac;
@@ -162,6 +169,10 @@ public class Teller extends Thread{
 		
 	}
 	
+	public String getMessage(){
+		return message;
+	}
+	
 	private String doWithdraw(int acNo, int value){
 		Account ac;
 		String message;
@@ -192,7 +203,11 @@ public class Teller extends Thread{
 				System.out.println(q.size());
 				if(q.size() > 0)
 					this.processQueueItem(q.getFirst());
-				Thread.sleep(1000);
+					
+				notifyObservers();
+				Random r = new Random();
+				
+				Thread.sleep(r.nextInt(5000));
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -200,6 +215,29 @@ public class Teller extends Thread{
 		}
 		
 	}
+
+////////////////////////////////////////////////////////
+	//OBSERVER PATTERN
+	//SUBJECT must be able to register, remove and notify observers
+	//list to hold any observers
+	private List<Observer> registeredObservers = new LinkedList<Observer>();
+	//methods to register, remove and notify observers
+	public void registerObserver( Observer obs)
+	{
+		registeredObservers.add( obs);
+	}
+	
+	public void removeObserver( Observer obs)
+	{
+		registeredObservers.remove( obs);
+	}
+	
+	public void notifyObservers()
+	{
+		for( Observer obs : registeredObservers)
+			obs.update();
+	}
+	//////////////////////////////////////////////////////// 	
 	
 	
 }

@@ -20,18 +20,18 @@ package com.uni.main;
 
 import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
+import com.uni.Teller.TellerList;
 import com.uni.account.AccountList;
-import com.uni.account.Transaction;
-import com.uni.account.TransactionList;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
-import com.uni.gui.GuiDisplay;
 import com.uni.gui.GuiMain;
 import com.uni.queue.CustomerQueue;
-import com.uni.queue.QueueItem;
 
 
 public class BankSimulator {
+	
+	private static final int NUM_OF_TELLERS = 3;
+	
 	//Not sure if this should go here? - Neil
 	/*private boolean closed;
 	
@@ -42,7 +42,8 @@ public class BankSimulator {
 	public void setClosed(boolean closed) {
 		this.closed = closed;
 	}*/
-
+	public TellerList tellerList;
+	public Teller teller;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -105,7 +106,13 @@ public class BankSimulator {
 		Log.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the teller */
-		Teller teller = new Teller(al, cq);
+		tellerList = new TellerList();
+		for(int i = 0; i < NUM_OF_TELLERS; i++){
+			teller = new Teller(al, cq);
+			tellerList.add(teller);
+			teller.start();
+		}
+		
 		
 		/* Uncomment for testing */
 		/*for(QueueItem qi: testArray){
@@ -124,9 +131,9 @@ public class BankSimulator {
 		
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();
-		GuiMain gm = new GuiMain();
+		GuiMain gm = new GuiMain(this);
 		
-		teller.start();
+		
 		
 		
 	}

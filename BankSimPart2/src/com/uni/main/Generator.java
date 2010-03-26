@@ -62,7 +62,6 @@ public class Generator extends Thread{
 		//only process if the customer is not in the queue
 		if(queue.customerInQueue(c) != true)
 		{
-			//change queue status
 						
 			//1,2,3 transactions with weighted selection
 			int numTransWeighted = rGen.nextInt(10);
