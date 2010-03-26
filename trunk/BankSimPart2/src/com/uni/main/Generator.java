@@ -25,7 +25,7 @@ import com.uni.customer.CustomerList;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
 
-public class Generator {
+public class Generator extends Thread{
 	private CustomerList clist; //the list of customers
 	private AccountList aList; //the list of accounts
 	
@@ -249,6 +249,11 @@ public class Generator {
 	
 	private Transaction generateWithdraw(Customer c, int accId ){
 		return new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, accId), accId);
+	}
+	
+	public void run()
+	{
+		
 	}
 
 }
