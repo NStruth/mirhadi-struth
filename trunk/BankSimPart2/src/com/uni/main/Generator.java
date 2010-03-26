@@ -50,8 +50,9 @@ public class Generator extends Thread{
 	/**
 	 * Generate a single item
 	 * @return the queue item
+	 * @throws InterruptedException 
 	 */
-	private QueueItem generateItem()
+	private QueueItem generateItem() throws InterruptedException
 	{
 		//create a random generator
 		Random rGen = new Random();
@@ -59,11 +60,10 @@ public class Generator extends Thread{
 		int cNo = rGen.nextInt(clist.size());
 		Customer c = clist.get(cNo);
 		//only process if the customer is not in the queue
-		if(c.getStatus() == 0)
+		if(queue.customerInQueue(c) != true)
 		{
 			//change queue status
-			c.setStatus(1);
-			
+						
 			//1,2,3 transactions with weighted selection
 			int numTransWeighted = rGen.nextInt(10);
 			//make a list to store the transactions
@@ -97,6 +97,7 @@ public class Generator extends Thread{
 			QueueItem q = new QueueItem(c, tList);
 			return q;	
 		}else{
+			Thread.sleep(2000);
 			QueueItem q = generateItem();
 			return q;
 		}
@@ -230,7 +231,7 @@ public class Generator extends Thread{
 		}
 		for(int i = 0; i < length; i++)
 		{
-			q.add(generateItem());
+			//q.add(generateItem());
 		}
 		return q;
 	}
