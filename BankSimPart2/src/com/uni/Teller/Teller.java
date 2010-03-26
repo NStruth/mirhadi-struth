@@ -32,11 +32,16 @@ import com.uni.queue.QueueItem;
 
 public class Teller extends Thread implements Subject{
 	
+	private boolean open = true;
+	
 	//list of accounts so the teller has access
 	private AccountList al;
 	private String message;
 	
 	private CustomerQueue q;
+	private Customer currentCustomer;
+	private int custNumber;
+	private String currentStatus;
 
 	/**
 	 * Constructor for the teller.
@@ -45,6 +50,15 @@ public class Teller extends Thread implements Subject{
 	public Teller(AccountList al, CustomerQueue q){
 		this.al = al;
 		this.q = q;
+	}
+	
+	
+	public void setOpen(boolean value){
+		open = value;
+	}
+	
+	public boolean getOpen(){
+		return open;
 	}
 	
 	/**
@@ -58,7 +72,10 @@ public class Teller extends Thread implements Subject{
 		TransactionList tList = q.getTransactions();
 		//get the customer from the queue item
 		Customer cust = q.getCustomer();
+		currentCustomer = cust;
 		System.out.println(cust.getFullName());
+		custNumber = q.getCustNo();
+		notifyObservers();
 		//process each transaction
 		for(Transaction t: tList){
 			//form a message to write to the log
@@ -170,7 +187,11 @@ public class Teller extends Thread implements Subject{
 	}
 	
 	public String getMessage(){
-		return message;
+		return currentStatus;
+	}
+	
+	public int getCustNumber(){
+		return custNumber;
 	}
 	
 	private String doWithdraw(int acNo, int value){
@@ -214,6 +235,10 @@ public class Teller extends Thread implements Subject{
 			}
 		}
 		
+	}
+	
+	public String getCustomerName(){
+		return currentCustomer.getFullName();
 	}
 
 ////////////////////////////////////////////////////////
