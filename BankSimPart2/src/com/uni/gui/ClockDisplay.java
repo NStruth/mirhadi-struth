@@ -1,6 +1,7 @@
 package com.uni.gui;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 			clock.setForeground(Color.GREEN);
 		else
 			clock.setForeground(Color.RED);
+		clock.setFont(new Font("Dialog", Font.BOLD, 26));
 		this.add(clock);
 	}
 	
