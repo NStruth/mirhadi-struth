@@ -62,12 +62,18 @@ public class GuiMain extends JFrame{
 		
 		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
 		c.gridx = 0;
-		c.gridy++;
+		c.gridy = 1;
 		c.weightx = 1.0;
-		c.ipadx = 150;
-		c.ipady = 300;
+		//c.ipadx = 150;
+		//c.ipady = 300;
 		holderPanel.add(qList,c);		
 		
+		c.gridx = 1;
+		c.gridy = 1;
+		c.ipadx = 0;
+		c.ipady = 0;
+		ToolsPanel tPanel = new ToolsPanel();
+		holderPanel.add(tPanel,c);
 
 		
 		
