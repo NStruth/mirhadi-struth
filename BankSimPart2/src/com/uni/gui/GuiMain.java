@@ -52,5 +52,14 @@ public class GuiMain extends JFrame{
 		holderPanel.add(qList,c);
 		//qList.setBounds(0,0,200,200);
 		
+		
+		ClockDisplay clock = new ClockDisplay(bs.getTimer());
+		c.gridx = 3;
+		c.gridy++;
+		holderPanel.add(clock,c);
+		//qList.setBounds(0,0,200,200);
+		
+		
+		
 	}
 }
