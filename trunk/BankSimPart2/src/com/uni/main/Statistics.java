@@ -34,6 +34,8 @@ public class Statistics {
 	public static int CURRENT_HOUR = 9;
 	public static int CURRENT_MIN = 0;
 	
+	public static int SIMULATION_SPEED = 1000;
+	
 	public static boolean CLOSED = false;
 
 	/**
