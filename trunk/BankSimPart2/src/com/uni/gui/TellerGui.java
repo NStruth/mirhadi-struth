@@ -1,9 +1,9 @@
 package com.uni.gui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -46,7 +46,6 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c = new GridBagConstraints();
 		this.setLayout(gbl);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
-	
 		this.teller = t;
 				
 		t.registerObserver(this);
