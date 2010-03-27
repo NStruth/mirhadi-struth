@@ -35,7 +35,7 @@ public class GuiMain extends JFrame{
 
 		holderPanel.setLayout(gbl);
 		
-		this.setSize(900,500);
+		this.setSize(1000,500);
 		this.setVisible(true);
 
 		this.setLayout(gbl);
@@ -52,39 +52,42 @@ public class GuiMain extends JFrame{
 
 		
 	    this.getContentPane().setLayout(new GridBagLayout());
-	    c.fill = GridBagConstraints.NONE;
+	    c.fill = GridBagConstraints.BOTH;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.insets = new Insets(2,2,2,2);
 
 		
 		c.gridx = 1;
 		c.gridy = 0;
-		c.weightx = 0.6;
+		c.weightx = 0.5;
 		c.weighty = 0.2;
+
 		this.getContentPane().add(tCont, c);
 		
-		
+	
 		//holderPanel.add(tCont, c);
 		
 		ClockDisplay clock = new ClockDisplay(bs.getTimer());
 		c.gridx = 2;
 		//c.gridy++;
-		c.weightx = 0.0;
+		c.weightx = 0.1;
 		this.getContentPane().add(clock,c);
 		
 		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
 		c.gridx = 0;
 		c.gridy = 1;
-		c.weightx = 0.2;
+		c.weightx = 0.4;
 		c.weighty = 0.8;
 		this.getContentPane().add(qList,c);		
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		c.weightx = 0.6;
+		c.weightx = 0.5;
 		c.weighty = 0.8;
-		ToolsPanel tPanel = new ToolsPanel();
+		ToolsPanel tPanel = new ToolsPanel(bs);
 		this.getContentPane().add(tPanel,c);
+		
+		
 		
 		
 	}
