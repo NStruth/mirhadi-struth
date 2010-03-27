@@ -157,4 +157,14 @@ public class BankSimulator {
 	public Timer getTimer() {
 		return time;
 	}
+
+	public void stopSimulation() {
+		g.done();
+		time.done();
+		for(Teller t: tellerList)
+		{
+			t.done();
+		}
+		System.out.println("Simulation Stopped!");
+	}
 }

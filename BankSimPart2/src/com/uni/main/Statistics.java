@@ -39,6 +39,7 @@ public class Statistics {
 	public static int TELLER_SPEED = 5000;
 	
 	public static boolean CLOSED = false;
+	public static boolean STOP = false;
 
 	/**
 	 * @param value the value to display

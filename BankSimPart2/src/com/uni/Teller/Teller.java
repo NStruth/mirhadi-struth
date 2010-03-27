@@ -44,6 +44,7 @@ public class Teller extends Thread implements Subject{
 	private String currentStatus;
 
 	private String transactionType;
+	private boolean stopThread = false;
 	
 	/**
 	 * Constructor for the teller.
@@ -54,6 +55,10 @@ public class Teller extends Thread implements Subject{
 		this.q = q;
 	}
 	
+	public void done()
+	{
+		stopThread = true;
+	}
 	
 	public void setOpen(boolean value){
 		open = value;
@@ -234,7 +239,7 @@ public class Teller extends Thread implements Subject{
 
 	@Override
 	public void run() {
-		while(true){
+		while(!stopThread){
 			try{
 				System.out.println(q.size());
 				if(q.size() > 0)

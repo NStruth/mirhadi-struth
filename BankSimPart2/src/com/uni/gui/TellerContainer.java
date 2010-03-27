@@ -35,6 +35,6 @@ public class TellerContainer extends JPanel{
 		this.add(hPanel, BorderLayout.CENTER);
 		/*this.setMinimumSize(new Dimension(800,400));
 		this.setMaximumSize(new Dimension(800,400));*/
-		this.setPreferredSize(new Dimension(700,200));
+		this.setPreferredSize(new Dimension(750,200));
 	}
 }

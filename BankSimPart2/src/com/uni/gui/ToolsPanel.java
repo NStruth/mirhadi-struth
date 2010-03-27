@@ -30,14 +30,21 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		
 		this.add(new JLabel("Tools"), BorderLayout.NORTH);
 		
-		JSlider speedSlider = new JSlider();
-		speedSlider.setPaintTicks(true);
-		p.add(speedSlider);
+		p.add(new JLabel("Teller"));
+		JSlider tellerSlider = new JSlider(10, 5000);
+		tellerSlider.setPaintTicks(true);
+		p.add(tellerSlider);
+		
+		p.add(new JLabel("Queue"));
+		JSlider queueSlider = new JSlider(10, 5000);
+		queueSlider.setPaintTicks(true);
+		p.add(queueSlider);
 		
 		JButton startButton = new JButton("Start Simulation");
 		JButton stopButton = new JButton("Stop Simulation");
 		
 		startButton.addActionListener(this);
+		stopButton.addActionListener(this);
 		
 		p.add(startButton);
 		p.add(stopButton);
@@ -51,7 +58,12 @@ public class ToolsPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Start Simulation")){
 			bs.startSimulation();
+			System.out.println("CLICK");
 		}
-		
+		if(arg0.getActionCommand().equals("Stop Simulation"))
+		{
+			bs.stopSimulation();
+		}
+
 	}
 }
