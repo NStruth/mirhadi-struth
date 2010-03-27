@@ -3,6 +3,8 @@ package com.uni.gui;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,7 +16,7 @@ import Observation.Observer;
 
 import com.uni.Teller.Teller;
 
-public class TellerGui extends JPanel implements Observer{
+public class TellerGui extends JPanel implements Observer, ActionListener{
  
 	private Teller teller;
 	JTextArea tempText = new JTextArea(10,30);
@@ -31,6 +33,8 @@ public class TellerGui extends JPanel implements Observer{
 	
 	private GridBagLayout gbl;
 	private GridBagConstraints c;
+	private JButton open;
+	private JButton close;
 	
 	
 	public TellerGui(Teller t){
@@ -67,6 +71,7 @@ public class TellerGui extends JPanel implements Observer{
 		this.add(serving,c);
 		
 		c.gridx = 2;
+		c.ipadx = 20;
 		this.add(status,c);
 		
 		c.ipady = 20;
@@ -85,8 +90,11 @@ public class TellerGui extends JPanel implements Observer{
 		this.add(typeText,c);
 		
 		
-		JButton open = new JButton("Open");
-		JButton close = new JButton("close");
+		open = new JButton("Open");
+		close = new JButton("close");
+		
+		open.addActionListener(this);
+		close.addActionListener(this);
 		
 		c.gridx = 0;
 		c.gridy++;
@@ -104,12 +112,33 @@ public class TellerGui extends JPanel implements Observer{
 
 	
 	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getActionCommand().equals("Open")){
+			teller.setOpen(true);
+		}else{
+			teller.setOpen(false);
+		}
+		update();
+		
+	}
+
+	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		custName.setText(teller.getCustomerName());
-		serving.setText("Serving: " + teller.getCustNumber());
-		typeText.setText(teller.getTranType());
 		
+		if(teller.getOpen()){
+			status.setText("Open");
+			
+			Color open = new Color(20,200,20);
+			status.setForeground(open);
+			
+			custName.setText(teller.getCustomerName());
+			serving.setText("Serving: " + teller.getCustNumber());
+			typeText.setText(teller.getTranType());
+		}else{
+			status.setText("Closed");
+			status.setForeground(Color.RED);
+		}
 	}
 	
 	
