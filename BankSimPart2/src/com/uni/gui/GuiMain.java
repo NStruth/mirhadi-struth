@@ -43,21 +43,17 @@ public class GuiMain extends JFrame{
 		c.anchor = c.FIRST_LINE_START;
 		c.gridx = 1;
 		c.gridy = 0;
-		//tCont.setBounds(this.getWidth() - 750, 0, 750, 200);
 		holderPanel.add(tCont, c);
 		
 		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
 		c.gridx = 0;
 		c.gridy++;
-		holderPanel.add(qList,c);
-		//qList.setBounds(0,0,200,200);
-		
+		holderPanel.add(qList,c);		
 		
 		ClockDisplay clock = new ClockDisplay(bs.getTimer());
 		c.gridx = 3;
 		c.gridy++;
 		holderPanel.add(clock,c);
-		//qList.setBounds(0,0,200,200);
 		
 		
 		

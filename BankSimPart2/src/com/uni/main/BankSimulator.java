@@ -100,9 +100,9 @@ public class BankSimulator {
 		cq = new CustomerQueue();
 		
 		time = new Timer();
-		time.start();
+		
 		g = new Generator(cl, al, cq);
-		g.start();
+		
 			
 		//CustomerQueue cq = g.generate();
 		Log.writeMessage("\n\n" + cq.toString());
@@ -134,10 +134,16 @@ public class BankSimulator {
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain(this);
+
+
+	}
+	
+	public void startSimulation(){
 		for(Teller t: tellerList){
 			t.start();
 		}
-
+		g.start();
+		time.start();
 	}
 	
 	public CustomerQueue getQueue(){
