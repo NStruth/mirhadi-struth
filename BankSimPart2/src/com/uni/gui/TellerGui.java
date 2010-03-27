@@ -37,7 +37,6 @@ public class TellerGui extends JPanel implements Observer{
 		gbl = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(gbl);
-		this.setSize(400,400);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	
 		this.teller = t;
@@ -89,7 +88,6 @@ public class TellerGui extends JPanel implements Observer{
 		JButton open = new JButton("Open");
 		JButton close = new JButton("close");
 		
-		c.gridheight = 20;
 		c.gridx = 0;
 		c.gridy++;
 		
