@@ -50,7 +50,10 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 	
 	public void update() {
 		// TODO Auto-generated method stub
-		clock.setText(Statistics.CURRENT_HOUR+":00");
+		if(Statistics.CURRENT_HOUR < 10)
+			clock.setText("0"+Statistics.CURRENT_HOUR+":00");
+		else
+			clock.setText(Statistics.CURRENT_HOUR+":00");
 		if(Statistics.CURRENT_HOUR >= 9 && Statistics.CURRENT_HOUR <= 17)
 			clock.setForeground(Color.GREEN);
 		else
