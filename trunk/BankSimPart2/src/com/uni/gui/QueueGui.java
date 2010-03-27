@@ -2,6 +2,8 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -25,7 +27,9 @@ public class QueueGui extends JPanel implements Observer{
 	
 	public QueueGui(Generator g, CustomerQueue cq){
 		this.setLayout(new BorderLayout());
-		this.setSize(800,400);
+		//this.setSize(800,400);
+		//this.setBounds(new Rectangle(0, 0, 800, 400));
+		this.setMinimumSize(new Dimension(800,400));
 		
 		this.cq = cq;
 		
