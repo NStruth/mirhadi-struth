@@ -2,6 +2,7 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
@@ -19,6 +20,8 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 	
 	public ClockDisplay(Timer t)
 	{
+		//this.setMinimumSize(new Dimension(100,100));
+		//this.setMaximumSize(new Dimension(100,100));
 		t.registerObserver(this);
 		initComponents();
 	}
@@ -30,7 +33,11 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 		
 		this.add(new JLabel("Time"), BorderLayout.NORTH);
 		
-		clock = new JLabel(Statistics.CURRENT_HOUR+":00");
+		if(Statistics.CURRENT_HOUR < 10)	
+			clock = new JLabel("0"+Statistics.CURRENT_HOUR+":00");
+		else
+			clock = new JLabel(Statistics.CURRENT_HOUR+":00");
+		
 		if(Statistics.HOUR_VAL >= 9 && Statistics.HOUR_VAL <= 17)
 			clock.setForeground(Color.GREEN);
 		else
