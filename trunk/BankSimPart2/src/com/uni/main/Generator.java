@@ -265,13 +265,13 @@ public class Generator extends Thread implements Subject{
 	
 	public void run()
 	{
-		while(!Statistics.CLOSED){
+		while(true){
 			try{
 				if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17)
 				{
 					queue.add(generateItem());
 					notifyObservers();
-					Thread.sleep(1000);
+					Thread.sleep(Statistics.SIMULATION_SPEED);
 				}
 				else
 					Statistics.CLOSED = true;
@@ -280,7 +280,6 @@ public class Generator extends Thread implements Subject{
 				e.printStackTrace();
 			}
 		}
-		Log.writeMessage("BANK CLOSED");
 	}
 
 ////////////////////////////////////////////////////////
