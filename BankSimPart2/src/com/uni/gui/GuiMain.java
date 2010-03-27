@@ -49,6 +49,7 @@ public class GuiMain extends JFrame{
 		c.gridx = 1;
 		c.gridy = 0;
 		c.weightx = 0.0;
+
 		c.insets = new Insets(2,2,2,2);
 		
 		holderPanel.add(tCont, c);
