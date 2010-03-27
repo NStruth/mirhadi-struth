@@ -1,8 +1,10 @@
 package com.uni.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,6 +19,8 @@ public class TellerContainer extends JPanel{
 	public TellerContainer(TellerList tList){
 		
 		//this.add(new JLabel("Tellers"), BorderLayout.PAGE_START);
+		
+		this.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
 		
 		this.setLayout(new BorderLayout());
 		GridLayout gLayout = new GridLayout(1,3);
