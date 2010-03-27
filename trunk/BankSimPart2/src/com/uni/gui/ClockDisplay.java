@@ -1,5 +1,6 @@
 package com.uni.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -25,14 +26,19 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 
 	public void initComponents()
 	{
-		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.setLayout(new BorderLayout());
+		
+		this.add(new JLabel("Time"), BorderLayout.NORTH);
+		
 		clock = new JLabel(Statistics.CURRENT_HOUR+":00");
 		if(Statistics.HOUR_VAL >= 9 && Statistics.HOUR_VAL <= 17)
 			clock.setForeground(Color.GREEN);
 		else
 			clock.setForeground(Color.RED);
 		clock.setFont(new Font("Dialog", Font.BOLD, 26));
-		this.add(clock);
+		
+		clock.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.add(clock, BorderLayout.CENTER);
 	}
 	
 	public void update() {
