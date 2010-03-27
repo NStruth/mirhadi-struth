@@ -1,6 +1,7 @@
 package com.uni.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -35,7 +36,10 @@ public class GuiMain extends JFrame{
 
 		holderPanel.setLayout(gbl);
 		
-		this.setSize(1000,500);
+		this.setSize(new Dimension(1000,500));
+		//this.setResizable(false);
+		this.setMaximumSize(new Dimension(1000,500));
+		this.setMinimumSize(new Dimension(1000,500));
 		this.setVisible(true);
 		this.setLayout(gbl);
 		initComponents();
@@ -53,7 +57,6 @@ public class GuiMain extends JFrame{
 	    c.fill = GridBagConstraints.BOTH;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.insets = new Insets(2,2,2,2);
-
 		
 		c.gridx = 1;
 		c.gridy = 0;

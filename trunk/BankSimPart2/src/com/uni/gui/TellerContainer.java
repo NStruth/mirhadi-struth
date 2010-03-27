@@ -2,6 +2,7 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -32,5 +33,8 @@ public class TellerContainer extends JPanel{
 		}
 		this.add(new JLabel("Tellers"), BorderLayout.NORTH);
 		this.add(hPanel, BorderLayout.CENTER);
+		/*this.setMinimumSize(new Dimension(800,400));
+		this.setMaximumSize(new Dimension(800,400));*/
+		this.setPreferredSize(new Dimension(700,200));
 	}
 }

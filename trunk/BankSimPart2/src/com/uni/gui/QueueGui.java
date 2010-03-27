@@ -29,7 +29,10 @@ public class QueueGui extends JPanel implements Observer{
 		this.setLayout(new BorderLayout());
 		//this.setSize(800,400);
 		//this.setBounds(new Rectangle(0, 0, 800, 400));
-		this.setMinimumSize(new Dimension(800,400));
+		//this.setMinimumSize(new Dimension(150,200));
+		//this.setMaximumSize(new Dimension(150,200));
+		
+		this.setPreferredSize(new Dimension(150,200));
 		
 		this.cq = cq;
 		
@@ -41,8 +44,12 @@ public class QueueGui extends JPanel implements Observer{
 		
 		jList = new JList(testList);
 		jList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		jList.setMinimumSize(new Dimension(150,200));
+		jList.setMaximumSize(new Dimension(150,200));
 		
 		jScroll = new JScrollPane(jList);
+		jScroll.setMinimumSize(new Dimension(150,200));
+		jScroll.setMaximumSize(new Dimension(150,200));
 		this.add(new JLabel("Queue"), BorderLayout.NORTH);
 		this.add(jScroll, BorderLayout.CENTER);
 	}
