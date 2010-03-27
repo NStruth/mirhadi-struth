@@ -38,6 +38,8 @@ public class BankSimulator {
 	private CustomerQueue cq;
 
 	private Generator g;
+	
+	private Timer time;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -97,7 +99,7 @@ public class BankSimulator {
 				
 		cq = new CustomerQueue();
 		
-		Timer time = new Timer();
+		time = new Timer();
 		time.start();
 		g = new Generator(cl, al, cq);
 		g.start();
@@ -144,5 +146,9 @@ public class BankSimulator {
 	
 	public Generator getGenerator(){
 		return g;
+	}
+
+	public Timer getTimer() {
+		return time;
 	}
 }
