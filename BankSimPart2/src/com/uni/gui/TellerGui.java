@@ -83,11 +83,11 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		
 		c.ipadx=70 - fM.stringWidth(status.getText());
 		c.gridx = 2;
-		c.weightx = 1.0;
+		c.weightx = 0.6;
 		this.add(status,c);
 		
 		c.ipadx = 0;
-		c.ipady = 20;
+		//c.ipady = 20;
 		c.gridy++;
 		c.gridx=0;
 		this.add(custLabel,c);

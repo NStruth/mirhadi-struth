@@ -37,10 +37,8 @@ public class QueueGui extends JPanel implements Observer{
 		
 		jList = new JList(testList);
 		jList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		jList.setSize(500,500);
 		
 		jScroll = new JScrollPane(jList);
-		jScroll.setSize(500,500);
 		this.add(new JLabel("Queue"), BorderLayout.NORTH);
 		this.add(jScroll, BorderLayout.CENTER);
 	}

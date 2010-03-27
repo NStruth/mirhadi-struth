@@ -37,11 +37,9 @@ public class GuiMain extends JFrame{
 		
 		this.setSize(1000,500);
 		this.setVisible(true);
-
 		this.setLayout(gbl);
 		initComponents();
 		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		
 	}
 	
