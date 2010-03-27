@@ -243,7 +243,7 @@ public class Teller extends Thread implements Subject{
 				notifyObservers();
 				Random r = new Random();
 				
-				Thread.sleep(r.nextInt(5000));
+				Thread.sleep(r.nextInt(Statistics.TELLER_SPEED));
 			}catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
