@@ -33,6 +33,7 @@ public class Generator extends Thread implements Subject{
 	private CustomerList clist; //the list of customers
 	private AccountList aList; //the list of accounts
 	private CustomerQueue queue; // reference to the queue
+	private boolean stopThread = false;
 	
 	/**
 	 * Constructor for the random generator
@@ -50,6 +51,11 @@ public class Generator extends Thread implements Subject{
 	{
 		this.clist = clist;
 		this.aList = alist;
+	}
+	
+	public void done()
+	{
+		stopThread = true;
 	}
 	/**
 	 * Generate a single item
@@ -265,7 +271,7 @@ public class Generator extends Thread implements Subject{
 	
 	public void run()
 	{
-		while(true){
+		while(!stopThread){
 			try{
 				if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17)
 				{

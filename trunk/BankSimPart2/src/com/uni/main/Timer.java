@@ -10,6 +10,12 @@ import com.uni.Logging.Log;
 
 public class Timer extends Thread implements Subject {
 
+	boolean stopThread = false;
+	
+	public void done()
+	{
+		stopThread = true;
+	}
 	
 	public void updateTime()
 	{
@@ -24,7 +30,7 @@ public class Timer extends Thread implements Subject {
 	public void run()
 	{
 		Log.writeMessage("SIMULATION STARTED");
-		while(true)
+		while(!stopThread)
 		{
 			try {
 				Thread.sleep(Statistics.HOUR_VAL);
