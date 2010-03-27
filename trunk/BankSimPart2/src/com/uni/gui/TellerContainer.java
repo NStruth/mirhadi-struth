@@ -17,6 +17,7 @@ public class TellerContainer extends JPanel{
 	public TellerContainer(TellerList tList){
 		
 		//this.add(new JLabel("Tellers"), BorderLayout.PAGE_START);
+		
 		this.setLayout(new BorderLayout());
 		GridLayout gLayout = new GridLayout(1,3);
 		hPanel = new JPanel();

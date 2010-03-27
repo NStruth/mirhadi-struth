@@ -3,6 +3,7 @@ package com.uni.gui;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,6 +25,7 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 
 	public void initComponents()
 	{
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		clock = new JLabel(Statistics.CURRENT_HOUR+":00");
 		if(Statistics.HOUR_VAL >= 9 && Statistics.HOUR_VAL <= 17)
 			clock.setForeground(Color.GREEN);

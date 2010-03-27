@@ -52,7 +52,6 @@ Mary Christmas 13 North Pole
 Polly Ester 6 Church Street
 Tad Pohl 3 Pond Lane
 Warren Peace 4 Paper Key Street
-SIMULATION STARTED
 
 
 
@@ -75,71 +74,3 @@ Printing account list
 60014 : £478.29
 60015 : £836.10
 
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Frank Sauzee No: 1001 AccountNo:60003
-Withdraw: £170.08 New Balance: £430.02
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Polly Ester No: 1002 AccountNo:60016
-
- *** End of open transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Hassanal Bolkiah No: 1003 AccountNo:60007
-Deposit: £377.06 New Balance: £611.26
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Mary Christmas No: 1004 AccountNo:60017
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Mary Christmas No: 1004 AccountNo:60018
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Maximum Number of Accounts is 2
- *** End of open transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Angela Merkel No: 1005 AccountNo:60009
-Deposit: £651.00 New Balance: £972.32
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Angela Merkel No: 1005 AccountNo:60009
-Withdraw: £183.59 New Balance: £788.73
-
- *** End of withdraw transaction *** 
-
-BANK CLOSED

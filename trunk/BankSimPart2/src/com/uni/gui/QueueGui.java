@@ -20,16 +20,28 @@ public class QueueGui extends JPanel implements Observer{
 	private JList jList;
 	private CustomerQueue cq;
 	
+	private JScrollPane jScroll;
+	
+	
 	public QueueGui(Generator g, CustomerQueue cq){
+		this.setLayout(new BorderLayout());
+		//this.setSize(800,400);
+		
 		this.cq = cq;
+		
 		g.registerObserver(this);
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		jList = new JList(cq.toArray());
+		
+		String[] testList = {"Value 1","value2"};
+		
+		jList = new JList(testList);
 		jList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
+		jScroll = new JScrollPane(jList);
+		jScroll.setSize(500,500);
 		this.add(new JLabel("Queue"), BorderLayout.NORTH);
-		this.add(new JScrollPane(jList), BorderLayout.CENTER);
+		this.add(jScroll, BorderLayout.CENTER);
 	}
 
 	@Override
