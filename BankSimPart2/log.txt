@@ -74,3 +74,85 @@ Printing account list
 60014 : £478.29
 60015 : £836.10
 
+SIMULATION STARTED
+
+
+ *** Processing open transaction *** 
+
+Customer: Mary Christmas No: 1001 AccountNo:60016
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Mary Christmas No: 1001 AccountNo:60017
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Maximum Number of Accounts is 2
+ *** End of open transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Neil Struth No: 1002 AccountNo:60002
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Neil Struth No: 1002 AccountNo:60002
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Neil Struth No: 1002 AccountNo:60001
+Withdraw: £20.44 New Balance: £979.75
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Steven Harper No: 1003 AccountNo:60008
+Deposit: £543.24 New Balance: £1777.80
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Jon Mirhadi No: 1004 AccountNo:60003
+Withdraw: £176.13 New Balance: £423.97
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Polly Ester No: 1005 AccountNo:60018
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Polly Ester No: 1005 AccountNo:60019
+
+ *** End of open transaction *** 
+

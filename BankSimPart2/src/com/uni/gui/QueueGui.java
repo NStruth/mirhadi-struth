@@ -25,7 +25,7 @@ public class QueueGui extends JPanel implements Observer{
 	
 	public QueueGui(Generator g, CustomerQueue cq){
 		this.setLayout(new BorderLayout());
-		//this.setSize(800,400);
+		this.setSize(800,400);
 		
 		this.cq = cq;
 		
