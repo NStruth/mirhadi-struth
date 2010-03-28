@@ -31,35 +31,57 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		JPanel p = new JPanel();
 		p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
 		
-		this.add(new JLabel("Tools"), BorderLayout.NORTH);
+		//this.add(new JLabel("Tools"), BorderLayout.NORTH);
 		
-		p.add(new JLabel("Teller"));
+		// Teller Slider
+		JPanel tPanel = new JPanel();
+		tPanel.setLayout(new BorderLayout());
+		
+		tPanel.add(new JLabel("Teller"), BorderLayout.NORTH);
+		tPanel.add(new JLabel("Fast"), BorderLayout.WEST);
 		JSlider tellerSlider = new JSlider(10, 5000);
 		tellerSlider.setMajorTickSpacing(1000);
 		tellerSlider.setMinorTickSpacing(100);
 		tellerSlider.setPaintTicks(true);
 		tellerSlider.setSnapToTicks(true);
 		tellerSlider.addChangeListener(new TellerListener());
-		p.add(tellerSlider);
+		tPanel.add(tellerSlider);
+		tPanel.add(new JLabel("Slow"), BorderLayout.EAST);
+		p.add(tPanel);
 		
-		p.add(new JLabel("Queue"));
+		// Queue Slider
+		JPanel qPanel = new JPanel();
+		qPanel.setLayout(new BorderLayout());
+		
+		qPanel.add(new JLabel("Queue"), BorderLayout.NORTH);
+		qPanel.add(new JLabel("Fast"), BorderLayout.WEST);
 		JSlider queueSlider = new JSlider(10, 5000);
 		queueSlider.setMajorTickSpacing(1000);
 		queueSlider.setMinorTickSpacing(100);
 		queueSlider.setPaintTicks(true);
 		queueSlider.setSnapToTicks(true);
 		queueSlider.addChangeListener(new QueueListener());
-		p.add(queueSlider);
+		qPanel.add(queueSlider);
+		qPanel.add(new JLabel("Slow"), BorderLayout.EAST);
+		p.add(qPanel);
 		
-		p.add(new JLabel("Clock"));
+		
+		//Clock Panel
+		
+		JPanel cPanel = new JPanel();
+		cPanel.setLayout(new BorderLayout());
+		
+		cPanel.add(new JLabel("Clock"), BorderLayout.NORTH);
+		cPanel.add(new JLabel("Fast"), BorderLayout.WEST);
 		JSlider clockSlider = new JSlider(200, 2000);
 		clockSlider.setMajorTickSpacing(100);
 		clockSlider.setMinorTickSpacing(100);
 		clockSlider.setPaintTicks(true);
 		clockSlider.setSnapToTicks(true);
 		clockSlider.addChangeListener(new ClockListener());
-		p.add(clockSlider);
-		
+		cPanel.add(clockSlider);
+		cPanel.add(new JLabel("Slow"), BorderLayout.EAST);
+		p.add(cPanel);
 
 		
 		JButton startButton = new JButton("Start Simulation");
