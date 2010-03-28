@@ -240,18 +240,20 @@ public class Teller extends Thread implements Subject{
 	@Override
 	public void run() {
 		while(!stopThread){
-			try{
-				System.out.println(q.size());
-				if(q.size() > 0)
-					this.processQueueItem(q.getFirst());
+			if(this.open){
+				try{
+					System.out.println(q.size());
+					if(q.size() > 0)
+						this.processQueueItem(q.getFirst());
+						
+					notifyObservers();
+					Random r = new Random();
 					
-				notifyObservers();
-				Random r = new Random();
-				
-				Thread.sleep(r.nextInt(Statistics.TELLER_SPEED));
-			}catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+					Thread.sleep(r.nextInt(Statistics.TELLER_SPEED));
+				}catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		
