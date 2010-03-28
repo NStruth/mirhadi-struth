@@ -120,7 +120,7 @@ public class Teller extends Thread implements Subject{
 					message += doWithdraw(acNo, value);
 					message += Language.WITHDRAW_END;
 					
-					updateCurrentStatusAndWait(" --- ");
+					resetLabels();
 					break;
 				case DEPOSIT:
 					
@@ -152,7 +152,7 @@ public class Teller extends Thread implements Subject{
 					}catch(NonExistantAccountException e){
 						message += Language.ERROR_NONEXISTANT_ACCOUNT;
 					}
-					updateCurrentStatusAndWait(" --- ");
+					resetLabels();
 					message += Language.DEPOSIT_END;
 					break;
 				case OPEN:
@@ -176,7 +176,7 @@ public class Teller extends Thread implements Subject{
 					message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
 					message += Language.OPEN_END;
 					
-					updateCurrentStatusAndWait(" --- ");
+					resetLabels();
 					break;
 				case CLOSE:
 					transactionType = "Close";
@@ -223,6 +223,7 @@ public class Teller extends Thread implements Subject{
 					message += "\t" + Language.WITHDRAW_END;
 					//message
 					message += Language.CLOSE_END;
+					resetLabels();
 					break;
 				}
 				//write the message
@@ -249,6 +250,21 @@ public class Teller extends Thread implements Subject{
 
 	}
 	
+	
+	public void resetLabels(){
+		currentStatus = "Calling next customer... ";
+		transactionType = " --- ";
+		currentCustomer = null;
+		notifyObservers();
+		pauseTransaction();
+	}
+	
+	public String getCustomerName(){
+		if(currentCustomer != null)
+			return currentCustomer.getFullName();
+		else
+			return "Waiting for next";
+	}
 	
 	public String getMessage(){
 		return currentStatus;
@@ -316,9 +332,7 @@ public class Teller extends Thread implements Subject{
 		pauseTransaction();
 	}
 	
-	public String getCustomerName(){
-		return currentCustomer.getFullName();
-	}
+
 
 ////////////////////////////////////////////////////////
 	//OBSERVER PATTERN

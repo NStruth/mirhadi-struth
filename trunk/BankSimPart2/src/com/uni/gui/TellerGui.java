@@ -180,8 +180,10 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			Color open = new Color(20,200,20);
 			status.setForeground(open);
 			
+			
 			custName.setText(teller.getCustomerName());
 			serving.setText(teller.getCustNumber() + "");
+			
 			typeText.setText(teller.getTranType());
 			statusText.setText(teller.getMessage());
 			
