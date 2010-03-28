@@ -25,7 +25,7 @@ public class Statistics {
 	
 
 	
-	public static boolean PAUSE = true; //0 for false
+	public static boolean MANUAL_CLOSE_OVERRIDE = true; //0 for false
 	
 	
 	public static long MINUTE_VAL = 10;

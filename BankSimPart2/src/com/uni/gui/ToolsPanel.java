@@ -86,7 +86,7 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		
 		
 		JButton startButton = new JButton("Start Simulation");
-		JButton stopButton = new JButton("Stop Simulation");
+		JButton stopButton = new JButton("Close Bank");
 		
 		startButton.addActionListener(this);
 		stopButton.addActionListener(this);
@@ -106,9 +106,9 @@ public class ToolsPanel extends JPanel implements ActionListener{
 			bs.startSimulation();
 			System.out.println("CLICK");
 		}
-		if(arg0.getActionCommand().equals("Stop Simulation"))
+		if(arg0.getActionCommand().equals("Close Bank"))
 		{
-			bs.stopSimulation();
+			bs.closeBank();
 		}
 
 	}
