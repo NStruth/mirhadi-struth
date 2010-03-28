@@ -277,7 +277,7 @@ public class Generator extends Thread implements Subject{
 				{
 					queue.add(generateItem());
 					notifyObservers();
-					Thread.sleep(Statistics.GENERATOR_SPEED);
+					Thread.sleep(Statistics.GENERATOR_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
 				}
 				else
 					Statistics.CLOSED = true;

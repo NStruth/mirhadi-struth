@@ -24,6 +24,7 @@ public class TellerContainer extends JPanel{
 		this.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
 		
 		this.setLayout(new BorderLayout());
+		
 		GridLayout gLayout = new GridLayout(1,3);
 		hPanel = new JPanel();
 		hPanel.setLayout(gLayout);
@@ -36,5 +37,7 @@ public class TellerContainer extends JPanel{
 		/*this.setMinimumSize(new Dimension(800,400));
 		this.setMaximumSize(new Dimension(800,400));*/
 		this.setPreferredSize(new Dimension(750,200));
+		hPanel.setPreferredSize(new Dimension(750,150));
+
 	}
 }

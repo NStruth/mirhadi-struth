@@ -94,113 +94,161 @@ public class Teller extends Thread implements Subject{
 			Account ac;
 			int value; 
 
+			try{
+				switch(t.getChoice()){
+				case WITHDRAW:
+					transactionType = "Withdraw";
+					notifyObservers();
+					//the account number will be the secondary aux value
+					acNo = (Integer)t.getSecondaryAux();
+					
+					updateCurrentStatusAndWait( "Account No: " + acNo);
+					
+					//some message stuff
+					message += Language.WITHDRAW_START;
+					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+					
+					//the withdraw value will be the primary aux
+					value = (Integer)t.getPrimaryAux();
+					
+					updateCurrentStatusAndWait("Amount: " + 
+							Statistics.toPoundsAndPence(value)); 
 
-			switch(t.getChoice()){
-			case WITHDRAW:
-				transactionType = "Withdraw";
-				notifyObservers();
-				//the account number will be the secondary aux value
-				acNo = (Integer)t.getSecondaryAux();
-				
-				//some message stuff
-				message += Language.WITHDRAW_START;
-				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
-				
-				//the withdraw value will be the primary aux
-				value = (Integer)t.getPrimaryAux();
-				
-				//int acNumber = cust.getAccountNo(acNo);
-				message += doWithdraw(acNo, value);
-				message += Language.WITHDRAW_END;
-				break;
-			case DEPOSIT:
-				transactionType = "Deposit";
-				notifyObservers();
-				message += Language.DEPOSIT_START;
-				//account number is secondary aux
-				acNo = (Integer)t.getSecondaryAux();
-				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
-				try{
-					Statistics.ACCOUNT_DEPOSIT++; //update stats
-					ac = this.al.getAccountAtIndex(acNo); //get the account
-					value = (Integer)t.getPrimaryAux(); //get the value
-					
-					ac.deposit(value);
-						//deposit the value
-					Statistics.TOTALS_DEPOSTIT += value; //update stats
-					message += Language.DepositInfo(value, ac.getBalance()); 
 					
 					
+					//int acNumber = cust.getAccountNo(acNo);
+					message += doWithdraw(acNo, value);
+					message += Language.WITHDRAW_END;
 					
-				}catch(NonExistantAccountException e){
-					message += Language.ERROR_NONEXISTANT_ACCOUNT;
-				}
-				message += Language.DEPOSIT_END;
-				break;
-			case OPEN:
-				transactionType = "Open";
-				notifyObservers();
-				Statistics.ACCOUNTS_OPENED++; //udate stats
-				message += Language.OPEN_START;
-				//try associate account with customer
-				if(cust.getNumOfAccounts() >= 2)
-				{
-					message += Language.ERROR_TOO_MANY_ACCOUNTS;
-					message += Language.OPEN_END;
+					updateCurrentStatusAndWait(" --- ");
 					break;
-				}
-				Account acc = new Account(); //create the account
-				al.add(acc); //add
-				cust.addAccount(acc.getAccountNumber());
-				message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
-				message += Language.OPEN_END;
-				break;
-			case CLOSE:
-				transactionType = "Close";
-				notifyObservers();
-				//update statistics
-				Statistics.ACCOUNTS_CLOSED++;
-				//some boring log stuff
-				message += Language.CLOSE_START;
-				//get the id of the account (0 or 1; from customer)
-				int acId = (Integer)t.getPrimaryAux();
-				if(cust.getNumOfAccounts() == 0)
-				{
-					message += Language.ERROR_NO_ACCOUNTS_HELD;
+				case DEPOSIT:
+					
+					transactionType = "Deposit";
+					notifyObservers();
+					
+					message += Language.DEPOSIT_START;
+					
+					//account number is secondary aux
+					acNo = (Integer)t.getSecondaryAux();
+					updateCurrentStatusAndWait( "Account No: " + acNo);
+					
+					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+					try{
+						Statistics.ACCOUNT_DEPOSIT++; //update stats
+						ac = this.al.getAccountAtIndex(acNo); //get the account
+						value = (Integer)t.getPrimaryAux(); //get the value
+						updateCurrentStatusAndWait( "Amount: " + Statistics.toPoundsAndPence(value));
+						
+						
+						ac.deposit(value);
+							//deposit the value
+						Statistics.TOTALS_DEPOSTIT += value; //update stats
+						message += Language.DepositInfo(value, ac.getBalance()); 
+						
+						
+						
+						
+					}catch(NonExistantAccountException e){
+						message += Language.ERROR_NONEXISTANT_ACCOUNT;
+					}
+					updateCurrentStatusAndWait(" --- ");
+					message += Language.DEPOSIT_END;
+					break;
+				case OPEN:
+					transactionType = "Open";
+					updateCurrentStatusAndWait("Collecting details");
+					
+					Statistics.ACCOUNTS_OPENED++; //udate stats
+					
+					message += Language.OPEN_START;
+					//try associate account with customer
+					if(cust.getNumOfAccounts() >= 2)
+					{
+						message += Language.ERROR_TOO_MANY_ACCOUNTS;
+						message += Language.OPEN_END;
+						updateCurrentStatusAndWait("Max account limit!");
+						break;
+					}
+					Account acc = new Account(); //create the account
+					al.add(acc); //add
+					cust.addAccount(acc.getAccountNumber());
+					message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
+					message += Language.OPEN_END;
+					
+					updateCurrentStatusAndWait(" --- ");
+					break;
+				case CLOSE:
+					transactionType = "Close";
+					notifyObservers();
+					updateCurrentStatusAndWait("fetching");
+					//update statistics
+					Statistics.ACCOUNTS_CLOSED++;
+					//some boring log stuff
+					message += Language.CLOSE_START;
+					//get the id of the account (0 or 1; from customer)
+					int acId = (Integer)t.getPrimaryAux();
+					
+					if(cust.getNumOfAccounts() == 0)
+					{
+						message += Language.ERROR_NO_ACCOUNTS_HELD;
+						message += Language.CLOSE_END;
+						updateCurrentStatusAndWait("No accounts");
+						break;
+					}
+					//get the associated account number
+					acNo = cust.getAccountNo(acId);
+					updateCurrentStatusAndWait("Account:" + acNo);
+					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
+					//remove from account list and customers accounts
+					message += "\t" + Language.WITHDRAW_START;
+					updateCurrentStatusAndWait("Removing funds");
+					try{
+						int bal = al.getAccountAtIndex(acNo).getBalance();
+						message += doWithdraw(acNo, bal);	
+						Statistics.TRANSACTION_TOTAL += 1; //counts as seperate
+						message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
+						if(cust.removeAccount(acId)){
+							al.removeAccountNo(acNo);
+							message += "Successfully removed";
+							updateCurrentStatusAndWait("Success");
+						}else{
+							message += "Error removing from customer";
+							updateCurrentStatusAndWait("Error");
+						}
+					}catch(NonExistantAccountException e){
+						message += Language.ERROR_NONEXISTANT_ACCOUNT;
+						updateCurrentStatusAndWait("Invalid");
+					}
+					message += "\t" + Language.WITHDRAW_END;
+					//message
 					message += Language.CLOSE_END;
 					break;
 				}
-				//get the associated account number
-				acNo = cust.getAccountNo(acId);
-				message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");
-				//remove from account list and customers accounts
-				message += "\t" + Language.WITHDRAW_START;
-				try{
-					int bal = al.getAccountAtIndex(acNo).getBalance();
-					message += doWithdraw(acNo, bal);	
-					Statistics.TRANSACTION_TOTAL += 1; //counts as seperate
-					message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
-					if(cust.removeAccount(acId)){
-						al.removeAccountNo(acNo);
-						message += "Successfully removed";
-					}else{
-						message += "Error removing from customer";
-					}
-				}catch(NonExistantAccountException e){
-					message += Language.ERROR_NONEXISTANT_ACCOUNT;
-				}
-				message += "\t" + Language.WITHDRAW_END;
-				//message
-				message += Language.CLOSE_END;
-				break;
+				//write the message
+				Log.writeMessage(message);
+			}catch(Exception e){
+				
 			}
-			//write the message
-			Log.writeMessage(message);
+
+			
 		}
 		//another customer served
 		Statistics.CUSTOMERS_SERVED++;
 		
 	}
+	
+	public void pauseTransaction(){
+		try {
+			System.out.println("Sleeping for:" + Statistics.TELLER_SPEED + " * " +  Statistics.SIMULATION_SPEED_FACTOR);
+			Thread.sleep(Statistics.TELLER_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	
 	public String getMessage(){
 		return currentStatus;
@@ -220,12 +268,14 @@ public class Teller extends Thread implements Subject{
 		try{
 			//get the account
 			ac = this.al.getAccountAtIndex(acNo);
+			updateCurrentStatusAndWait("Account:" + ac);
 			//the amount to be withdrawn
 			//if the withdraw is successfull report
 			if(ac.withDraw(value)){
 				Statistics.TOTALS_WITHDRAW += value;
 				message = Language.WithdrawInfo(value, ac.getBalance());
 			}else{
+				updateCurrentStatusAndWait(Language.ERROR_INSUFFICIENT_FUNDS);
 				message = Language.ERROR_INSUFFICIENT_FUNDS;
 
 			}
@@ -249,7 +299,7 @@ public class Teller extends Thread implements Subject{
 					notifyObservers();
 					Random r = new Random();
 					
-					Thread.sleep(r.nextInt(Statistics.TELLER_SPEED));
+					Thread.sleep(100);
 				}catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -257,6 +307,13 @@ public class Teller extends Thread implements Subject{
 			}
 		}
 		
+	}
+	
+	
+	public void updateCurrentStatusAndWait(String status){
+		currentStatus = status;
+		notifyObservers();
+		pauseTransaction();
 	}
 	
 	public String getCustomerName(){

@@ -34,10 +34,12 @@ public class Statistics {
 	public static int CURRENT_HOUR = 9;
 	public static int CURRENT_MIN = 0;
 	
+	public static int SIMULATION_SPEED_FACTOR = 10;
+	
 	public static int SIMULATION_SPEED = 1000;
-	public static int GENERATOR_SPEED = 1000;
-	public static int TELLER_SPEED = 5000;
-	public static int CLOCK_SPEED = 1000;
+	public static int GENERATOR_SPEED = 100;
+	public static int TELLER_SPEED = 100;
+	public static int CLOCK_SPEED = 25;
 	
 	public static boolean CLOSED = false;
 	public static boolean STOP = false;
