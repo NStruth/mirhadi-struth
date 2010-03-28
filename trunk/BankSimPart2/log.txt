@@ -77,59 +77,10 @@ Printing account list
 SIMULATION STARTED
 
 
- *** Processing withdraw transaction *** 
-
-Customer: Al Bundy No: 1001 AccountNo:60010
-Withdraw: £7.95 New Balance: £646.37
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Constance Noring No: 1002 AccountNo:60013
-Withdraw: £100.45 New Balance: £139.44
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Polly Ester No: 1003 AccountNo:60016
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Mary Christmas No: 1004 AccountNo:60017
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Mary Christmas No: 1004 AccountNo:60018
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Maximum Number of Accounts is 2
- *** End of open transaction *** 
-
-
-
  *** Processing deposit transaction *** 
 
-Customer: Hassanal Bolkiah No: 1005 AccountNo:60007
-Deposit: £337.94 New Balance: £572.14
+Customer: Ian Khama No: 1002 AccountNo:60006
+Deposit: £793.12 New Balance: £993.14
 
  *** End of deposit transaction *** 
 
@@ -137,8 +88,50 @@ Deposit: £337.94 New Balance: £572.14
 
  *** Processing withdraw transaction *** 
 
-Customer: Hassanal Bolkiah No: 1005 AccountNo:60007
-Withdraw: £190.33 New Balance: £381.81
+Customer: Barack Obama No: 1001 AccountNo:60004
+Withdraw: £9.22 New Balance: £491.08
 
  *** End of withdraw transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Ian Khama No: 1002 AccountNo:60006
+Deposit: £678.48 New Balance: £1671.62
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Barack Obama No: 1001 AccountNo:60004
+Deposit: £248.23 New Balance: £739.31
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Ian Khama No: 1002 AccountNo:60006
+Deposit: £201.27 New Balance: £1872.89
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Barack Obama No: 1001 AccountNo:60004
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Barack Obama No: 1001 AccountNo:60004
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
 

@@ -23,10 +23,10 @@ public class Statistics {
 	public static int TOTALS_WITHDRAW = 0;
 	public static int TOTALS_DEPOSTIT = 0;
 	
-	/*Time vars*/
-	/*public static long SIMULATION_TIME = 100000;
-	public static long OPEN_TIME = 90000;
-	public static long CLOSE_TIME = 10000;*/
+
+	
+	public static boolean PAUSE = true; //0 for false
+	
 	
 	public static long MINUTE_VAL = 10;
 	public static long HOUR_VAL = 60 * MINUTE_VAL;

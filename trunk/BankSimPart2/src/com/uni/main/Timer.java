@@ -37,12 +37,14 @@ public class Timer extends Thread implements Subject {
 		Log.writeMessage("SIMULATION STARTED");
 		while(!stopThread)
 		{
-			try {
-				Thread.sleep(Statistics.CLOCK_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
-				updateTime();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			if(!Statistics.PAUSE){
+				try {
+					Thread.sleep(Statistics.CLOCK_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
+					updateTime();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
