@@ -147,7 +147,7 @@ public class BankSimulator {
 		for(Teller t: tellerList){
 			t.start();
 		}
-		g.generate();
+		//g.generate();
 		g.start();
 		time.start();
 		Statistics.MANUAL_CLOSE_OVERRIDE = false;
