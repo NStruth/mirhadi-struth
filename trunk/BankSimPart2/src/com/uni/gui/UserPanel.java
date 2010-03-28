@@ -11,7 +11,7 @@ import com.uni.main.BankSimulator;
 
 public class UserPanel extends JPanel{
 
-	private BankSimulator bs;
+	BankSimulator bs;
 	private JButton closeButton;
 	private JButton disableClose;
 	private JPanel p;
@@ -19,10 +19,10 @@ public class UserPanel extends JPanel{
 	public UserPanel(BankSimulator bs){
 		super();
 		initComponents();
+		
+		/*Weird bug - Ask me!*/
 		this.bs = bs;
-	}
-	
-	public void initComponents(){
+		System.out.println(bs.getTellerList().size());
 		this.setLayout(new BorderLayout());
 		
 		Font f = this.getFont();
@@ -30,9 +30,14 @@ public class UserPanel extends JPanel{
 		JLabel title = new JLabel("User Panel");
 		title.setFont(f);
 		this.add(title, BorderLayout.NORTH);
+		ToolsPanel tPanel = new ToolsPanel(this.bs);
+		this.add(tPanel, BorderLayout.CENTER);
+
+	}
+	
+	public void initComponents(){
 		
-		this.add(new ToolsPanel(bs), BorderLayout.CENTER);
-		
+
 	}
 
 

@@ -19,7 +19,7 @@ import com.uni.main.Statistics;
 public class ToolsPanel extends JPanel implements ActionListener {
 	private JButton closeButton;
 	private JButton disableClose;
-	private BankSimulator bs;
+	BankSimulator bs;
 
 	public ToolsPanel(BankSimulator bs){
 		this.bs = bs;
@@ -109,7 +109,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		if(arg0.getActionCommand().equals("Start Simulation")){
-			bs.startSimulation();
+			this.bs.startSimulation();
 			System.out.println("CLICK");
 		}
 		if(arg0.getActionCommand().equals("closeswitch"))
