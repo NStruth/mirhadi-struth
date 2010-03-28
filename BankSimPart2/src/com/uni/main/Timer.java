@@ -28,16 +28,17 @@ public class Timer extends Thread implements Subject {
 		
 		
 		notifyObservers();
-		System.out.println("Current Time = "+Statistics.CURRENT_HOUR);
+		//System.out.println("Current Time = "+Statistics.CURRENT_HOUR);
 	}
 	
 	public void run()
 	{
+		
 		Log.writeMessage("SIMULATION STARTED");
 		while(!stopThread)
 		{
 			try {
-				Thread.sleep(Statistics.CLOCK_SPEED);
+				Thread.sleep(Statistics.CLOCK_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
 				updateTime();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

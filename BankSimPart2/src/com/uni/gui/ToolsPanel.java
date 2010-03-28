@@ -39,9 +39,9 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		
 		tPanel.add(new JLabel("Teller"), BorderLayout.NORTH);
 		tPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider tellerSlider = new JSlider(10, 5000);
-		tellerSlider.setMajorTickSpacing(1000);
-		tellerSlider.setMinorTickSpacing(100);
+		JSlider tellerSlider = new JSlider(1, 200);
+		tellerSlider.setMajorTickSpacing(10);
+		tellerSlider.setMinorTickSpacing(10);
 		tellerSlider.setPaintTicks(true);
 		tellerSlider.setSnapToTicks(true);
 		tellerSlider.addChangeListener(new TellerListener());
@@ -55,9 +55,9 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		
 		qPanel.add(new JLabel("Queue"), BorderLayout.NORTH);
 		qPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider queueSlider = new JSlider(10, 5000);
-		queueSlider.setMajorTickSpacing(1000);
-		queueSlider.setMinorTickSpacing(100);
+		JSlider queueSlider = new JSlider(1, 200);
+		queueSlider.setMajorTickSpacing(10);
+		queueSlider.setMinorTickSpacing(10);
 		queueSlider.setPaintTicks(true);
 		queueSlider.setSnapToTicks(true);
 		queueSlider.addChangeListener(new QueueListener());
@@ -73,9 +73,9 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		
 		cPanel.add(new JLabel("Clock"), BorderLayout.NORTH);
 		cPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider clockSlider = new JSlider(200, 2000);
-		clockSlider.setMajorTickSpacing(100);
-		clockSlider.setMinorTickSpacing(100);
+		JSlider clockSlider = new JSlider(1, 20);
+		clockSlider.setMajorTickSpacing(1);
+		clockSlider.setMinorTickSpacing(1);
 		clockSlider.setPaintTicks(true);
 		clockSlider.setSnapToTicks(true);
 		clockSlider.addChangeListener(new ClockListener());
@@ -83,6 +83,7 @@ public class ToolsPanel extends JPanel implements ActionListener{
 		cPanel.add(new JLabel("Slow"), BorderLayout.EAST);
 		p.add(cPanel);
 
+		
 		
 		JButton startButton = new JButton("Start Simulation");
 		JButton stopButton = new JButton("Stop Simulation");
@@ -132,7 +133,7 @@ public class ToolsPanel extends JPanel implements ActionListener{
 	    public void stateChanged(ChangeEvent e) {
 		JSlider source = (JSlider)e.getSource();
 		if (!source.getValueIsAdjusting()) {
-			Statistics.CLOCK_SPEED = (int)source.getValue();
+			Statistics.SIMULATION_SPEED_FACTOR = (int)source.getValue();
 			}    
 	    }
 	}

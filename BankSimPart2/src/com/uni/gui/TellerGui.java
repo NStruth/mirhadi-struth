@@ -1,5 +1,6 @@
 package com.uni.gui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -26,13 +27,16 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 	JTextArea tempText = new JTextArea(10,30);
 	
 	private JLabel status = new JLabel("OPEN");
-	private JLabel serving = new JLabel(" Serving: XXX");
+	private JLabel serving = new JLabel(" XXX");
 	
 	private JLabel custLabel = new JLabel("Customer:");
 	private JLabel custName = new JLabel(" --- ");
 	
 	private JLabel typeLabel = new JLabel("Type:");
 	private JLabel typeText = new JLabel(" --- ");
+	
+	private JLabel statusLabel = new JLabel("Status:");
+	private JLabel statusText = new JLabel(" --- ");
 	
 	
 	private GridBagLayout gbl;
@@ -42,14 +46,20 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 	
 	
 	public TellerGui(Teller t){
+		
+		this.setLayout(new BorderLayout());
+		
+		
 		gbl = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(gbl);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.teller = t;
-				
+		//this.add(hPanel, BorderLayout.NORTH);		
+		//this.add(new JLabel("Test"), BorderLayout.CENTER);
+		
 		t.registerObserver(this);
-			
+		this.setPreferredSize(new Dimension(250,150));
 		initComponents();
 	}
 
@@ -64,59 +74,80 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			status.setForeground(Color.RED);
 		}
 		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		//status.setSize(200,20);
+		
 		
 		
 		//
-		c.insets = new Insets(2,2,2,2);
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.anchor = GridBagConstraints.LINE_START;
+		//c.insets = new Insets(2,2,2,2);
+		c.fill = GridBagConstraints.NONE;
+		c.anchor = GridBagConstraints.NORTHWEST;
 		c.gridx = 0;
 		c.gridy = 0;
-		this.add(serving,c);
+		c.weightx = 0.2;
+		c.weighty = 1.0;
+		c.gridwidth = 1;
 		
 		Font f = this.getFont();
 		FontMetrics fM = this.getFontMetrics(f);
 		
-		System.out.println("Width:" + fM.stringWidth(status.getText()));
-		
-		
-		c.ipadx=70 - fM.stringWidth(status.getText());
+		c.gridwidth=1;
 		c.gridx = 2;
-		c.weightx = 0.6;
+		c.weightx = 0.1;
+		c.anchor = GridBagConstraints.FIRST_LINE_END;
 		this.add(status,c);
 		
 		c.ipadx = 0;
-		//c.ipady = 20;
 		c.gridy++;
 		c.gridx=0;
+		c.anchor = GridBagConstraints.FIRST_LINE_START;
+		c.weightx = 0.1;
+		c.gridwidth = 1;
 		this.add(custLabel,c);
 		
 		c.ipady = 0;
 		c.gridx = 1;
+		c.weightx = 0.8;
+		c.gridwidth = 2;
+
 		this.add(custName,c);
 		
 		c.gridx = 0;
 		c.gridy++;
+		c.gridwidth = 1;
 		this.add(typeLabel,c);
 		c.gridx = 1;
+		c.gridwidth = 2;
+
 		this.add(typeText,c);
 		
+		c.gridx = 0;
+		c.gridy++;
+		c.gridwidth = 1;
+
+		this.add(statusLabel,c);
+		c.gridx = 1;
+		c.gridwidth = 2;
+
+		this.add(statusText,c);
 		
+		
+		JPanel buttonPanel = new JPanel(new BorderLayout());
 		open = new JButton("Open");
 		close = new JButton("close");
 		
 		open.addActionListener(this);
 		close.addActionListener(this);
 		
+		
+		
+		buttonPanel.add(open,BorderLayout.NORTH);
+		buttonPanel.add(close,BorderLayout.SOUTH);
+		
+		c.gridwidth = 3;
 		c.gridx = 0;
 		c.gridy++;
 		
-		this.add(open,c);
-		c.gridx++;
-		this.add(close,c);
-		
-		
+		this.add(buttonPanel, c);
 		
 		
 	}
@@ -128,8 +159,12 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getActionCommand().equals("Open")){
 			teller.setOpen(true);
+			close.setEnabled(true);
+			open.setEnabled(false);
 		}else{
 			teller.setOpen(false);
+			close.setEnabled(false);
+			open.setEnabled(true);
 		}
 		update();
 		
@@ -146,8 +181,10 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			status.setForeground(open);
 			
 			custName.setText(teller.getCustomerName());
-			serving.setText("Serving: " + teller.getCustNumber());
+			serving.setText(teller.getCustNumber() + "");
 			typeText.setText(teller.getTranType());
+			statusText.setText(teller.getMessage());
+			
 		}else{
 			status.setText("Closed");
 			status.setForeground(Color.RED);

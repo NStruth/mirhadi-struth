@@ -57,7 +57,6 @@ public class QueueGui extends JPanel implements Observer{
 
 	@Override
 	public void update() {
-		System.out.println("UPDATING");
 		jList.setListData(cq.toArray());
 		
 	}
