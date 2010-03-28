@@ -11,13 +11,15 @@
 package com.uni.queue;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-import javax.swing.DefaultListModel;
-import javax.swing.ListModel;
+import Observation.Observer;
+import Observation.Subject;
 
 import com.uni.customer.Customer;
 
-public class CustomerQueue extends ArrayList<QueueItem>{
+public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		
 	/**
 	 * Constructor for the customer queue
@@ -55,12 +57,36 @@ public class CustomerQueue extends ArrayList<QueueItem>{
 	 * 
 	 * @throws Exception if no one in the queue
 	 */
-	public QueueItem getFirst() throws Exception{
+	public synchronized QueueItem getFirst() throws Exception{
 		
 		if(!this.isEmpty()){
 			QueueItem q = this.remove(0);
+			notifyObservers();
 			return q;
 		}
 		throw new Exception();
 	}	
+	
+////////////////////////////////////////////////////////
+	//OBSERVER PATTERN
+	//SUBJECT must be able to register, remove and notify observers
+	//list to hold any observers
+	private List<Observer> registeredObservers = new LinkedList<Observer>();
+	//methods to register, remove and notify observers
+	public void registerObserver( Observer obs)
+	{
+		registeredObservers.add( obs);
+	}
+	
+	public void removeObserver( Observer obs)
+	{
+		registeredObservers.remove( obs);
+	}
+	
+	public void notifyObservers()
+	{
+		for( Observer obs : registeredObservers)
+			obs.update();
+	}
+	//////////////////////////////////////////////////////// 	
 }

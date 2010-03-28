@@ -77,72 +77,26 @@ Printing account list
 SIMULATION STARTED
 
 
- *** Processing deposit transaction *** 
+ *** Processing open transaction *** 
 
-Customer: Barack Obama No: 1001 AccountNo:60004
-Deposit: £989.42 New Balance: £1489.72
+Customer: Warren Peace No: 1001 AccountNo:60016
 
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Barack Obama No: 1001 AccountNo:60004
-Withdraw: £27.85 New Balance: £1461.87
-
- *** End of withdraw transaction *** 
+ *** End of open transaction *** 
 
 
 
  *** Processing deposit transaction *** 
 
-Customer: Barack Obama No: 1001 AccountNo:60004
-Deposit: £973.32 New Balance: £2435.19
+Customer: Henry Cooper No: 1002 AccountNo:60015
+Deposit: £263.30 New Balance: £1099.40
 
  *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Hassanal Bolkiah No: 1002 AccountNo:60007
-Deposit: £607.79 New Balance: £841.99
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Hassanal Bolkiah No: 1002 AccountNo:60007
-Withdraw: £9.89 New Balance: £832.10
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Hassanal Bolkiah No: 1002 AccountNo:60007
-Withdraw: £113.59 New Balance: £718.51
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Carlton Banks No: 1003 AccountNo:60011
-Withdraw: £169.05 New Balance: £703.07
-
- *** End of withdraw transaction *** 
 
 
 
  *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1004 AccountNo:60016
+Customer: Eric Blair No: 1003 AccountNo:60017
 
  *** End of open transaction *** 
 
@@ -150,23 +104,42 @@ Customer: Warren Peace No: 1004 AccountNo:60016
 
  *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1004 AccountNo:60017
+Customer: Eric Blair No: 1003 AccountNo:60018
 
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Maximum Number of Accounts is 2
  *** End of open transaction *** 
 
 
 
  *** Processing withdraw transaction *** 
 
-Customer: Jon Mirhadi No: 1005 AccountNo:60003
-Withdraw: £176.30 New Balance: £423.80
+Customer: Gordon Brown No: 1004 AccountNo:60004
+Withdraw: £95.65 New Balance: £404.65
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Gordon Brown No: 1004 AccountNo:60005
+Withdraw: £105.54 New Balance: £895.00
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Hassanal Bolkiah No: 1005 AccountNo:60019
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Hassanal Bolkiah No: 1005 AccountNo:60007
+Withdraw: £186.33 New Balance: £47.87
 
  *** End of withdraw transaction *** 
 
@@ -174,8 +147,35 @@ Withdraw: £176.30 New Balance: £423.80
 
  *** Processing deposit transaction *** 
 
-Customer: Jon Mirhadi No: 1005 AccountNo:60003
-Deposit: £536.38 New Balance: £960.18
+Customer: Neil Struth No: 1006 AccountNo:60002
+Deposit: £463.46 New Balance: £963.69
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Henry Cooper No: 1007 AccountNo:60015
+Deposit: £513.34 New Balance: £1612.74
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Henry Cooper No: 1007 AccountNo:60015
+Deposit: £783.29 New Balance: £2396.03
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Al Bundy No: 1008 AccountNo:60010
+Deposit: £662.19 New Balance: £1316.51
 
  *** End of deposit transaction *** 
 
@@ -183,12 +183,12 @@ Deposit: £536.38 New Balance: £960.18
 
  *** Processing close transaction ** 
 
-Customer: Henry Cooper No: 1006 AccountNo:60014
+Customer: Frank Sauzee No: 1009 AccountNo:60003
 	
 
  *** Processing withdraw transaction *** 
 
-Insufficient FundsCustomer: Henry Cooper No: 1006 AccountNo:60014
+Insufficient FundsCustomer: Frank Sauzee No: 1009 AccountNo:60003
 Successfully removed	
  *** End of withdraw transaction *** 
 
@@ -196,52 +196,18 @@ Successfully removed
 
 
 
- *** Processing close transaction ** 
+ *** Processing open transaction *** 
 
-Customer: Barack Obama No: 1007 AccountNo:60004
-	
+Customer: Polly Ester No: 1010 AccountNo:60020
 
- *** Processing withdraw transaction *** 
-
-Insufficient FundsCustomer: Barack Obama No: 1007 AccountNo:60004
-Successfully removed	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Carlton Banks No: 1008 AccountNo:60010
-Withdraw: £92.18 New Balance: £562.14
-
- *** End of withdraw transaction *** 
+ *** End of open transaction *** 
 
 
 
  *** Processing deposit transaction *** 
 
-Customer: Carlton Banks No: 1008 AccountNo:60010
-Deposit: £460.48 New Balance: £1022.62
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Carlton Banks No: 1008 AccountNo:60011
-Deposit: £537.09 New Balance: £1240.16
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Al Bundy No: 1009 AccountNo:60011
-Deposit: £281.31 New Balance: £1521.47
+Customer: Chris Cross No: 1011 AccountNo:60012
+Deposit: £78.15 New Balance: £268.36
 
  *** End of deposit transaction *** 
 
@@ -249,8 +215,17 @@ Deposit: £281.31 New Balance: £1521.47
 
  *** Processing withdraw transaction *** 
 
-Customer: Al Bundy No: 1009 AccountNo:60011
-Withdraw: £111.27 New Balance: £1410.20
+Customer: Chris Cross No: 1011 AccountNo:60012
+Withdraw: £13.67 New Balance: £254.69
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Chris Cross No: 1011 AccountNo:60012
+Withdraw: £159.66 New Balance: £95.03
 
  *** End of withdraw transaction *** 
 
@@ -258,8 +233,71 @@ Withdraw: £111.27 New Balance: £1410.20
 
  *** Processing deposit transaction *** 
 
-Customer: Al Bundy No: 1009 AccountNo:60011
-Deposit: £409.03 New Balance: £1819.23
+Customer: Angela Merkel No: 1012 AccountNo:60009
+Deposit: £820.64 New Balance: £1141.96
 
  *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Angela Merkel No: 1012 AccountNo:60009
+Withdraw: £89.46 New Balance: £1052.50
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Angela Merkel No: 1012 AccountNo:60009
+Deposit: £575.57 New Balance: £1628.07
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Hassanal Bolkiah No: 1013 AccountNo:60007
+Withdraw: £14.77 New Balance: £33.10
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Steven Harper No: 1014 AccountNo:60008
+Withdraw: £89.38 New Balance: £1145.18
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Neil Struth No: 1015 AccountNo:60002
+Deposit: £670.35 New Balance: £1634.04
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Neil Struth No: 1015 AccountNo:60002
+Withdraw: £108.04 New Balance: £1526.00
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Warren Peace No: 1016 AccountNo:60016
+Withdraw: £76.97 New Balance: £23.03
+
+ *** End of withdraw transaction *** 
 

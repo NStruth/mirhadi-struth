@@ -36,6 +36,7 @@ public class QueueGui extends JPanel implements Observer{
 		
 		this.cq = cq;
 		
+		cq.registerObserver(this);
 		g.registerObserver(this);
 		
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
