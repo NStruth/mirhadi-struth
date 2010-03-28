@@ -33,7 +33,7 @@ public class Timer extends Thread implements Subject {
 		while(!stopThread)
 		{
 			try {
-				Thread.sleep(Statistics.HOUR_VAL);
+				Thread.sleep(Statistics.CLOCK_SPEED);
 				updateTime();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

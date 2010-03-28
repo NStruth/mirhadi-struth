@@ -37,6 +37,7 @@ public class Statistics {
 	public static int SIMULATION_SPEED = 1000;
 	public static int GENERATOR_SPEED = 1000;
 	public static int TELLER_SPEED = 5000;
+	public static int CLOCK_SPEED = 1000;
 	
 	public static boolean CLOSED = false;
 	public static boolean STOP = false;
