@@ -142,6 +142,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		
 		buttonPanel.add(open,BorderLayout.NORTH);
 		buttonPanel.add(close,BorderLayout.SOUTH);
+		buttonPanel.setPreferredSize(new Dimension(100, 50));
 		
 		c.gridwidth = 3;
 		c.gridx = 0;
