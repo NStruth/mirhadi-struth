@@ -304,21 +304,23 @@ public class Teller extends Thread implements Subject{
 	@Override
 	public void run() {
 		while(!stopThread){
-			if(this.open && !Statistics.PAUSE){
-				try{
-					System.out.println(q.size());
-					if(q.size() > 0)
-						this.processQueueItem(q.getFirst());
+			//while(!Statistics.PAUSE){
+				if(this.open){
+					try{
+						System.out.println(q.size());
+						if(q.size() > 0)
+							this.processQueueItem(q.getFirst());
+							
+						notifyObservers();
+						Random r = new Random();
 						
-					notifyObservers();
-					Random r = new Random();
-					
-					Thread.sleep(100);
-				}catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+						Thread.sleep(100);
+					}catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			}
+			//}
 		}
 		
 	}

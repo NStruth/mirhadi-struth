@@ -139,17 +139,18 @@ public class BankSimulator {
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain(this);
 
+		
+
+	}
+	
+	public void startSimulation(){
 		for(Teller t: tellerList){
 			t.start();
 		}
 		g.generate();
 		g.start();
 		time.start();
-
-	}
-	
-	public void startSimulation(){
-		Statistics.PAUSE = false;
+		Statistics.MANUAL_CLOSE_OVERRIDE = false;
 	}
 	
 	public CustomerQueue getQueue(){
@@ -164,7 +165,7 @@ public class BankSimulator {
 		return time;
 	}
 
-	public void stopSimulation() {
+	public void closeBank() {
 	
 			/*g.done();
 			time.done();
@@ -172,7 +173,7 @@ public class BankSimulator {
 			{
 				t.done();
 			}*/
-		Statistics.PAUSE = true;
+		Statistics.MANUAL_CLOSE_OVERRIDE = true;
 		
 		
 		

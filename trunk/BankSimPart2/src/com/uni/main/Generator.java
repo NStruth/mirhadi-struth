@@ -273,7 +273,7 @@ public class Generator extends Thread implements Subject{
 	{
 		while(!stopThread){
 			try{
-				if(!Statistics.PAUSE){
+				if(!Statistics.MANUAL_CLOSE_OVERRIDE){
 					if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17 )
 					{
 						queue.add(generateItem());

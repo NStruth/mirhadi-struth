@@ -77,10 +77,36 @@ Printing account list
 SIMULATION STARTED
 
 
+ *** Processing open transaction *** 
+
+Customer: Warren Peace No: 1001 AccountNo:60016
+
+ *** End of open transaction *** 
+
+
+
  *** Processing deposit transaction *** 
 
-Customer: Ian Khama No: 1002 AccountNo:60006
-Deposit: £793.12 New Balance: £993.14
+Customer: Chris Cross No: 1002 AccountNo:60012
+Deposit: £107.11 New Balance: £297.32
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Emma Royds No: 1003 AccountNo:60015
+Deposit: £865.30 New Balance: £1701.40
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Neil Struth No: 1004 AccountNo:60002
+Deposit: £526.13 New Balance: £1026.36
 
  *** End of deposit transaction *** 
 
@@ -88,8 +114,8 @@ Deposit: £793.12 New Balance: £993.14
 
  *** Processing withdraw transaction *** 
 
-Customer: Barack Obama No: 1001 AccountNo:60004
-Withdraw: £9.22 New Balance: £491.08
+Customer: Neil Struth No: 1004 AccountNo:60001
+Withdraw: £198.98 New Balance: £801.21
 
  *** End of withdraw transaction *** 
 
@@ -97,26 +123,8 @@ Withdraw: £9.22 New Balance: £491.08
 
  *** Processing deposit transaction *** 
 
-Customer: Ian Khama No: 1002 AccountNo:60006
-Deposit: £678.48 New Balance: £1671.62
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Barack Obama No: 1001 AccountNo:60004
-Deposit: £248.23 New Balance: £739.31
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Ian Khama No: 1002 AccountNo:60006
-Deposit: £201.27 New Balance: £1872.89
+Customer: Neil Struth No: 1004 AccountNo:60001
+Deposit: £59.70 New Balance: £860.91
 
  *** End of deposit transaction *** 
 
@@ -124,14 +132,106 @@ Deposit: £201.27 New Balance: £1872.89
 
  *** Processing close transaction ** 
 
-Customer: Barack Obama No: 1001 AccountNo:60004
+Customer: Angela Merkel No: 1005 AccountNo:60009
 	
 
  *** Processing withdraw transaction *** 
 
-Insufficient FundsCustomer: Barack Obama No: 1001 AccountNo:60004
+Insufficient FundsCustomer: Angela Merkel No: 1005 AccountNo:60009
 Successfully removed	
  *** End of withdraw transaction *** 
 
  *** End of close transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Jon Mirhadi No: 1006 AccountNo:60003
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Jon Mirhadi No: 1006 AccountNo:60003
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Steven Harper No: 1007 AccountNo:60008
+Deposit: £772.74 New Balance: £2007.30
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Tad Pohl No: 1008 AccountNo:60017
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Gordon Brown No: 1009 AccountNo:60005
+Deposit: £964.70 New Balance: £1965.24
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Al Bundy No: 1010 AccountNo:60010
+Deposit: £312.15 New Balance: £966.47
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Al Bundy No: 1010 AccountNo:60010
+Deposit: £401.10 New Balance: £1367.57
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Al Bundy No: 1010 AccountNo:60011
+Withdraw: £143.60 New Balance: £728.52
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Gordon Brown No: 1009 AccountNo:60004
+	
+
+ *** Processing withdraw transaction *** 
+
+Insufficient FundsCustomer: Gordon Brown No: 1009 AccountNo:60004
+Successfully removed	
+ *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Gordon Brown No: 1009 AccountNo:60005
+Withdraw: £95.69 New Balance: £1869.55
+
+ *** End of withdraw transaction *** 
 
