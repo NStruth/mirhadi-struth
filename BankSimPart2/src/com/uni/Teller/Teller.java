@@ -120,7 +120,6 @@ public class Teller extends Thread implements Subject{
 					message += doWithdraw(acNo, value);
 					message += Language.WITHDRAW_END;
 					
-					resetLabels();
 					break;
 				case DEPOSIT:
 					
@@ -152,7 +151,6 @@ public class Teller extends Thread implements Subject{
 					}catch(NonExistantAccountException e){
 						message += Language.ERROR_NONEXISTANT_ACCOUNT;
 					}
-					resetLabels();
 					message += Language.DEPOSIT_END;
 					break;
 				case OPEN:
@@ -176,7 +174,6 @@ public class Teller extends Thread implements Subject{
 					message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
 					message += Language.OPEN_END;
 					
-					resetLabels();
 					break;
 				case CLOSE:
 					transactionType = "Close";
@@ -223,7 +220,6 @@ public class Teller extends Thread implements Subject{
 					message += "\t" + Language.WITHDRAW_END;
 					//message
 					message += Language.CLOSE_END;
-					resetLabels();
 					break;
 				}
 				//write the message
@@ -234,6 +230,8 @@ public class Teller extends Thread implements Subject{
 
 			
 		}
+		resetLabels();
+
 		//another customer served
 		Statistics.CUSTOMERS_SERVED++;
 		
@@ -306,7 +304,7 @@ public class Teller extends Thread implements Subject{
 	@Override
 	public void run() {
 		while(!stopThread){
-			if(this.open){
+			if(this.open && !Statistics.PAUSE){
 				try{
 					System.out.println(q.size());
 					if(q.size() > 0)
