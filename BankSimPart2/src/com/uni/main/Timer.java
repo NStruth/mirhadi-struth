@@ -19,10 +19,14 @@ public class Timer extends Thread implements Subject {
 	
 	public void updateTime()
 	{
-		if(Statistics.CURRENT_HOUR == 23)
-			Statistics.CURRENT_HOUR = 0;
-		else
-			Statistics.CURRENT_HOUR++;
+		
+		Statistics.CURRENT_MIN = (Statistics.CURRENT_MIN+1) % 60;
+		if(Statistics.CURRENT_MIN == 0){
+			Statistics.CURRENT_HOUR = (Statistics.CURRENT_HOUR+1) % 24;
+		}
+		
+		
+		
 		notifyObservers();
 		System.out.println("Current Time = "+Statistics.CURRENT_HOUR);
 	}
