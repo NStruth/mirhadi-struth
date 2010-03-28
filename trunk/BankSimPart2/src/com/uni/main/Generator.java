@@ -106,7 +106,7 @@ public class Generator extends Thread implements Subject{
 			QueueItem q = new QueueItem(c, tList);
 			return q;	
 		}else{
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			QueueItem q = generateItem();
 			return q;
 		}

@@ -165,6 +165,10 @@ public class BankSimulator {
 		return time;
 	}
 
+	public TellerList getTellerList(){
+		return tellerList;
+	}
+	
 	public void closeBank() {
 	
 			/*g.done();

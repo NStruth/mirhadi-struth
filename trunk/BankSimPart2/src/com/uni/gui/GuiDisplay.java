@@ -18,27 +18,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
+import Observation.Observer;
+
+import com.uni.Teller.Teller;
+import com.uni.main.BankSimulator;
 import com.uni.main.Statistics;
 
-public class GuiDisplay extends JFrame implements ActionListener{
+public class GuiDisplay extends JPanel implements ActionListener, Observer{
 
 	private SpringLayout layout;
 	private JPanel jp;
 	
 	private int north = 35; //y position the labels start
-	private int westLabel = 5; //x position labels start
-	private int westText = 125; //x position values start
-	private int padding = 35; //space between lines
+	private int westLabel = 30; //x position labels start
+	private int westText = 150; //x position values start
+	private int padding = 34; //space between lines
+	
+	
+	private BankSimulator bs;
 	
 	/**
 	 * Constructor for this gui
 	 */
-	public GuiDisplay(){
+	public GuiDisplay(BankSimulator bs){
 		super();
 		this.setBounds(50, 50, 400, 400);
 		this.setVisible(true);
@@ -49,9 +55,10 @@ public class GuiDisplay extends JFrame implements ActionListener{
 	 * Initialise components on the gui
 	 */
 	private void initComponents(){
-		jp = new JPanel(); //set up the panel to hold components
-		layout = new SpringLayout(); //the layout manager
-		jp.setLayout(layout); //set the layout
+		
+		layout = new SpringLayout();
+		this.setLayout(layout); //set the layout
+		
 		
 		
 		//get the font so we can fix it
@@ -63,10 +70,10 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		
 		//biiiig font for heading
 		f = f.deriveFont(new Float(20));
-		JLabel header = new JLabel("Bank Simulator");
+		JLabel header = new JLabel("Statistics");
 		header.setFont(f);
 		//add the header		
-		jp.add(header);
+		this.add(header);
 		
 		//add the results
 		addPair("Customers Served:",Statistics.CUSTOMERS_SERVED,0);
@@ -81,14 +88,13 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		//make a button for the log
 		JButton logButton = new JButton("Click to view log");
 		logButton.addActionListener(this);
-		jp.add(logButton);
-		layout.putConstraint(SpringLayout.WEST, logButton,westLabel,SpringLayout.WEST, jp);
-	    layout.putConstraint(SpringLayout.NORTH, logButton,north,SpringLayout.NORTH, jp);
+		this.add(logButton);
+		layout.putConstraint(SpringLayout.WEST, logButton,westLabel,SpringLayout.WEST, this);
+	    layout.putConstraint(SpringLayout.NORTH, logButton,north,SpringLayout.NORTH, this);
 	    
 	    
-	    super.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        super.add(jp);
-        super.setVisible(true);
+	   
+        
         
 	}
 	
@@ -117,19 +123,19 @@ public class GuiDisplay extends JFrame implements ActionListener{
 		JLabel custLabel = new JLabel(label); 
 		JLabel label2 = new JLabel(message);
 		//get the font so we can change it
-		Font f = (jp.getFont());
+		Font f = (this.getFont());
 		f = f.deriveFont(Font.PLAIN);
 		//change the font for the value
 		label2.setFont(f);
 		//add the labels
-		jp.add(custLabel);
-        jp.add(label2);
+		this.add(custLabel);
+        this.add(label2);
 		//set the layout constraints for the label
-        layout.putConstraint(SpringLayout.WEST, custLabel,westLabel+hOffset,SpringLayout.WEST, jp);
-        layout.putConstraint(SpringLayout.NORTH, custLabel,north,SpringLayout.NORTH, jp);
+        layout.putConstraint(SpringLayout.WEST, custLabel,westLabel+hOffset,SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, custLabel,north,SpringLayout.NORTH, this);
 		//set the layout constraints for the value
-        layout.putConstraint(SpringLayout.WEST, label2,westText+hOffset,SpringLayout.WEST, jp);
-        layout.putConstraint(SpringLayout.NORTH, label2,north,SpringLayout.NORTH, jp);	
+        layout.putConstraint(SpringLayout.WEST, label2,westText+hOffset,SpringLayout.WEST, this);
+        layout.putConstraint(SpringLayout.NORTH, label2,north,SpringLayout.NORTH, this);	
         //change north value by padding amount
         north += padding;
 	}
@@ -138,6 +144,12 @@ public class GuiDisplay extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//show the log viewer
 		LogViewer lv = new LogViewer();
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		// TODO update the values
+		
 	}
 	
 }
