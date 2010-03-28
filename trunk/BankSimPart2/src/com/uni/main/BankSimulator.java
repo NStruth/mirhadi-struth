@@ -40,6 +40,10 @@ public class BankSimulator {
 	private Generator g;
 	
 	private Timer time;
+
+	private CustomerList cl;
+
+	private AccountList al;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -51,8 +55,8 @@ public class BankSimulator {
 		
 		//read in list of accounts and customers
 		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
-		AccountList al = filehandle.readAccountLines();
-		CustomerList cl = filehandle.readCustomerLines();
+		al = filehandle.readAccountLines();
+		cl = filehandle.readCustomerLines();
 		
 		/* TEST DATA - Left in for convenience
 		//TODO move this test data somewhere nicer
@@ -142,6 +146,7 @@ public class BankSimulator {
 		for(Teller t: tellerList){
 			t.start();
 		}
+		g.generate();
 		g.start();
 		time.start();
 	}
@@ -159,12 +164,16 @@ public class BankSimulator {
 	}
 
 	public void stopSimulation() {
-		g.done();
-		time.done();
-		for(Teller t: tellerList)
-		{
-			t.done();
-		}
+	
+			g.done();
+			time.done();
+			for(Teller t: tellerList)
+			{
+				t.done();
+			}
+		
+		
+		
 		System.out.println("Simulation Stopped!");
 	}
 }
