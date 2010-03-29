@@ -36,10 +36,10 @@ public class GuiMain extends JFrame{
 
 		holderPanel.setLayout(gbl);
 		
-		this.setSize(new Dimension(1200,500));
+		this.setSize(new Dimension(1150,500));
 		//this.setResizable(false);
-		this.setMaximumSize(new Dimension(1200,500));
-		this.setMinimumSize(new Dimension(1200,500));
+		this.setMaximumSize(new Dimension(1150,500));
+		this.setMinimumSize(new Dimension(1150,500));
 		this.setVisible(true);
 		this.setLayout(gbl);
 		initComponents();

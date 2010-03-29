@@ -77,129 +77,34 @@ Printing account list
 SIMULATION STARTED
 
 
- *** Processing withdraw transaction *** 
+ *** Processing open transaction *** 
 
-Customer: Frank Sauzee No: 1001 AccountNo:60003
-Withdraw: £93.76 New Balance: £506.34
+Customer: Jon Mirhadi No: 1001 AccountNo:60016
 
- *** End of withdraw transaction *** 
-
+ *** End of open transaction *** 
 
 
- *** Processing deposit transaction *** 
 
-Customer: Ian Khama No: 1002 AccountNo:60006
-Deposit: £637.40 New Balance: £837.42
+ *** Processing open transaction *** 
 
- *** End of deposit transaction *** 
+Customer: Eric Blair No: 1002 AccountNo:60017
+
+ *** End of open transaction *** 
 
 
 
  *** Processing deposit transaction *** 
 
-Customer: Jon Mirhadi No: 1004 AccountNo:60003
-Deposit: £719.62 New Balance: £1225.96
+Customer: Jon Mirhadi No: 1001 AccountNo:60003
+Deposit: £895.88 New Balance: £1495.98
 
  *** End of deposit transaction *** 
 
 
 
- *** Processing withdraw transaction *** 
+ *** Processing open transaction *** 
 
-Customer: Hassanal Bolkiah No: 1005 AccountNo:60007
-Withdraw: £111.65 New Balance: £122.55
+Customer: Eric Blair No: 1002 AccountNo:60018
 
- *** End of withdraw transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Frank Sauzee No: 1003 AccountNo:60003
-	
-
- *** Processing withdraw transaction *** 
-
-Insufficient FundsCustomer: Frank Sauzee No: 1003 AccountNo:60003
-Successfully removed	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Chris Cross No: 1006 AccountNo:60012
-Withdraw: £159.54 New Balance: £30.67
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Steven Harper No: 1008 AccountNo:60008
-Withdraw: £199.89 New Balance: £1034.67
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Chris Cross No: 1006 AccountNo:60012
-Insufficient Funds
- *** End of withdraw transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Emma Royds No: 1007 AccountNo:60015
-	
-
- *** Processing withdraw transaction *** 
-
-Insufficient FundsCustomer: Emma Royds No: 1007 AccountNo:60015
-Successfully removed	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Barack Obama No: 1009 AccountNo:60004
-Deposit: £591.90 New Balance: £1092.20
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Henry Cooper No: 1010 AccountNo:60014
-Deposit: £762.70 New Balance: £1240.99
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Neil Struth No: 1011 AccountNo:60001
-Withdraw: £162.51 New Balance: £837.68
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Steven Harper No: 1012 AccountNo:60008
-Deposit: £249.48 New Balance: £1284.15
-
- *** End of deposit transaction *** 
+ *** End of open transaction *** 
 
