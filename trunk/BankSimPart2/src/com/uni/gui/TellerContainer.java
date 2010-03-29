@@ -34,10 +34,10 @@ public class TellerContainer extends JPanel{
 		}
 		this.add(new JLabel("Tellers"), BorderLayout.NORTH);
 		this.add(hPanel, BorderLayout.CENTER);
-		/*this.setMinimumSize(new Dimension(800,400));
-		this.setMaximumSize(new Dimension(800,400));*/
-		this.setPreferredSize(new Dimension(750,200));
-		hPanel.setPreferredSize(new Dimension(750,150));
+		this.setMinimumSize(new Dimension(900,200));
+		//this.setMaximumSize(new Dimension(800,400));*/
+		this.setPreferredSize(new Dimension(900,200));
+		hPanel.setPreferredSize(new Dimension(900,150));
 
 	}
 }

@@ -54,7 +54,7 @@ public class GuiMain extends JFrame{
 
 		
 	    this.getContentPane().setLayout(new GridBagLayout());
-	    c.fill = GridBagConstraints.BOTH;
+	    c.fill = GridBagConstraints.VERTICAL;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.insets = new Insets(2,2,2,2);
 		
@@ -93,11 +93,10 @@ public class GuiMain extends JFrame{
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		c.weightx = 0.8;
+		c.weightx = 0.4;
 		c.weighty = 0.8;
 		UserPanel tPanel = new UserPanel(bs);
-		//CAUSING PROBLEMS
-		//this.getContentPane().add(tPanel,c);
+		this.getContentPane().add(tPanel,c);
 		
 		c.gridx = 2;
 		c.gridy = 1;
