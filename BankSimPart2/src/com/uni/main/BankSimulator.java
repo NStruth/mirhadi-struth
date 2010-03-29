@@ -139,7 +139,7 @@ public class BankSimulator {
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain(this);
 		
-		startSimulation();
+		//startSimulation();
 		
 
 	}

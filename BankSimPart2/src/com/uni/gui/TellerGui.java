@@ -79,8 +79,8 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		
 		//
 		//c.insets = new Insets(2,2,2,2);
-		c.fill = GridBagConstraints.NONE;
-		c.anchor = GridBagConstraints.NORTHWEST;
+		c.fill = GridBagConstraints.VERTICAL;
+		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.weightx = 0.2;
@@ -96,38 +96,42 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c.anchor = GridBagConstraints.FIRST_LINE_END;
 		this.add(status,c);
 		
-		c.ipadx = 0;
 		c.gridy++;
 		c.gridx=0;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		c.weightx = 0.1;
 		c.gridwidth = 1;
+		c.weightx = 0.2;
+		custLabel.setMinimumSize(new Dimension(100,10));
 		this.add(custLabel,c);
 		
-		c.ipady = 0;
 		c.gridx = 1;
 		c.weightx = 0.8;
 		c.gridwidth = 2;
-
+		custName.setMinimumSize(new Dimension(200,10));
 		this.add(custName,c);
 		
 		c.gridx = 0;
 		c.gridy++;
 		c.gridwidth = 1;
+		c.weightx =0.2;
+		typeLabel.setMinimumSize(new Dimension(100,10));
 		this.add(typeLabel,c);
 		c.gridx = 1;
 		c.gridwidth = 2;
-
+		c.weightx = 0.8;
+		typeText.setMinimumSize(new Dimension(200,10));
 		this.add(typeText,c);
 		
 		c.gridx = 0;
 		c.gridy++;
 		c.gridwidth = 1;
-
+		c.weightx = 0.2;
+		statusLabel.setMinimumSize(new Dimension(100,10));
 		this.add(statusLabel,c);
 		c.gridx = 1;
 		c.gridwidth = 2;
-
+		c.weightx = 0.8;
+		statusText.setMinimumSize(new Dimension(200,10));
 		this.add(statusText,c);
 		
 		
@@ -137,18 +141,19 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		
 		open.addActionListener(this);
 		close.addActionListener(this);
+		close.setMinimumSize(new Dimension(300,20));
 		
-		
+		open.setEnabled(false);
 		
 		buttonPanel.add(open,BorderLayout.NORTH);
 		buttonPanel.add(close,BorderLayout.SOUTH);
-		buttonPanel.setPreferredSize(new Dimension(100, 50));
+		buttonPanel.setPreferredSize(new Dimension(300, 50));
 		
 		c.gridwidth = 3;
 		c.gridx = 0;
 		c.gridy++;
-		
-		//this.add(buttonPanel, c);
+		c.weightx = 1;
+		this.add(buttonPanel, c);
 		
 		
 	}

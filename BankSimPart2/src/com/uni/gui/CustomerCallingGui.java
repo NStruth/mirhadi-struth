@@ -1,6 +1,7 @@
 package com.uni.gui;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -8,7 +9,6 @@ import javax.swing.JPanel;
 
 import Observation.Observer;
 
-import com.uni.Teller.Teller;
 import com.uni.main.BankSimulator;
 
 public class CustomerCallingGui extends JPanel implements Observer {
@@ -32,10 +32,23 @@ public class CustomerCallingGui extends JPanel implements Observer {
 		this.setPreferredSize(new Dimension(150,250));
 		this.setMaximumSize(new Dimension(150,250));
 		
+
+		
 		currLabel = new JLabel("Serving:");
 		nextLabel = new JLabel("Next:");
 		currCust =  new JLabel(" --- ");
 		nextCust =  new JLabel(" --- ");
+		Font f = currLabel.getFont();
+		f = f.deriveFont(new Float(20));
+		
+		currLabel.setFont(f);
+		nextLabel.setFont(f);
+		
+		Font plainF = currLabel.getFont();
+		plainF = plainF.deriveFont(Font.PLAIN);
+		
+		currCust.setFont(plainF);
+		nextCust.setFont(plainF);
 		
 		this.setLayout(new GridLayout(0,2));
 		this.add(currLabel);
