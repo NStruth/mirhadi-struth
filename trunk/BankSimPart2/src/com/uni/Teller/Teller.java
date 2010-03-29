@@ -119,7 +119,7 @@ public class Teller extends Thread implements Subject{
 					
 					
 					//int acNumber = cust.getAccountNo(acNo);
-					message += doWithdraw(acNo, value);
+					message += doWithdraw(acNo, value, false);
 					message += Language.WITHDRAW_END;
 					
 					break;
@@ -204,7 +204,7 @@ public class Teller extends Thread implements Subject{
 					updateCurrentStatusAndWait("Removing funds");
 					try{
 						int bal = al.getAccountAtIndex(acNo).getBalance();
-						message += doWithdraw(acNo, bal);	
+						message += doWithdraw(acNo, bal, true);	
 						Statistics.TRANSACTION_TOTAL += 1; //counts as seperate
 						message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
 						if(cust.removeAccount(acId)){
@@ -279,7 +279,7 @@ public class Teller extends Thread implements Subject{
 		return transactionType;
 	}
 	
-	private String doWithdraw(int acNo, int value){
+	private String doWithdraw(int acNo, int value, boolean clear){
 		Account ac;
 		String message;
 		try{
@@ -287,15 +287,21 @@ public class Teller extends Thread implements Subject{
 			ac = this.al.getAccountAtIndex(acNo);
 			updateCurrentStatusAndWait("Account:" + ac);
 			//the amount to be withdrawn
-			//if the withdraw is successfull report
-			if(ac.withDraw(value)){
+			if(clear)
+			{
+				ac.clearBalance(value);
 				Statistics.TOTALS_WITHDRAW += value;
 				message = Language.WithdrawInfo(value, ac.getBalance());
-			}else{
+			}
+			else
+			//if the withdraw is successful report
+				if(ac.withDraw(value)){
+					Statistics.TOTALS_WITHDRAW += value;
+					message = Language.WithdrawInfo(value, ac.getBalance());
+				}else{
 				updateCurrentStatusAndWait(Language.ERROR_INSUFFICIENT_FUNDS);
 				message = Language.ERROR_INSUFFICIENT_FUNDS;
-
-			}
+				}
 			Statistics.ACCOUNT_WITHDRAW++;
 			
 		}catch(NonExistantAccountException e){
