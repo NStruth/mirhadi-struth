@@ -110,7 +110,8 @@ public class GuiMain extends JFrame{
 		c.gridy = 1;
 		c.weightx = 0.1;
 		c.weighty = 0.8;
-		this.getContentPane().add(ocqList,c);	
+		this.getContentPane().add(ocqList,c);
+		this.pack();
 		
 		
 		
