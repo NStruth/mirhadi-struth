@@ -146,7 +146,15 @@ public class BankSimulator {
 		
 
 	}
-	
+	 public int getNext(){
+		 if(ocq.size() > 0)
+		 return ocq.get(0).getCustNo();
+		 else if(cq.size() > 0)
+		 return cq.get(0).getCustNo();
+		 else 
+		 return -1;
+		 }
+	 
 	public void startSimulation(){
 		for(Teller t: tellerList){
 			t.start();

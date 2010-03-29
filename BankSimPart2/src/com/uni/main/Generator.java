@@ -282,7 +282,8 @@ public class Generator extends Thread implements Subject{
 		while(!stopThread){
 			try{
 				if(!Statistics.MANUAL_CLOSE_OVERRIDE){
-					if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17 )
+					if(Statistics.CURRENT_HOUR >= Statistics.OPEN_TIME 
+							&& Statistics.CURRENT_HOUR < Statistics.CLOSE_TIME)
 					{
 						QueueItem temp = generateItem();
 						if(temp.getTransactions().containsOnlyOpenClose() && !queuearr[1].customerInQueue(temp.getCustomer()))

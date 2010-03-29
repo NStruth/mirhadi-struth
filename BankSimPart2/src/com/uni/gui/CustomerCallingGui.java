@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import Observation.Observer;
 
 import com.uni.main.BankSimulator;
+import com.uni.main.Statistics;
 
 public class CustomerCallingGui extends JPanel implements Observer {
 
@@ -35,12 +36,12 @@ public class CustomerCallingGui extends JPanel implements Observer {
 		
 
 		
-		currLabel = new JLabel("Serving:");
+		currLabel = new JLabel("Now:");
 		nextLabel = new JLabel("Next:");
 		currCust =  new JLabel(" --- ");
 		nextCust =  new JLabel(" --- ");
 		Font f = currLabel.getFont();
-		f = f.deriveFont(new Float(20));
+		f = f.deriveFont(new Float(16));
 		
 		currLabel.setFont(f);
 		nextLabel.setFont(f);
@@ -62,11 +63,12 @@ public class CustomerCallingGui extends JPanel implements Observer {
 	@Override
 	public void update() {
 		System.out.println("Update");
-		currCust.setText(bs.getQueue().getNextNumber() + "");
-		if(bs.getOCQueue().isEmpty())
-			nextCust.setText((bs.getQueue().getNextNumber() + 1) + "");
-		else
-			nextCust.setText((bs.getOCQueue().getNextNumber() + 1) + "");
+		currCust.setText(Statistics.last_customer + "");
+		 int next = bs.getNext();
+		 if(next != -1)
+		 nextCust.setText(next+"");
+		 else
+		 nextCust.setText(" --- ");
 	}
 	
 }
