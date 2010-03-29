@@ -12,7 +12,7 @@ public class OCQueueGui extends QueueGui {
 	public OCQueueGui(Generator g, CustomerQueue cq)
 	{
 		super(g, cq);
-		this.header = new JLabel("Open and Close");
+		this.header.setText("Open or Close");
 		this.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
 	
