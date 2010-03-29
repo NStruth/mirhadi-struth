@@ -138,7 +138,8 @@ public class BankSimulator {
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();
 		GuiMain gm = new GuiMain(this);
-
+		
+		startSimulation();
 		
 
 	}

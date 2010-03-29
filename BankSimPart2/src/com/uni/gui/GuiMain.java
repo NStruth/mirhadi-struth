@@ -60,17 +60,25 @@ public class GuiMain extends JFrame{
 		
 		c.gridx = 1;
 		c.gridy = 0;
-		c.weightx = 0.5;
+		c.weightx = 0.8;
 		c.weighty = 0.2;
 		c.gridwidth = 2;
 
 		this.getContentPane().add(tCont, c);
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx=0.1;
+		c.gridwidth = 1;
+		this.getContentPane().add(new CustomerCallingGui(bs),c);
+		
 		
 	
 		//holderPanel.add(tCont, c);
 		
 		ClockDisplay clock = new ClockDisplay(bs.getTimer());
 		c.gridx = 3;
+		
 		//c.gridy++;
 		c.weightx = 0.1;
 		c.gridwidth = 1;
@@ -79,16 +87,17 @@ public class GuiMain extends JFrame{
 		QueueGui qList = new QueueGui(bs.getGenerator(),bs.getQueue());
 		c.gridx = 0;
 		c.gridy = 1;
-		c.weightx = 0.2;
+		c.weightx = 0.1;
 		c.weighty = 0.8;
 		this.getContentPane().add(qList,c);		
 		
 		c.gridx = 1;
 		c.gridy = 1;
-		c.weightx = 0.4;
+		c.weightx = 0.8;
 		c.weighty = 0.8;
 		UserPanel tPanel = new UserPanel(bs);
-		this.getContentPane().add(tPanel,c);
+		//CAUSING PROBLEMS
+		//this.getContentPane().add(tPanel,c);
 		
 		c.gridx = 2;
 		c.gridy = 1;

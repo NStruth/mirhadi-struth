@@ -24,6 +24,7 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 		//this.setMaximumSize(new Dimension(100,100));
 		t.registerObserver(this);
 		initComponents();
+		this.setPreferredSize(new Dimension(100,200));
 	}
 	
 

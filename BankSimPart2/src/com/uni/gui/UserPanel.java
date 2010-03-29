@@ -1,6 +1,7 @@
 package com.uni.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.JButton;
@@ -19,7 +20,7 @@ public class UserPanel extends JPanel{
 	public UserPanel(BankSimulator bs){
 		super();
 		initComponents();
-		
+		this.setPreferredSize(new Dimension(750,400));
 		/*Weird bug - Ask me!*/
 		this.bs = bs;
 		System.out.println(bs.getTellerList().size());
