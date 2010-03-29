@@ -102,7 +102,7 @@ public class GuiMain extends JFrame{
 		c.gridy = 1;
 		c.weightx = 0.4;
 		//TODO Fix this
-		//this.getContentPane().add(new GuiDisplay(bs),c);
+		this.getContentPane().add(new StatisticsDisplay(bs),c);
 		
 		
 		
