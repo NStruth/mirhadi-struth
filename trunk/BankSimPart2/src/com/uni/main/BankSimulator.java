@@ -51,11 +51,12 @@ public class BankSimulator {
 	 * @throws InterruptedException 
 	 */
 	public void run() throws InterruptedException {
-		//clear the log file				
-		Log.clearLog();
+		//clear the log file
+		Log l = Log.getInstance();
+		l.clearLog();
 		
 		//read in list of accounts and customers
-		FileIO filehandle = new FileIO("data/accounts.txt","data/customers.txt");
+		FileIO filehandle = new FileIO();
 		al = filehandle.readAccountLines();
 		cl = filehandle.readCustomerLines();
 		
@@ -98,8 +99,8 @@ public class BankSimulator {
 		/* Generate a random queue */
 		
 		
-		Log.writeMessage(al.toString());
-		Log.writeMessage("DISPLAYING CUSTOMER LIST");
+		l.writeMessage(al.toString());
+		l.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
 				
 		cq = new CustomerQueue();
@@ -111,7 +112,7 @@ public class BankSimulator {
 		
 			
 		//CustomerQueue cq = g.generate();
-		Log.writeMessage("\n\n" + cq.toString());
+		l.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the teller */
 		tellerList = new TellerList();
@@ -134,8 +135,8 @@ public class BankSimulator {
 		}*/
 		
 		
-		Log.writeMessage("State AFTER transactions");
-		Log.writeMessage(al.toString());
+		l.writeMessage("State AFTER transactions");
+		l.writeMessage(al.toString());
 		
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();

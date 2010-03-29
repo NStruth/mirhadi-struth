@@ -49,6 +49,7 @@ public class GuiDisplay extends JPanel implements ActionListener, Observer{
 		this.setBounds(50, 50, 400, 400);
 		this.setVisible(true);
 		this.setLayout(new BorderLayout());
+		//this.setSize(500,500);
 		initComponents();
 	}
 	/**

@@ -15,11 +15,28 @@ import java.io.IOException;
 import java.util.Calendar;
 
 public class Log {
-
+	
+	private static Log instance = new Log();
+	
+	/*
+	 * Singleton Patern
+	 */
+	private Log()
+	{}
+	
+	public static Log getInstance()
+	{
+		if(instance == null)
+		{
+			instance = new Log();
+		}
+		return instance;
+	}
+	
 	/**
 	 * Clear the log file
 	 */
-	public static void clearLog()
+	public void clearLog()
 	{
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt"));
@@ -35,7 +52,7 @@ public class Log {
 	 * Write a message to the log file
 	 * @param message the message to be written to the log file
 	 */
-	public static void writeMessage(String message){
+	public void writeMessage(String message){
 		//System.out.println(message);
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter("log.txt", true));

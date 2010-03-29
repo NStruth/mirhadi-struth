@@ -225,7 +225,8 @@ public class Teller extends Thread implements Subject{
 					break;
 				}
 				//write the message
-				Log.writeMessage(message);
+				Log l = Log.getInstance();
+				l.writeMessage(message);
 			}catch(Exception e){
 				
 			}
