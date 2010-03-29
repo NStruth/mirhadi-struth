@@ -20,7 +20,10 @@ import Observation.Subject;
 import com.uni.customer.Customer;
 
 public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
-		
+	
+	int next;
+	int last;
+	
 	/**
 	 * Constructor for the customer queue
 	 */
@@ -51,6 +54,11 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		}
 		return retV;
 	}
+	
+	public int getNextNumber(){
+		return last;
+	}
+	
 	/**
 	 * get the first queue item in the list
 	 * @return the first queue item
@@ -61,6 +69,8 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		
 		if(!this.isEmpty()){
 			QueueItem q = this.remove(0);
+			last = q.getCustNo();
+			next = last + 1;
 			notifyObservers();
 			return q;
 		}

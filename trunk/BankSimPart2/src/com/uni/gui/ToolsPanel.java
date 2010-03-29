@@ -28,9 +28,8 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	
 	public void initComponents(){
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		
 		//this.add(new JLabel("Tools"), BorderLayout.NORTH);
-		
+		this.setPreferredSize(new Dimension(750, 400));
 		// Teller Slider
 		JPanel tPanel = new JPanel();
 		tPanel.setLayout(new BorderLayout());

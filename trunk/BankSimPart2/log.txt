@@ -79,70 +79,47 @@ SIMULATION STARTED
 
  *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1003 AccountNo:60016
+Customer: Polly Ester No: 1001 AccountNo:60016
 
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Customer: Polly Ester No: 1002 AccountNo:60017
+
+ *** End of open transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Maximum Number of Accounts is 2
+ *** End of open transaction *** 
+
+
+
+ *** Processing withdraw transaction *** 
+
+Customer: Constance Noring No: 1003 AccountNo:60013
+Withdraw: £117.14 New Balance: £122.75
+
+ *** End of withdraw transaction *** 
+
+
+
+ *** Processing open transaction *** 
+
+Maximum Number of Accounts is 2
  *** End of open transaction *** 
 
 
 
  *** Processing deposit transaction *** 
 
-Customer: Frank Sauzee No: 1002 AccountNo:60003
-Deposit: £527.21 New Balance: £1127.31
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Henry Cooper No: 1001 AccountNo:60014
-Withdraw: £136.65 New Balance: £341.64
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Frank Sauzee No: 1002 AccountNo:60003
-Withdraw: £93.56 New Balance: £1033.75
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Emma Royds No: 1005 AccountNo:60015
-Deposit: £481.05 New Balance: £1317.15
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Gordon Brown No: 1004 AccountNo:60004
-Withdraw: £102.62 New Balance: £397.68
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Frank Sauzee No: 1002 AccountNo:60003
-Deposit: £261.40 New Balance: £1295.15
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Warren Peace No: 1006 AccountNo:60016
-Deposit: £700.89 New Balance: £800.89
+Customer: Constance Noring No: 1003 AccountNo:60013
+Deposit: £568.87 New Balance: £691.62
 
  *** End of deposit transaction *** 
 
