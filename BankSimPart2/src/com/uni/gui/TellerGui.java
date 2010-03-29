@@ -59,7 +59,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		//this.add(new JLabel("Test"), BorderLayout.CENTER);
 		
 		t.registerObserver(this);
-		this.setPreferredSize(new Dimension(250,150));
+		this.setPreferredSize(new Dimension(300,150));
 		initComponents();
 	}
 
@@ -148,7 +148,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c.gridx = 0;
 		c.gridy++;
 		
-		this.add(buttonPanel, c);
+		//this.add(buttonPanel, c);
 		
 		
 	}

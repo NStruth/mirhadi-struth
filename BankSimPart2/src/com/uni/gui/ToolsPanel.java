@@ -29,7 +29,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	public void initComponents(){
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//this.add(new JLabel("Tools"), BorderLayout.NORTH);
-		this.setPreferredSize(new Dimension(750, 400));
+		this.setPreferredSize(new Dimension(450, 400));
 		// Teller Slider
 		JPanel tPanel = new JPanel();
 		tPanel.setLayout(new BorderLayout());
@@ -78,6 +78,8 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		clockSlider.addChangeListener(new ClockListener());
 		cPanel.add(clockSlider);
 		cPanel.add(new JLabel("Slow"), BorderLayout.EAST);
+		cPanel.setPreferredSize(new Dimension(450,20));
+		clockSlider.setPreferredSize(new Dimension(450,20));
 		this.add(cPanel);
 
 		
