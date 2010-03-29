@@ -84,6 +84,7 @@ public class Teller extends Thread implements Subject{
 		currentCustomer = cust;
 		System.out.println(cust.getFullName());
 		custNumber = q.getCustNo();
+		Statistics.last_customer = custNumber;
 		transactionType = " --- ";
 		notifyObservers();
 		//process each transaction
@@ -242,7 +243,7 @@ public class Teller extends Thread implements Subject{
 	
 	public void pauseTransaction(){
 		try {
-			System.out.println("Sleeping for:" + Statistics.TELLER_SPEED + " * " +  Statistics.SIMULATION_SPEED_FACTOR);
+			//System.out.println("Sleeping for:" + Statistics.TELLER_SPEED + " * " +  Statistics.SIMULATION_SPEED_FACTOR);
 			Thread.sleep(Statistics.TELLER_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

@@ -33,7 +33,7 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 
 	@Override
 	public boolean add(QueueItem arg0) {
-		
+		notifyObservers();
 		return super.add(arg0);
 	}
 	
@@ -69,8 +69,8 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		
 		if(!this.isEmpty()){
 			QueueItem q = this.remove(0);
-			last = q.getCustNo();
-			next = last + 1;
+			//last = q.getCustNo();
+			//next = last + 1;
 			notifyObservers();
 			return q;
 		}
