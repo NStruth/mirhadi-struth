@@ -25,6 +25,11 @@ public class Statistics {
 	
 
 	
+	//
+	public static final int OPEN_TIME = 9;
+	public static final int CLOSE_TIME = 17;
+	//
+	
 	public static boolean MANUAL_CLOSE_OVERRIDE = true; //0 for false
 	
 	

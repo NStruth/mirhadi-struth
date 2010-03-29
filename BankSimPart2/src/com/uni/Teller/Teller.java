@@ -309,7 +309,6 @@ public class Teller extends Thread implements Subject{
 			//while(!Statistics.PAUSE){
 				if(this.open){
 					try{
-						System.out.println(q.size());
 						if(ocq.size() > 0)
 							this.processQueueItem(ocq.getFirst());
 						else

@@ -76,7 +76,7 @@ public class GuiMain extends JFrame{
 	
 		//holderPanel.add(tCont, c);
 		
-		ClockDisplay clock = new ClockDisplay(bs.getTimer());
+		ClockDisplay clock = new ClockDisplay(bs.getTimer(), bs.getQueue(), bs.getOCQueue());
 		c.gridx = 3;
 		
 		//c.gridy++;
