@@ -24,6 +24,7 @@ public class CustomerCallingGui extends JPanel implements Observer {
 		super();
 		this.bs = bs;
 		bs.getQueue().registerObserver(this);
+		bs.getOCQueue().registerObserver(this);
 		initComponents();
 	}
 	
@@ -62,7 +63,10 @@ public class CustomerCallingGui extends JPanel implements Observer {
 	public void update() {
 		System.out.println("Update");
 		currCust.setText(bs.getQueue().getNextNumber() + "");
-		nextCust.setText((bs.getQueue().getNextNumber() + 1) + "");	
+		if(bs.getOCQueue().isEmpty())
+			nextCust.setText((bs.getQueue().getNextNumber() + 1) + "");
+		else
+			nextCust.setText((bs.getOCQueue().getNextNumber() + 1) + "");
 	}
 	
 }
