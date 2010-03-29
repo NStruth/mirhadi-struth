@@ -33,8 +33,8 @@ public class Timer extends Thread implements Subject {
 	
 	public void run()
 	{
-		
-		Log.writeMessage("SIMULATION STARTED");
+		Log l = Log.getInstance();
+		l.writeMessage("SIMULATION STARTED");
 		while(!stopThread)
 		{
 			

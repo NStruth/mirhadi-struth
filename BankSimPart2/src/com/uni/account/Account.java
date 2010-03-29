@@ -21,6 +21,8 @@ public class Account {
 	
 	private int accountNumber; //individual identifier
 	private int balance; //in pence
+	
+	private Log l = Log.getInstance();
 		
 	/**
 	 * Constructor for when setting pre defined accounts
@@ -28,7 +30,7 @@ public class Account {
 	 * @param id the account number
 	 */
 	public Account(int balance, int id){
-		Log.writeMessage("Creating account : "+id);
+		l.writeMessage("Creating account : "+id);
 		this.balance = balance;
 		this.accountNumber = id;
 		masterNumber++;
@@ -76,7 +78,7 @@ public class Account {
 	 * Write the balance to the log
 	 */
 	public void displayBalance(){
-		Log.writeMessage("Balance: " + this.balance);
+		l.writeMessage("Balance: " + this.balance);
 	}
 	/**
 	 * Get the balance

@@ -23,19 +23,17 @@ import com.uni.customer.CustomerList;
 
 public class FileIO {
 	
-	private String afilename; //account file name
-	private String cfilename; //customer file name
+	private String afilename = "data/accounts.txt"; //account file name
+	private String cfilename = "data/customers.txt"; //customer file name
+	private static FileIO instance;
 	
 	/**
 	 * Constructor
 	 * @param afilename the account file name
 	 * @param cfilename the customer file name
 	 */
-	public FileIO(String afilename, String cfilename)
-	{
-		this.afilename = afilename;
-		this.cfilename = cfilename;
-	}
+	public FileIO()
+	{}
 	
 	/**
 	 * Reads the account file line by line

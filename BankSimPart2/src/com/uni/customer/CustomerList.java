@@ -26,7 +26,8 @@ public class CustomerList extends ArrayList<Customer> {
 	public void print()
 	{
 		for(Customer c: this){
-			Log.writeMessage(c.toString()); 
+			Log l = Log.getInstance();
+			l.writeMessage(c.toString()); 
 		}
 	}
 	
