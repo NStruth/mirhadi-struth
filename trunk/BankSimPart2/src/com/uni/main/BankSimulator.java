@@ -143,7 +143,7 @@ public class BankSimulator {
 		GuiMain gm = new GuiMain(this);
 		
 		//startSimulation();
-		
+
 
 	}
 	 public int getNext(){
@@ -153,7 +153,7 @@ public class BankSimulator {
 		 return cq.get(0).getCustNo();
 		 else 
 		 return -1;
-		 }
+	 }
 	 
 	public void startSimulation(){
 		for(Teller t: tellerList){
@@ -163,6 +163,30 @@ public class BankSimulator {
 		g.start();
 		time.start();
 		Statistics.MANUAL_CLOSE_OVERRIDE = false;
+	}
+	
+	public void pause(){
+
+		if(time.pleaseWait){
+			synchronized (time) { time.pleaseWait = false; time.notify(); } 
+		}else{
+			synchronized (time) { time.pleaseWait = true; } 
+			
+		}
+		for(Teller t: tellerList){
+		if(t.pleaseWait){
+			synchronized (t) { t.pleaseWait = false; t.notify(); } 
+		}else{
+			synchronized (t) { t.pleaseWait = true; } 
+			
+		}
+		}
+		if(g.pleaseWait){
+			synchronized (g) { g.pleaseWait = false; g.notify(); } 
+		}else{
+			synchronized (g) { g.pleaseWait = true; } 
+			
+		}
 	}
 	
 	public CustomerQueue getQueue(){

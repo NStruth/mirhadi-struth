@@ -34,6 +34,7 @@ public class Generator extends Thread implements Subject{
 	private AccountList aList; //the list of accounts
 	private CustomerQueue[] queuearr = new CustomerQueue[2]; // reference to the queue
 	private boolean stopThread = false;
+	public boolean pleaseWait = false;
 	
 	/**
 	 * Constructor for the random generator
@@ -280,6 +281,14 @@ public class Generator extends Thread implements Subject{
 	public void run()
 	{
 		while(!stopThread){
+			
+			synchronized (this) {
+				while (pleaseWait = false) { 
+					try { wait(); } 
+					catch (Exception e) { } 
+					} 
+				} 
+			
 			try{
 				if(!Statistics.MANUAL_CLOSE_OVERRIDE){
 					if(Statistics.CURRENT_HOUR >= Statistics.OPEN_TIME 

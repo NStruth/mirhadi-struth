@@ -193,6 +193,15 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			typeText.setText(teller.getTranType());
 			statusText.setText(teller.getMessage());
 			
+		}else if(teller.serving){
+			status.setText("Closing");
+			status.setForeground(Color.ORANGE);
+			
+			custName.setText(teller.getCustomerName());
+			serving.setText(teller.getCustNumber() + "");
+			
+			typeText.setText(teller.getTranType());
+			statusText.setText(teller.getMessage());
 		}else{
 			status.setText("Closed");
 			status.setForeground(Color.RED);

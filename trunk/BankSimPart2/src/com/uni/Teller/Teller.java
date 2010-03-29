@@ -46,6 +46,12 @@ public class Teller extends Thread implements Subject{
 
 	private String transactionType;
 	private boolean stopThread = false;
+
+	public boolean pleaseWait = false;
+
+	public boolean serving = false ;
+
+		;
 	
 	/**
 	 * Constructor for the teller.
@@ -76,6 +82,7 @@ public class Teller extends Thread implements Subject{
 	 * @param q the queue item
 	 */
 	public void processQueueItem(QueueItem q){
+		serving = true;
 		System.out.println("Processing");
 		//get the transactions from the queue item
 		TransactionList tList = q.getTransactions();
@@ -235,6 +242,7 @@ public class Teller extends Thread implements Subject{
 			
 		}
 		resetLabels();
+		serving = false ;
 
 		//another customer served
 		Statistics.CUSTOMERS_SERVED++;
@@ -314,7 +322,15 @@ public class Teller extends Thread implements Subject{
 	@Override
 	public void run() {
 		while(!stopThread){
-			//while(!Statistics.PAUSE){
+			
+//			 Check if should wait 
+			synchronized (this) {
+				while (pleaseWait) { 
+					try { wait(); } 
+					catch (Exception e) { } 
+					} 
+				} 
+			
 				if(this.open){
 					try{
 						if(ocq.size() > 0)

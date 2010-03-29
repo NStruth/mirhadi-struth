@@ -20,6 +20,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	private JButton closeButton;
 	private JButton disableClose;
 	BankSimulator bs;
+	private JButton pauseButton;
 
 	public ToolsPanel(BankSimulator bs){
 		this.bs = bs;
@@ -89,6 +90,9 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		closeButton = new JButton("Override Bank Open");
 		closeButton.setActionCommand("closeswitch");
 		
+		pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(this);
+		
 		disableClose = new JButton("Disable Override");
 		disableClose.setActionCommand("disableswitch");
 		disableClose.setEnabled(false);
@@ -102,6 +106,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		disableClose.setPreferredSize(new Dimension(120,30));
 		
 		this.add(startButton);
+		//this.add(pauseButton);
 		this.add(closeButton);
 		this.add(disableClose);
 	}
@@ -133,6 +138,10 @@ public class ToolsPanel extends JPanel implements ActionListener {
 			closeButton.setEnabled(true);
 			disableClose.setEnabled(false);
 		}
+		
+		if(arg0.getActionCommand().equals("Pause")){
+			bs.pause();
+		}
 
 	}
 	class TellerListener implements ChangeListener {
@@ -160,4 +169,5 @@ public class ToolsPanel extends JPanel implements ActionListener {
 			}    
 	    }
 	}
+	
 }
