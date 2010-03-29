@@ -11,7 +11,7 @@ import com.uni.Logging.Log;
 public class Timer extends Thread implements Subject {
 
 	boolean stopThread = false;
-	
+	boolean pleaseWait = false;
 	public void done()
 	{
 		stopThread = true;
@@ -33,10 +33,18 @@ public class Timer extends Thread implements Subject {
 	
 	public void run()
 	{
+		
 		Log l = Log.getInstance();
 		l.writeMessage("SIMULATION STARTED");
 		while(!stopThread)
 		{
+			
+//			 Check if should wait 
+			synchronized (this) {
+				while (pleaseWait) { 
+					try { wait(); } catch (Exception e) { } 
+					} 
+				} 
 			
 				try {
 					Thread.sleep(Statistics.CLOCK_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
@@ -71,5 +79,15 @@ public class Timer extends Thread implements Subject {
 			obs.update();
 	}
 	//////////////////////////////////////////////////////// 
+
+	synchronized void pause() {
+		// TODO Auto-generated method stub
+		try {
+			this.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
