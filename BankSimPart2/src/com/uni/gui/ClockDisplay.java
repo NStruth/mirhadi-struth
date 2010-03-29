@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,6 +17,7 @@ import com.uni.main.Timer;
 public class ClockDisplay extends JPanel implements Observation.Observer{
 	
 	private JLabel clock;
+	private JButton skipTimeButton;
 	
 	
 	public ClockDisplay(Timer t)
@@ -47,6 +49,10 @@ public class ClockDisplay extends JPanel implements Observation.Observer{
 		
 		clock.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.add(clock, BorderLayout.CENTER);
+		
+		skipTimeButton = new JButton("Skip");
+		this.add(skipTimeButton, BorderLayout.SOUTH);
+		
 	}
 	
 	public void update() {
