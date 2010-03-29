@@ -61,6 +61,17 @@ public class Account {
 			return true;
 		}
 	}
+	
+	public boolean clearBalance(int value)
+	{
+		if(value > this.balance)
+			return false;
+		else
+		{
+			this.balance = this.balance - value;
+			return true;
+		}
+	}
 	/**
 	 * Deposit money into the account
 	 * @param value the value to be deposited
