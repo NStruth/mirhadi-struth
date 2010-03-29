@@ -36,6 +36,7 @@ public class BankSimulator {
 	public Teller teller;
 	
 	private CustomerQueue cq;
+	private CustomerQueue ocq;
 
 	private Generator g;
 	
@@ -102,10 +103,11 @@ public class BankSimulator {
 		cl.print();
 				
 		cq = new CustomerQueue();
+		ocq = new CustomerQueue();
 		
 		time = new Timer();
 		
-		g = new Generator(cl, al, cq);
+		g = new Generator(cl, al, cq, ocq);
 		
 			
 		//CustomerQueue cq = g.generate();
@@ -114,7 +116,7 @@ public class BankSimulator {
 		/* Set up the teller */
 		tellerList = new TellerList();
 		for(int i = 0; i < NUM_OF_TELLERS; i++){
-			teller = new Teller(al, cq);
+			teller = new Teller(al, cq, ocq);
 			tellerList.add(teller);
 			
 		}
@@ -156,6 +158,11 @@ public class BankSimulator {
 	
 	public CustomerQueue getQueue(){
 		return cq;
+	}
+	
+	public CustomerQueue getOCQueue()
+	{
+		return ocq;
 	}
 	
 	public Generator getGenerator(){

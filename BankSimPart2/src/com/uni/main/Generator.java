@@ -32,7 +32,7 @@ import com.uni.queue.QueueItem;
 public class Generator extends Thread implements Subject{
 	private CustomerList clist; //the list of customers
 	private AccountList aList; //the list of accounts
-	private CustomerQueue queue; // reference to the queue
+	private CustomerQueue[] queuearr = new CustomerQueue[2]; // reference to the queue
 	private boolean stopThread = false;
 	
 	/**
@@ -44,7 +44,15 @@ public class Generator extends Thread implements Subject{
 	{
 		this.clist = clist;
 		this.aList = alist;
-		this.queue = queue;
+		this.queuearr[0] = queue;
+	}
+	
+	public Generator(CustomerList clist, AccountList alist, CustomerQueue queue, CustomerQueue openClose)
+	{
+		this.clist = clist;
+		this.aList = alist;
+		this.queuearr[0] = queue;
+		this.queuearr[1] = openClose;
 	}
 	
 	public Generator(CustomerList clist, AccountList alist)
@@ -69,10 +77,10 @@ public class Generator extends Thread implements Subject{
 		//select a random customer
 		int cNo = rGen.nextInt(clist.size());
 		Customer c = clist.get(cNo);
+		CustomerQueue queue = queuearr[0];
 		//only process if the customer is not in the queue
-		if(queue.customerInQueue(c) != true)
-		{
-						
+		if(!queue.customerInQueue(c))
+		{		
 			//1,2,3 transactions with weighted selection
 			int numTransWeighted = rGen.nextInt(10);
 			//make a list to store the transactions
@@ -89,7 +97,7 @@ public class Generator extends Thread implements Subject{
 			
 			//generate each transaction
 			for(int i=0; i<= numTrans; i++){
-				//if they are closing there only account they wont want a new one
+				//if they are closing their only account they wont want a new one
 				if(tList.containsClose() && c.getNumOfAccounts() == 1){
 					break;
 				//if they are closing all there accounts the are leaving
@@ -102,7 +110,7 @@ public class Generator extends Thread implements Subject{
 				}else{
 					tList.add(getTransaction(c,0));		
 				}
-			}
+			}	
 			QueueItem q = new QueueItem(c, tList);
 			return q;	
 		}else{
@@ -276,7 +284,11 @@ public class Generator extends Thread implements Subject{
 				if(!Statistics.MANUAL_CLOSE_OVERRIDE){
 					if(Statistics.CURRENT_HOUR > 7 && Statistics.CURRENT_HOUR < 17 )
 					{
-						queue.add(generateItem());
+						QueueItem temp = generateItem();
+						if(temp.getTransactions().containsOnlyOpenClose() && !queuearr[1].customerInQueue(temp.getCustomer()))
+							queuearr[1].add(temp);
+						else
+							queuearr[0].add(temp);
 						notifyObservers();
 						Thread.sleep(Statistics.GENERATOR_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
 					}

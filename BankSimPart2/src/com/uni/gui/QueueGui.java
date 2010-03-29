@@ -21,6 +21,7 @@ public class QueueGui extends JPanel implements Observer{
 	
 	private JList jList;
 	private CustomerQueue cq;
+	protected JLabel header = new JLabel("Queue");
 	
 	private JScrollPane jScroll;
 	
@@ -51,7 +52,7 @@ public class QueueGui extends JPanel implements Observer{
 		jScroll = new JScrollPane(jList);
 		jScroll.setMinimumSize(new Dimension(150,200));
 		jScroll.setMaximumSize(new Dimension(150,200));
-		this.add(new JLabel("Queue"), BorderLayout.NORTH);
+		this.add(header, BorderLayout.NORTH);
 		this.add(jScroll, BorderLayout.CENTER);
 	}
 

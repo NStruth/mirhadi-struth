@@ -89,7 +89,7 @@ public class GuiMain extends JFrame{
 		c.gridy = 1;
 		c.weightx = 0.1;
 		c.weighty = 0.8;
-		this.getContentPane().add(qList,c);		
+		this.getContentPane().add(qList,c);	
 		
 		c.gridx = 1;
 		c.gridy = 1;
@@ -103,6 +103,14 @@ public class GuiMain extends JFrame{
 		c.weightx = 0.4;
 		//TODO Fix this
 		this.getContentPane().add(new StatisticsDisplay(bs),c);
+		
+		
+		OCQueueGui ocqList = new OCQueueGui(bs.getGenerator(),bs.getOCQueue());
+		c.gridx = 3;
+		c.gridy = 1;
+		c.weightx = 0.1;
+		c.weighty = 0.8;
+		this.getContentPane().add(ocqList,c);	
 		
 		
 		
