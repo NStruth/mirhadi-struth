@@ -39,6 +39,7 @@ public class Teller extends Thread implements Subject{
 	private String message;
 	
 	private CustomerQueue q;
+	private CustomerQueue ocq;
 	private Customer currentCustomer;
 	private int custNumber;
 	private String currentStatus;
@@ -50,9 +51,10 @@ public class Teller extends Thread implements Subject{
 	 * Constructor for the teller.
 	 * @param al the list of accounts
 	 */
-	public Teller(AccountList al, CustomerQueue q){
+	public Teller(AccountList al, CustomerQueue q, CustomerQueue ocq){
 		this.al = al;
 		this.q = q;
+		this.ocq = ocq;
 	}
 	
 	public void done()
@@ -308,8 +310,11 @@ public class Teller extends Thread implements Subject{
 				if(this.open){
 					try{
 						System.out.println(q.size());
-						if(q.size() > 0)
-							this.processQueueItem(q.getFirst());
+						if(ocq.size() > 0)
+							this.processQueueItem(ocq.getFirst());
+						else
+							if(q.size() > 0)
+								this.processQueueItem(q.getFirst());
 							
 						notifyObservers();
 						Random r = new Random();

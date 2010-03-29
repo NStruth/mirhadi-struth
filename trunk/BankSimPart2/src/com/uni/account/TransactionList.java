@@ -36,6 +36,14 @@ public class TransactionList extends ArrayList<Transaction> {
 		}
 		return false;
 	}
+	
+	public boolean containsOpen(){
+		for(Transaction t: this){
+			if(t.getChoice() == Transaction.Choices.OPEN)
+				return true;
+		}
+		return false;
+	}
 
 	/**
 	 * Check to see if there are multiple account closes
@@ -56,6 +64,20 @@ public class TransactionList extends ArrayList<Transaction> {
 		}else{
 			return false;
 		}
+	}
+	
+	public boolean containsOnlyOpenClose()
+	{
+		boolean valid = true;
+		for(Transaction t: this)
+		{
+			if(t.getChoice() == Transaction.Choices.CLOSE || t.getChoice() == Transaction.Choices.OPEN){}
+			else
+			{
+				valid = false;
+			}
+		}
+		return valid;
 	}
 	
 
