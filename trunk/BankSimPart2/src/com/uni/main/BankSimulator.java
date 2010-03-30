@@ -143,6 +143,8 @@ public class BankSimulator {
 		GuiMain gm = new GuiMain(this);
 		
 		//startSimulation();
+		//Thread.sleep(10000);
+		//this.resetSimulation();
 
 
 	}
@@ -164,6 +166,32 @@ public class BankSimulator {
 		time.start();
 		Statistics.MANUAL_CLOSE_OVERRIDE = false;
 	}
+	
+	/*public void resetSimulation(){
+		g.done();
+		time.done();
+		
+		cq = new CustomerQueue();
+		ocq = new CustomerQueue();
+		
+		time = new Timer();
+		
+		g = new Generator(cl, al, cq, ocq);
+		
+			
+		//CustomerQueue cq = g.generate();
+		//l.writeMessage("\n\n" + cq.toString());
+		
+		// Set up the teller 
+		tellerList = new TellerList();
+		for(int i = 0; i < NUM_OF_TELLERS; i++){
+			teller = new Teller(al, cq, ocq);
+			tellerList.add(teller);
+			
+		}
+		this.startSimulation();
+	}*/
+	
 	
 	public void pause(){
 
