@@ -26,6 +26,7 @@ public class CustomerCallingGui extends JPanel implements Observer {
 		this.bs = bs;
 		bs.getQueue().registerObserver(this);
 		bs.getOCQueue().registerObserver(this);
+		//bs.getGenerator().registerObserver(this);
 		initComponents();
 	}
 	

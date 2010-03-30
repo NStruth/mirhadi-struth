@@ -23,7 +23,7 @@ public class Statistics {
 	public static int TOTALS_WITHDRAW = 0;
 	public static int TOTALS_DEPOSTIT = 0;
 	
-	public static int last_customer = 0;
+	public static int last_customer = 1001;
 	
 	//
 	public static final int OPEN_TIME = 9;
