@@ -103,18 +103,18 @@ public class BankSimulator {
 		l.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
 				
+		//Create main queue and the open/close account queue
 		cq = new CustomerQueue();
 		ocq = new CustomerQueue();
 		
+		//The clock thread for the simulation
 		time = new Timer();
 		
 		g = new Generator(cl, al, cq, ocq);
 		
-			
-		//CustomerQueue cq = g.generate();
 		l.writeMessage("\n\n" + cq.toString());
 		
-		/* Set up the teller */
+		/* Set up the tellers */
 		tellerList = new TellerList();
 		for(int i = 0; i < NUM_OF_TELLERS; i++){
 			teller = new Teller(al, cq, ocq);
@@ -140,6 +140,8 @@ public class BankSimulator {
 		
 		//display summary results
 		//GuiDisplay gd = new GuiDisplay();
+		
+		//Display the Graphical User Interface
 		GuiMain gm = new GuiMain(this);
 		
 		//startSimulation();
@@ -148,6 +150,12 @@ public class BankSimulator {
 
 
 	}
+	/**
+	 * Get next customer from queue
+	 * Checks to see if there are any customers in the open/close queue
+	 * if not get the next customer number from the main queue.
+	 * @return customer number
+	 */
 	 public int getNext(){
 		 if(ocq.size() > 0)
 		 return ocq.get(0).getCustNo();
@@ -157,6 +165,9 @@ public class BankSimulator {
 		 return -1;
 	 }
 	 
+	/**
+	 * Starts the threads required for the simulation
+	 */
 	public void startSimulation(){
 		for(Teller t: tellerList){
 			t.start();
@@ -217,27 +228,51 @@ public class BankSimulator {
 		}
 	}
 	
+	/**
+	 * Provides access to the private property Queue
+	 * @return the Main Queue
+	 */
 	public CustomerQueue getQueue(){
 		return cq;
 	}
 	
+	/**
+	 * Provides access to the private property OCQueue
+	 * @return the Open/Close Queue
+	 */
 	public CustomerQueue getOCQueue()
 	{
 		return ocq;
 	}
 	
+	/**
+	 * Provides access to the private property Generator
+	 * @return the reference to the Generator object.
+	 */
 	public Generator getGenerator(){
 		return g;
 	}
 
+	/**
+	 * Provides access to the private property Timer
+	 * @return a reference to the Timer which controls the
+	 * clock.
+	 */
 	public Timer getTimer() {
 		return time;
 	}
 
+	/**
+	 * Provides access to the private property tellerList
+	 * @return the list of tellers
+	 */
 	public TellerList getTellerList(){
 		return tellerList;
 	}
 	
+	/**
+	 * Closes the bank
+	 */
 	public void closeBank() {
 	
 			/*g.done();
@@ -251,5 +286,8 @@ public class BankSimulator {
 		
 		
 		System.out.println("Simulation Stopped!");
+	}
+	public static void main(String[] args) {
+		0809850042 
 	}
 }
