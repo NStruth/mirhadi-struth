@@ -4,8 +4,10 @@
  * 
  * @version 1.0
  * 
- * This class allows static calls from any class to write to the
- * log file. As it is static there is no constructor.
+ * Object which implements the Singleton pattern as we only
+ * wish one instance to update the log file.
+ *
+ * Can be accessed through the static method getInstance()
  */
 package com.uni.Logging;
 
@@ -18,12 +20,17 @@ public class Log {
 	
 	private static Log instance = new Log();
 	
-	/*
-	 * Singleton Patern
-	 */
+
+	//Private constructor
 	private Log()
 	{}
 	
+	/**
+	 * Obtain the instance currently in use in the 
+	 * system.
+	 * If there is no instance in use it creates a new one.
+	 * @return instance, the instance of the Log object. 
+	 */
 	public static Log getInstance()
 	{
 		if(instance == null)
