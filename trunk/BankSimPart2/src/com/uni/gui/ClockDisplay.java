@@ -1,3 +1,19 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * 
+ * A class which extends JPanel to display a 24
+ * hour digital clock which changes colour
+ * when the bank opens/closes.
+ * 
+ * Also contains a "skip" button available when the bank 
+ * is closed allowing the user to fast forward to opening
+ * time.
+ * 
+ */
 package com.uni.gui;
 
 import java.awt.BorderLayout;
@@ -20,18 +36,28 @@ import com.uni.queue.CustomerQueue;
 
 public class ClockDisplay extends JPanel implements Observation.Observer, ActionListener{
 	
-	private JLabel clock;
-	private JButton skipTimeButton;
-	private CustomerQueue cq;
-	private CustomerQueue ocq;
+	private JLabel clock; //the clock
+	private JButton skipTimeButton; //button to skip the night
+	
+	/*Following required for skip button enable/disable
+	 * Can't skip when there are still customers being served.
+	 */
+	private CustomerQueue cq; //the customer queue
+	private CustomerQueue ocq; //the open/close customer queue
 	
 	
+	/**
+	 * Constructor for this clock display
+	 * 
+	 * @param t the timer
+	 * @param cq the customer queue
+	 * @param ocq the open/close customer queue
+	 */
 	public ClockDisplay(Timer t, CustomerQueue cq, CustomerQueue ocq)
 	{
-		//this.setMinimumSize(new Dimension(100,100));
-		//this.setMaximumSize(new Dimension(100,100));
 		this.cq = cq;
 		this.ocq = ocq;
+		//set the observer
 		t.registerObserver(this);
 		initComponents();
 		this.setPreferredSize(new Dimension(100,200));
