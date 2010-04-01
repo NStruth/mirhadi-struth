@@ -48,6 +48,7 @@ public class Statistics {
 	
 	public static boolean CLOSED = false;
 	public static boolean STOP = false;
+	public static boolean FIRST_RUN = false;
 
 	
 	public static void reset(){
