@@ -1,3 +1,15 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * This is the gui panel to display
+ * the special queue of customers who are only
+ * opening or closing an account. 
+ * Extends QueueGui.
+ * 
+ */
 package com.uni.gui;
 
 import java.awt.Color;
@@ -8,13 +20,19 @@ import com.uni.main.Generator;
 import com.uni.queue.CustomerQueue;
 
 public class OCQueueGui extends QueueGui {
+	
+	/**
+	 * 
+	 * The constructor for this panel
+	 * 
+	 * @param g
+	 * @param cq
+	 */
 	public OCQueueGui(Generator g, CustomerQueue cq)
 	{
 		super(g, cq);
 		this.header.setText("Open or Close");
 		this.setBorder(BorderFactory.createLineBorder(Color.RED));
 	}
-	
-
 	
 }

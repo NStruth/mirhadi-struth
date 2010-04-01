@@ -1,3 +1,14 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * Displays a CustomerQueue as a list which is updated
+ * as and when people enter/exit the queue
+ * 
+ */
+
 package com.uni.gui;
 
 import java.awt.BorderLayout;
@@ -25,32 +36,36 @@ public class QueueGui extends JPanel implements Observer{
 	private JScrollPane jScroll;
 	
 	
+	/**
+	 * Constructor for this queue list panel
+	 * 
+	 * @param g the generator
+	 * @param cq the customer queue
+	 */
 	public QueueGui(Generator g, CustomerQueue cq){
+		//layout stuff
 		this.setLayout(new BorderLayout());
-		//this.setSize(800,400);
-		//this.setBounds(new Rectangle(0, 0, 800, 400));
-		//this.setMinimumSize(new Dimension(150,200));
-		//this.setMaximumSize(new Dimension(150,200));
-		
 		this.setPreferredSize(new Dimension(150,200));
-		
+		//set reference to queue
 		this.cq = cq;
-		
+		//set up observers
 		cq.registerObserver(this);
 		g.registerObserver(this);
 		
+		//give it a border
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		
-		String[] testList = {"Value 1","value2"};
-		
+		//initialise with default data
+		String[] testList = {"Please","start","the","simualtion"};
+		//create the list
 		jList = new JList(testList);
 		jList.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		jList.setMinimumSize(new Dimension(150,200));
 		jList.setMaximumSize(new Dimension(150,200));
-		
+		//store the list in a scrollable panel
 		jScroll = new JScrollPane(jList);
 		jScroll.setMinimumSize(new Dimension(150,200));
 		jScroll.setMaximumSize(new Dimension(150,200));
+		//add the components
 		this.add(header, BorderLayout.NORTH);
 		this.add(jScroll, BorderLayout.CENTER);
 	}
@@ -58,9 +73,5 @@ public class QueueGui extends JPanel implements Observer{
 	@Override
 	public void update() {
 		jList.setListData(cq.toArray());
-		
 	}
-	
-
-
 }
