@@ -18,13 +18,13 @@ import com.uni.main.BankSimulator;
 import com.uni.main.Statistics;
 
 public class ToolsPanel extends JPanel implements ActionListener {
+
 	private JButton closeButton;
 	private JButton disableClose;
 	BankSimulator bs;
 	private JButton pauseButton;
 	private JButton resetButton;
 	private JButton startButton;
-	private boolean firstRun = false;
 
 	public ToolsPanel(BankSimulator bs){
 		this.bs = bs;
@@ -67,9 +67,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		qPanel.add(new JLabel("Slow"), BorderLayout.EAST);
 		this.add(qPanel);
 		
-		
 		//Clock Panel
-		
 		JPanel cPanel = new JPanel();
 		cPanel.setLayout(new BorderLayout());
 		
@@ -154,14 +152,10 @@ public class ToolsPanel extends JPanel implements ActionListener {
 			
 			Statistics.RUN_ONCE = true;
 			
-			System.out.println("CLICK");
 		}
 		if(arg0.getActionCommand().equals("closeswitch"))
 		{
-			//p.remove(closeButton);
 			Statistics.MANUAL_CLOSE_OVERRIDE = true;
-			//p.add(disableClose);
-			//p.revalidate();
 			closeButton.setEnabled(false);
 			disableClose.setEnabled(true);
 		}
@@ -169,10 +163,6 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		if(arg0.getActionCommand().equals("disableswitch"))
 		{
 			Statistics.MANUAL_CLOSE_OVERRIDE = false;
-		//	p.remove(disableClose);
-			//p.add(closeButton);
-			
-			//p.revalidate();
 			closeButton.setEnabled(true);
 			disableClose.setEnabled(false);
 		}

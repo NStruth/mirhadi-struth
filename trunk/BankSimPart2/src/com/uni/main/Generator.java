@@ -21,7 +21,6 @@ import Observation.Observer;
 import Observation.Subject;
 
 import com.uni.Exceptions.NonExistantAccountException;
-import com.uni.Logging.Log;
 import com.uni.account.Account;
 import com.uni.account.AccountList;
 import com.uni.account.Transaction;

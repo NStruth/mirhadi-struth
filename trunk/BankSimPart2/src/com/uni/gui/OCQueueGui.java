@@ -3,7 +3,6 @@ package com.uni.gui;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 
 import com.uni.main.Generator;
 import com.uni.queue.CustomerQueue;

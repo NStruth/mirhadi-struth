@@ -3,7 +3,6 @@ package com.uni.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Rectangle;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;

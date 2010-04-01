@@ -1,6 +1,5 @@
 package com.uni.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -8,7 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.uni.main.BankSimulator;
@@ -16,7 +14,6 @@ import com.uni.main.BankSimulator;
 public class GuiMain extends JFrame{
 	
 	private JPanel holderPanel;
-	private JPanel parent;
 	BankSimulator bs;
 	private GridBagConstraints c;
 	
@@ -26,13 +23,11 @@ public class GuiMain extends JFrame{
 	public GuiMain(BankSimulator bs){
 		super();
 
-		//parent.add(BorderLayout.CENTER, new JLabel("test"));
 		
 		this.bs = bs;
-		//this.add(new JLabel("Bank Simulator"), BorderLayout.NORTH);
 		
 		holderPanel = new JPanel();
-		//holderPanel.setBorder(BorderFactory.createLineBorder(Color.BLUE));
+
 		GridBagLayout gbl = new GridBagLayout();
 		c = new GridBagConstraints();
 		
@@ -40,7 +35,6 @@ public class GuiMain extends JFrame{
 		holderPanel.setLayout(gbl);
 		
 		this.setSize(new Dimension(1150,500));
-		//this.setResizable(false);
 		this.setMaximumSize(new Dimension(1150,500));
 		this.setMinimumSize(new Dimension(1150,500));
 		this.setVisible(true);
@@ -63,8 +57,6 @@ public class GuiMain extends JFrame{
 		
 		TellerContainer tCont = new TellerContainer(bs.tellerList);
 		
-		
-		
 	    this.getContentPane().setLayout(new GridBagLayout());
 	    c.fill = GridBagConstraints.VERTICAL;
 		c.anchor = GridBagConstraints.NORTHWEST;
@@ -83,15 +75,10 @@ public class GuiMain extends JFrame{
 		c.weightx=0.1;
 		c.gridwidth = 1;
 		this.getContentPane().add(new CustomerCallingGui(bs),c);
-		
-		
-	
-		//holderPanel.add(tCont, c);
+
 		
 		ClockDisplay clock = new ClockDisplay(bs.getTimer(), bs.getQueue(), bs.getOCQueue());
 		c.gridx = 3;
-		
-		//c.gridy++;
 		c.weightx = 0.1;
 		c.gridwidth = 1;
 		this.getContentPane().add(clock,c);
@@ -113,7 +100,6 @@ public class GuiMain extends JFrame{
 		c.gridx = 2;
 		c.gridy = 1;
 		c.weightx = 0.4;
-		//TODO Fix this
 		this.getContentPane().add(new StatisticsDisplay(bs),c);
 		
 		
@@ -124,7 +110,5 @@ public class GuiMain extends JFrame{
 		c.weighty = 0.8;
 		this.getContentPane().add(ocqList,c);
 		this.pack();
-	
-		
 	}
 }
