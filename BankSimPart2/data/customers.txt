@@ -18,3 +18,8 @@ Mary::Christmas::13 North Pole
 Polly::Ester::6 Church Street
 Tad::Pohl::3 Pond Lane
 Warren::Peace::4 Paper Key Street
+David::Hall::56 Another Street::60016
+Mary::Hall::56 Another Street::60016
+Angela::Malone::23 Dream Street::60017::60018
+Harry::Malone::23 Dream Street::60018::60019
+Sergio::Gonzales::118 Warm Street::60020

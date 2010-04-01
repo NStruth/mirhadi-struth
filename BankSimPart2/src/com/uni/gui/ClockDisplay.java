@@ -41,7 +41,10 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 	{
 		this.setLayout(new BorderLayout());
 		
-		this.add(new JLabel("Time"), BorderLayout.NORTH);
+		JLabel timeHeader = new JLabel("Time");
+		timeHeader.setFont(GuiMain.HEADER_FONT);
+		
+		this.add(timeHeader, BorderLayout.NORTH);
 		
 		if(Statistics.CURRENT_HOUR < 10)	
 			clock = new JLabel("0"+Statistics.CURRENT_HOUR+":00");

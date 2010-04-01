@@ -113,7 +113,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		closeButton.setPreferredSize(new Dimension(120,30));
 		disableClose.setPreferredSize(new Dimension(120,30));
 		
-		if(!Statistics.FIRST_RUN ){
+		if(!Statistics.RUN_ONCE ){
 		
 			startButton.setEnabled(true);
 			closeButton.setEnabled(false);
@@ -152,7 +152,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 			resetButton.setEnabled(false);
 			disableClose.setEnabled(false);
 			
-			Statistics.FIRST_RUN = true;
+			Statistics.RUN_ONCE = true;
 			
 			System.out.println("CLICK");
 		}

@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import Observation.Observer;
 
 import com.uni.Teller.Teller;
+import com.uni.main.Statistics;
 
 public class TellerGui extends JPanel implements Observer, ActionListener{
  
@@ -38,25 +39,20 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 	private JLabel statusLabel = new JLabel("Status:");
 	private JLabel statusText = new JLabel(" --- ");
 	
-	
 	private GridBagLayout gbl;
 	private GridBagConstraints c;
 	private JButton open;
 	private JButton close;
 	
-	
 	public TellerGui(Teller t){
 		
 		this.setLayout(new BorderLayout());
-		
 		
 		gbl = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(gbl);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.teller = t;
-		//this.add(hPanel, BorderLayout.NORTH);		
-		//this.add(new JLabel("Test"), BorderLayout.CENTER);
 		
 		t.registerObserver(this);
 		this.setPreferredSize(new Dimension(300,150));
@@ -75,10 +71,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		}
 		status.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
-		
-		
-		//
-		//c.insets = new Insets(2,2,2,2);
+
 		c.fill = GridBagConstraints.VERTICAL;
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 		c.gridx = 0;
@@ -207,6 +200,10 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			status.setText("Closed");
 			status.setForeground(Color.RED);
 		}
+		
+		
+		
+		
 	}
 	
 	

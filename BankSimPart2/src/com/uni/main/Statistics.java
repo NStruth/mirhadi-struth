@@ -48,7 +48,7 @@ public class Statistics {
 	
 	public static boolean CLOSED = false;
 	public static boolean STOP = false;
-	public static boolean FIRST_RUN = false;
+	public static boolean RUN_ONCE = false;
 
 	
 	public static void reset(){
@@ -88,6 +88,7 @@ public class Statistics {
 		
 		CLOSED = false;
 		STOP = false;
+		RUN_ONCE = false;
 	}
 	
 	

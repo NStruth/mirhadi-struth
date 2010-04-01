@@ -3,6 +3,7 @@ package com.uni.gui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -32,7 +33,11 @@ public class TellerContainer extends JPanel{
 		for(Teller t: tList){
 			hPanel.add(new TellerGui(t));
 		}
-		this.add(new JLabel("Tellers"), BorderLayout.NORTH);
+		
+		JLabel tLable = new JLabel("Tellers");
+		tLable.setFont(GuiMain.HEADER_FONT);
+		
+		this.add(tLable, BorderLayout.NORTH);
 		this.add(hPanel, BorderLayout.CENTER);
 		this.setMinimumSize(new Dimension(900,200));
 		//this.setMaximumSize(new Dimension(800,400));*/
