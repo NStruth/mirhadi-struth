@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A class that represents a customer at the bank.
  * A customer has a first name, a last name, an address
