@@ -85,7 +85,8 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c.gridy = 0;
 		c.weightx = 0.2;
 		c.weighty = 1.0;
-		c.gridwidth = 1;
+		c.gridwidth = 2;
+		this.add(serving,c);
 		
 		Font f = this.getFont();
 		FontMetrics fM = this.getFontMetrics(f);

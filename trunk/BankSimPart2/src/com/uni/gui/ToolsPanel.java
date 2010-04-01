@@ -2,6 +2,7 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -86,7 +87,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		clockSlider.setPreferredSize(new Dimension(450,20));
 		this.add(cPanel);
 
-		
+		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
 		
 		startButton = new JButton("Start Simulation");
 		
@@ -127,11 +128,16 @@ public class ToolsPanel extends JPanel implements ActionListener {
 			disableClose.setEnabled(false);
 		}
 		
-		this.add(startButton);
-		this.add(pauseButton);
-		this.add(resetButton);
-		this.add(closeButton);
-		this.add(disableClose);
+		JButton nullButton = new JButton("null");
+		nullButton.setVisible(false);
+		
+		buttonPanel.add(startButton);
+		buttonPanel.add(pauseButton);
+		buttonPanel.add(resetButton);
+		buttonPanel.add(closeButton);
+		buttonPanel.add(new JLabel(""));
+		buttonPanel.add(disableClose);
+		this.add(buttonPanel);
 	}
 	
 	@Override
