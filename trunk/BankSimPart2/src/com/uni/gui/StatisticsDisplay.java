@@ -1,3 +1,15 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * A panel which displays running statistics for this
+ * bank simulation.  Values are taken from the statistics class
+ * and prompted by observing the teller subject.
+ * 
+ * Also provides a button to view the log file.
+ */
 package com.uni.gui;
 
 import java.awt.BorderLayout;
@@ -39,6 +51,7 @@ public class StatisticsDisplay extends JPanel implements Observation.Observer, A
 	
 	/**
 	 * Constructor for this gui
+	 * @param bs the bank simulator
 	 */
 	public StatisticsDisplay(BankSimulator bs){
 		super();
@@ -54,6 +67,9 @@ public class StatisticsDisplay extends JPanel implements Observation.Observer, A
 		initComponents();
 	}
 
+	/**
+	 * Initialise the components for this panel
+	 */
 	private void initComponents() {
 		
 		JButton logButton = new JButton("View Log");

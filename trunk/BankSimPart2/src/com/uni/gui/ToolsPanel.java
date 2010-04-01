@@ -1,3 +1,20 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * Stores tools allowing interaction from the user.
+ * These are:
+ * 	Slider for teller sped
+ * 	Slider for queue speed
+ * 	Slider for overall speed factor
+ * 	Start/Resume Simulation
+ * 	Pause Simualtion
+ * 	Override bank close - i.e close bank early
+ * 	Disable bank close - re open bank
+ * 
+ */
 package com.uni.gui;
 
 import java.awt.BorderLayout;
@@ -32,40 +49,19 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	}
 	
 	public void initComponents(){
+		/* Use a vertical box layout */
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		//this.add(new JLabel("Tools"), BorderLayout.NORTH);
 		this.setPreferredSize(new Dimension(450, 400));
-		// Teller Slider
-		JPanel tPanel = new JPanel();
-		tPanel.setLayout(new BorderLayout());
 		
-		tPanel.add(new JLabel("Teller"), BorderLayout.NORTH);
-		tPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider tellerSlider = new JSlider(1, 200);
-		tellerSlider.setMajorTickSpacing(10);
-		tellerSlider.setMinorTickSpacing(10);
-		tellerSlider.setPaintTicks(true);
-		tellerSlider.setSnapToTicks(true);
-		tellerSlider.addChangeListener(new TellerListener());
-		tPanel.add(tellerSlider);
-		tPanel.add(new JLabel("Slow"), BorderLayout.EAST);
-		this.add(tPanel);
+		// Teller Slider
+		MySlider tSlider = new MySlider("Teller", "Fast", "Slow", 200, 10, 10);
+		tSlider.setChangeListener(new TellerListener());
+		this.add(tSlider);
 		
 		// Queue Slider
-		JPanel qPanel = new JPanel();
-		qPanel.setLayout(new BorderLayout());
-		
-		qPanel.add(new JLabel("Queue"), BorderLayout.NORTH);
-		qPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider queueSlider = new JSlider(1, 200);
-		queueSlider.setMajorTickSpacing(10);
-		queueSlider.setMinorTickSpacing(10);
-		queueSlider.setPaintTicks(true);
-		queueSlider.setSnapToTicks(true);
-		queueSlider.addChangeListener(new QueueListener());
-		qPanel.add(queueSlider);
-		qPanel.add(new JLabel("Slow"), BorderLayout.EAST);
-		this.add(qPanel);
+		MySlider qSlider = new MySlider("Queue", "Fast", "Slow", 200, 10, 10);
+		qSlider.setChangeListener(new QueueListener());
+		this.add(qSlider);
 		
 		//Clock Panel
 		JPanel cPanel = new JPanel();
@@ -84,6 +80,10 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		cPanel.setPreferredSize(new Dimension(450,20));
 		clockSlider.setPreferredSize(new Dimension(450,20));
 		this.add(cPanel);
+		
+		//MySlider cSlider = new MySlider("Clock", "Fast", "Slow", 200, 10, 10);
+		//cSlider.setChangeListener(new ClockListener());
+		//this.add(cSlider);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
 		
