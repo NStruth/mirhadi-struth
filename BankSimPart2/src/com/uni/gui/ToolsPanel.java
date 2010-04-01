@@ -64,26 +64,9 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		this.add(qSlider);
 		
 		//Clock Panel
-		JPanel cPanel = new JPanel();
-		cPanel.setLayout(new BorderLayout());
-		
-		cPanel.add(new JLabel("Clock"), BorderLayout.NORTH);
-		cPanel.add(new JLabel("Fast"), BorderLayout.WEST);
-		JSlider clockSlider = new JSlider(1, 20);
-		clockSlider.setMajorTickSpacing(1);
-		clockSlider.setMinorTickSpacing(1);
-		clockSlider.setPaintTicks(true);
-		clockSlider.setSnapToTicks(true);
-		clockSlider.addChangeListener(new ClockListener());
-		cPanel.add(clockSlider);
-		cPanel.add(new JLabel("Slow"), BorderLayout.EAST);
-		cPanel.setPreferredSize(new Dimension(450,20));
-		clockSlider.setPreferredSize(new Dimension(450,20));
-		this.add(cPanel);
-		
-		//MySlider cSlider = new MySlider("Clock", "Fast", "Slow", 200, 10, 10);
-		//cSlider.setChangeListener(new ClockListener());
-		//this.add(cSlider);
+		MySlider cSlider = new MySlider("Clock", "Fast", "Slow", 20, 1, 1);
+		cSlider.setChangeListener(new ClockListener());
+		this.add(cSlider);
 
 		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
 		
@@ -201,6 +184,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		JSlider source = (JSlider)e.getSource();
 		if (!source.getValueIsAdjusting()) {
 			Statistics.SIMULATION_SPEED_FACTOR = (int)source.getValue();
+			System.out.println(Statistics.SIMULATION_SPEED_FACTOR);
 			}    
 	    }
 	}
