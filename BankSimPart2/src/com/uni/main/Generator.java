@@ -2,11 +2,13 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * This class will randomly generate a queue from a list of customers.
  * 
  * Some rules are employed to ensure sensible(ish) transactions
+ * 
+ * Updated to include the observer pattern and to allow multi-threading 
  */
 
 package com.uni.main;
