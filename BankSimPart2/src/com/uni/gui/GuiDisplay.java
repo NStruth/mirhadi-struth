@@ -24,7 +24,6 @@ import javax.swing.SpringLayout;
 
 import Observation.Observer;
 
-import com.uni.Teller.Teller;
 import com.uni.main.BankSimulator;
 import com.uni.main.Statistics;
 

@@ -7,7 +7,6 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,7 +19,6 @@ import javax.swing.JTextArea;
 import Observation.Observer;
 
 import com.uni.Teller.Teller;
-import com.uni.main.Statistics;
 
 public class TellerGui extends JPanel implements Observer, ActionListener{
  

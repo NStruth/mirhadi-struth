@@ -96,97 +96,12 @@ Printing account list
 
 SIMULATION STARTED
 SIMULATION STARTED
-SIMULATION STARTED
-
-
- *** Processing deposit transaction *** 
-
-Customer: Frank Sauzee No: 1002 AccountNo:60003
-Deposit: £64.91 New Balance: £665.01
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Jon Mirhadi No: 1001 AccountNo:60003
-	
-
- *** Processing withdraw transaction *** 
-
-Withdraw: £600.10 New Balance: £64.91
-Customer: Jon Mirhadi No: 1001 AccountNo:60003
-Successfully removed	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
-
-SIMULATION STARTED
-
-
- *** Processing deposit transaction *** 
-
-Customer: Neil Struth No: 1004 AccountNo:60002
-Deposit: £251.31 New Balance: £751.54
-
- *** End of deposit transaction *** 
-
 
 
  *** Processing withdraw transaction *** 
 
-Customer: Angela Malone No: 1003 AccountNo:60017
-Withdraw: £137.48 New Balance: £312.52
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing close transaction ** 
-
-Customer: Frank Sauzee No: 1002 AccountNo:60003
-	
-
- *** Processing withdraw transaction *** 
-
-Sorry that account doesn't exist	
- *** End of withdraw transaction *** 
-
- *** End of close transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Eric Blair No: 1006 AccountNo:60021
-
- *** End of open transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Neil Struth No: 1004 AccountNo:60001
-Deposit: £81.52 New Balance: £1081.71
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Chris Cross No: 1005 AccountNo:60012
-Withdraw: £17.29 New Balance: £172.92
-
- *** End of withdraw transaction *** 
-
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Chris Cross No: 1005 AccountNo:60012
-Withdraw: £41.48 New Balance: £131.44
+Customer: Gordon Brown No: 1001 AccountNo:60005
+Withdraw: £174.99 New Balance: £825.55
 
  *** End of withdraw transaction *** 
 

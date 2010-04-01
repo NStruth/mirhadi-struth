@@ -10,11 +10,7 @@
 package com.uni.file;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Scanner;
-
-import javax.annotation.Resource;
 
 import com.uni.account.Account;
 import com.uni.account.AccountList;
