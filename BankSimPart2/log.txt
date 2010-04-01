@@ -77,78 +77,35 @@ Printing account list
 SIMULATION STARTED
 
 
- *** Processing open transaction *** 
+ *** Processing deposit transaction *** 
 
-Customer: Frank Sauzee No: 1001 AccountNo:60016
+Customer: Jon Mirhadi No: 1001 AccountNo:60003
+Deposit: £591.90 New Balance: £1192.00
 
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Eric Blair No: 1003 AccountNo:60017
-
- *** End of open transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Eric Blair No: 1003 AccountNo:60018
-
- *** End of open transaction *** 
+ *** End of deposit transaction *** 
 
 
 
  *** Processing withdraw transaction *** 
 
-Customer: Steven Harper No: 1002 AccountNo:60008
-Withdraw: £90.37 New Balance: £1144.19
+Customer: Neil Struth No: 1002 AccountNo:60002
+Withdraw: £112.83 New Balance: £387.40
 
  *** End of withdraw transaction *** 
 
 
 
- *** Processing deposit transaction *** 
+ *** Processing close transaction ** 
 
-Customer: Chris Cross No: 1004 AccountNo:60012
-Deposit: £24.22 New Balance: £214.43
+Customer: Emma Royds No: 1003 AccountNo:60015
+	
 
- *** End of deposit transaction *** 
+ *** Processing withdraw transaction *** 
 
+Withdraw: £836.10 New Balance: £0.00
+Customer: Emma Royds No: 1003 AccountNo:60015
+Successfully removed	
+ *** End of withdraw transaction *** 
 
-
- *** Processing deposit transaction *** 
-
-Customer: Steven Harper No: 1002 AccountNo:60008
-Deposit: £135.06 New Balance: £1279.25
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing open transaction *** 
-
-Customer: Hassanal Bolkiah No: 1005 AccountNo:60019
-
- *** End of open transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Chris Cross No: 1004 AccountNo:60012
-Deposit: £128.24 New Balance: £342.67
-
- *** End of deposit transaction *** 
-
-
-
- *** Processing deposit transaction *** 
-
-Customer: Steven Harper No: 1002 AccountNo:60008
-Deposit: £288.49 New Balance: £1567.74
-
- *** End of deposit transaction *** 
+ *** End of close transaction *** 
 

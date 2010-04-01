@@ -45,6 +45,10 @@ public class BankSimulator {
 	private CustomerList cl;
 
 	private AccountList al;
+
+	private GuiMain gm;
+	
+	private boolean runOnce = false;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -142,7 +146,7 @@ public class BankSimulator {
 		//GuiDisplay gd = new GuiDisplay();
 		
 		//Display the Graphical User Interface
-		GuiMain gm = new GuiMain(this);
+		gm = new GuiMain(this);
 		
 		//startSimulation();
 		//Thread.sleep(10000);
@@ -169,6 +173,13 @@ public class BankSimulator {
 	 * Starts the threads required for the simulation
 	 */
 	public void startSimulation(){
+		
+		if(runOnce){
+			restart();
+		}else{
+			runOnce = true;
+		}
+		
 		for(Teller t: tellerList){
 			t.start();
 		}
@@ -206,12 +217,7 @@ public class BankSimulator {
 	
 	public void pause(){
 
-		if(time.pleaseWait){
-			synchronized (time) { time.pleaseWait = false; time.notify(); } 
-		}else{
-			synchronized (time) { time.pleaseWait = true; } 
-			
-		}
+
 		for(Teller t: tellerList){
 		if(t.pleaseWait){
 			synchronized (t) { t.pleaseWait = false; t.notify(); } 
@@ -226,6 +232,52 @@ public class BankSimulator {
 			synchronized (g) { g.pleaseWait = true; } 
 			
 		}
+		
+		//while()
+		
+		if(time.pleaseWait){
+			synchronized (time) { time.pleaseWait = false; time.notify(); } 
+		}else{
+			synchronized (time) { time.pleaseWait = true; } 
+			
+		}
+		
+		
+		g.done();
+		for(Teller t: tellerList)
+			t.done();
+		time.done();
+		
+		///////////////////////////
+		
+		
+	}
+	
+	private void restart(){
+		//cq = new CustomerQueue();
+		//ocq = new CustomerQueue();
+		
+		//The clock thread for the simulation
+		time = new Timer();
+		
+		g = new Generator(cl, al, cq, ocq);
+		
+		//l.writeMessage("\n\n" + cq.toString());
+		
+		/* Set up the tellers */
+		tellerList = new TellerList();
+		for(int i = 0; i < NUM_OF_TELLERS; i++){
+			teller = new Teller(al, cq, ocq);
+			tellerList.add(teller);
+			
+		}
+		
+		gm.resetComponents();
+	}
+	
+	public void reset(){
+		Statistics.reset();
+		this.restart();
 	}
 	
 	/**
