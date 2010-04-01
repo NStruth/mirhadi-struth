@@ -287,7 +287,4 @@ public class BankSimulator {
 		
 		System.out.println("Simulation Stopped!");
 	}
-	public static void main(String[] args) {
-		0809850042 
-	}
 }
