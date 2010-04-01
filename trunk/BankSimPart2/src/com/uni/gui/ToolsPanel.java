@@ -22,6 +22,8 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	BankSimulator bs;
 	private JButton pauseButton;
 	private JButton resetButton;
+	private JButton startButton;
+	private boolean firstRun = false;
 
 	public ToolsPanel(BankSimulator bs){
 		this.bs = bs;
@@ -86,7 +88,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 
 		
 		
-		JButton startButton = new JButton("Start Simulation");
+		startButton = new JButton("Start Simulation");
 		
 		closeButton = new JButton("Override Bank Open");
 		closeButton.setActionCommand("closeswitch");
@@ -110,6 +112,20 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		closeButton.setPreferredSize(new Dimension(120,30));
 		disableClose.setPreferredSize(new Dimension(120,30));
 		
+		if(!Statistics.FIRST_RUN ){
+		
+			startButton.setEnabled(true);
+			closeButton.setEnabled(false);
+			resetButton.setEnabled(false);
+			disableClose.setEnabled(false);
+			pauseButton.setEnabled(false);
+		}else{
+			pauseButton.setEnabled(true);
+			startButton.setEnabled(false);
+			closeButton.setEnabled(true);
+			resetButton.setEnabled(false);
+			disableClose.setEnabled(false);
+		}
 		
 		this.add(startButton);
 		this.add(pauseButton);
@@ -123,6 +139,15 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		
 		if(arg0.getActionCommand().equals("Start Simulation")){
 			this.bs.startSimulation();
+			pauseButton.setEnabled(true);
+			startButton.setEnabled(false);
+			
+			closeButton.setEnabled(true);
+			resetButton.setEnabled(false);
+			disableClose.setEnabled(false);
+			
+			Statistics.FIRST_RUN = true;
+			
 			System.out.println("CLICK");
 		}
 		if(arg0.getActionCommand().equals("closeswitch"))
@@ -148,6 +173,9 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		
 		if(arg0.getActionCommand().equals("Pause")){
 			bs.pause();
+			pauseButton.setEnabled(false);
+			startButton.setEnabled(true);
+			resetButton.setEnabled(true);
 		}
 		
 		if(arg0.getActionCommand().equals("reset")){
