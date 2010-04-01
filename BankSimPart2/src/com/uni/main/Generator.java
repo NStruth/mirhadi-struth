@@ -39,9 +39,10 @@ public class Generator extends Thread implements Subject{
 	public boolean pleaseWait = false;
 	
 	/**
-	 * Constructor for the random generator
+	 * Constructor when only one Queue in uses
 	 * @param clist the list of customers
-	 * @param alist the list of accounts
+	 * @param alist the list of Accounts
+	 * @param queue the main list of queue items waiting to be served
 	 */
 	public Generator(CustomerList clist, AccountList alist, CustomerQueue queue)
 	{
@@ -50,6 +51,13 @@ public class Generator extends Thread implements Subject{
 		this.queuearr[0] = queue;
 	}
 	
+	/**
+	 * Constructor
+	 * @param clist the list of customers
+	 * @param alist the list of accounts
+	 * @param queue the current queue waiting to be served
+	 * @param openClose the queue items which only have open or close transactions
+	 */
 	public Generator(CustomerList clist, AccountList alist, CustomerQueue queue, CustomerQueue openClose)
 	{
 		this.clist = clist;
@@ -57,17 +65,27 @@ public class Generator extends Thread implements Subject{
 		this.queuearr[0] = queue;
 		this.queuearr[1] = openClose;
 	}
-	
+	 
+	/**
+	 * Constructor from version 1
+	 * @param clist the list of customers
+	 * @param alist the list of accounts
+	 */
 	public Generator(CustomerList clist, AccountList alist)
 	{
 		this.clist = clist;
 		this.aList = alist;
 	}
 	
+	/**
+	 * Stops this thread
+	 */
 	public void done()
 	{
 		stopThread = true;
 	}
+	
+	
 	/**
 	 * Generate a single item
 	 * @return the queue item
@@ -275,11 +293,21 @@ public class Generator extends Thread implements Subject{
 		return new Transaction(Transaction.Choices.CLOSE, accId);
 	}
 
-	
+	/**
+	 * Generate a withdraw transaction
+	 * @param c the customer who is making the transaction
+	 * @param accId the id of the account the customer wishes to withdraw from
+	 * @return
+	 */
 	private Transaction generateWithdraw(Customer c, int accId ){
 		return new Transaction(Transaction.Choices.WITHDRAW, getWithdrawAmount(c, accId), accId);
 	}
 	
+	/**
+	 * Generates a QueueItem and adds it to the appropriate queue
+	 * Continuously generates items until the simulation is stopped
+	 */
+	@Override
 	public void run()
 	{
 		while(!stopThread){
@@ -292,16 +320,23 @@ public class Generator extends Thread implements Subject{
 				} 
 			
 			try{
+				//If the bank has not been closed manually
 				if(!Statistics.MANUAL_CLOSE_OVERRIDE){
+					//Checks the bank is open
 					if(Statistics.CURRENT_HOUR >= Statistics.OPEN_TIME 
 							&& Statistics.CURRENT_HOUR < Statistics.CLOSE_TIME)
 					{
+						//Generate queue item
 						QueueItem temp = generateItem();
+						//if the transaction only contains open or close add it to the open/close queue
 						if(temp.getTransactions().containsOnlyOpenClose() && !queuearr[1].customerInQueue(temp.getCustomer()))
 							queuearr[1].add(temp);
 						else
+							//else add it to the main queue
 							queuearr[0].add(temp);
+						//Update all observers with new data
 						notifyObservers();
+						//Globals to control the queue speed
 						Thread.sleep(Statistics.GENERATOR_SPEED * Statistics.SIMULATION_SPEED_FACTOR);
 					}
 					else
