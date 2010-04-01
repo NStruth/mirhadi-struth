@@ -1,11 +1,21 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * Provides a container to display the tellers.
+ * Tellers themselves are controlled by the TellerGui class
+ * which are created in this class from a list of tellers
+ * provided by the BankSimulator.
+ * 
+ */
 package com.uni.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,7 +24,6 @@ import com.uni.Teller.TellerList;
 
 public class TellerContainer extends JPanel{
 
-	private TellerList tList;
 	private JPanel hPanel;
 	
 	/**
@@ -23,17 +32,14 @@ public class TellerContainer extends JPanel{
 	 * @param tList the list of tellers
 	 */
 	public TellerContainer(TellerList tList){
-		
-		
-		//this.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
-		
+		//set the layout		
 		this.setLayout(new BorderLayout());
 		
 		//use a grid layout panel to hold the tellers
 		GridLayout gLayout = new GridLayout(1,3);
 		hPanel = new JPanel();
 		hPanel.setLayout(gLayout);
-		this.tList = tList;
+		
 		for(Teller t: tList){
 			hPanel.add(new TellerGui(t));
 		}
