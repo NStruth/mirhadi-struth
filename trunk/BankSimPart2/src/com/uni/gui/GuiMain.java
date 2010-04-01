@@ -2,6 +2,7 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -18,6 +19,8 @@ public class GuiMain extends JFrame{
 	private JPanel parent;
 	BankSimulator bs;
 	private GridBagConstraints c;
+	
+	public static Font HEADER_FONT;
 	
 	
 	public GuiMain(BankSimulator bs){
@@ -55,9 +58,12 @@ public class GuiMain extends JFrame{
 	
 	private void initComponents(){
 	
+		HEADER_FONT = this.getFont();
+		HEADER_FONT = HEADER_FONT.deriveFont(new Float(20));
+		
 		TellerContainer tCont = new TellerContainer(bs.tellerList);
 		
-
+		
 		
 	    this.getContentPane().setLayout(new GridBagLayout());
 	    c.fill = GridBagConstraints.VERTICAL;
