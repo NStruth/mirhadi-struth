@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A class to store a transaction.
  * Transaction possibilities are selected from an enumerator.

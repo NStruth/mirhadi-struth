@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * Extends ArrayList to store a list of accounts with
  * account specific methods e.g. open/close account

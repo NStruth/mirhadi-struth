@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * Extends ArrayList to store a list of transactions 
  * (as a customer may have more than one request).
@@ -66,6 +66,12 @@ public class TransactionList extends ArrayList<Transaction> {
 		}
 	}
 	
+	
+	/**
+	 * Check if list contains only open or close transactions
+	 * 
+	 * @return true if list contains only open or close
+	 */
 	public boolean containsOnlyOpenClose()
 	{
 		boolean valid = true;
