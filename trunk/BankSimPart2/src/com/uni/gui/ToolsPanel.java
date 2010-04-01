@@ -10,14 +10,13 @@
  * 	Slider for queue speed
  * 	Slider for overall speed factor
  * 	Start/Resume Simulation
- * 	Pause Simualtion
+ * 	Pause Simulation
  * 	Override bank close - i.e close bank early
  * 	Disable bank close - re open bank
  * 
  */
 package com.uni.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

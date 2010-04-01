@@ -2,7 +2,6 @@ package com.uni.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
