@@ -11,6 +11,10 @@ package com.uni.main;
 
 public class Statistics {
 
+	public static final boolean IS_JAR = false;
+	
+	public static final String afilename = "data/accounts.txt"; //account file name
+	public static final String cfilename = "data/customers.txt"; //customer file name
 	
 	public static int TRANSACTION_TOTAL = 0;
 	public static int CUSTOMERS_SERVED = 0;

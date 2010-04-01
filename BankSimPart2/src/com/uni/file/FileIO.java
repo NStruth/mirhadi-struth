@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A class to handle File input and output for accounts
  * and customers.
@@ -10,23 +10,23 @@
 package com.uni.file;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Scanner;
 
 import com.uni.account.Account;
 import com.uni.account.AccountList;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
+import com.uni.main.Statistics;
 
 public class FileIO {
 	
 	private String afilename = "data/accounts.txt"; //account file name
 	private String cfilename = "data/customers.txt"; //customer file name
-	private static FileIO instance;
+	private Scanner scanner;
 	
 	/**
 	 * Constructor
-	 * @param afilename the account file name
-	 * @param cfilename the customer file name
 	 */
 	public FileIO()
 	{}
@@ -40,8 +40,17 @@ public class FileIO {
 	{
 		try
 		{
-			File file = new File(afilename); // Non Jar
-			Scanner scanner = new Scanner(file); //Non Jar
+			Scanner scanner;
+			if(Statistics.IS_JAR){
+				InputStream in = getClass().getResourceAsStream
+				  ("/" + afilename);
+				  scanner = new Scanner(in);
+			}else{
+				File file = new File(afilename); // Non Jar
+				scanner = new Scanner(file); //Non Jar
+
+			}
+			
 			//User below for JAR setup
 			//InputStream in = getClass().getResourceAsStream
 			  //(afilename);
@@ -85,11 +94,16 @@ public class FileIO {
 	public CustomerList readCustomerLines()
 	{
 		try{
-			File file = new File(cfilename);//REMOVE
-			Scanner scanner = new Scanner(file);//REMOVE
-			/*InputStream in = getClass().getResourceAsStream
-			  (cfilename);
-			  Scanner scanner = new Scanner(in);*/
+			if(Statistics.IS_JAR){
+				InputStream in = getClass().getResourceAsStream
+				  (cfilename);
+				  scanner = new Scanner(in);
+			}else{
+				File file = new File(cfilename);//REMOVE
+				scanner = new Scanner(file);//REMOVE
+			}
+
+
 			CustomerList cList = new CustomerList();
 			scanner.useDelimiter("\n");
 			while(scanner.hasNext())

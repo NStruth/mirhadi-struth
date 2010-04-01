@@ -94,14 +94,3 @@ Printing account list
 60019 : £980.00
 60020 : £1000000.00
 
-SIMULATION STARTED
-SIMULATION STARTED
-
-
- *** Processing withdraw transaction *** 
-
-Customer: Gordon Brown No: 1001 AccountNo:60005
-Withdraw: £174.99 New Balance: £825.55
-
- *** End of withdraw transaction *** 
-

@@ -17,6 +17,7 @@ import com.uni.main.Timer;
 import com.uni.queue.CustomerQueue;
 
 
+
 public class ClockDisplay extends JPanel implements Observation.Observer, ActionListener{
 	
 	private JLabel clock;
@@ -37,15 +38,19 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 	}
 	
 
+	/**
+	 * Initialise the components for this clock
+	 */
 	public void initComponents()
 	{
+		//some layout stuff
 		this.setLayout(new BorderLayout());
-		
+		//add a header
 		JLabel timeHeader = new JLabel("Time");
 		timeHeader.setFont(GuiMain.HEADER_FONT);
-		
 		this.add(timeHeader, BorderLayout.NORTH);
 		
+		//Format the clock to 24 hour
 		if(Statistics.CURRENT_HOUR < 10)	
 			clock = new JLabel("0"+Statistics.CURRENT_HOUR+":00");
 		else
@@ -60,6 +65,7 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 		clock.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.add(clock, BorderLayout.CENTER);
 		
+		//add a skip button to "skip" the night
 		skipTimeButton = new JButton("Skip");
 		skipTimeButton.setEnabled(false);
 		skipTimeButton.setActionCommand("skip");
@@ -68,6 +74,10 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 		
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see Observation.Observer#update()
+	 */
 	public void update() {
 		
 		String mins = "";
@@ -98,10 +108,12 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 	}
 
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("CLICK");
+		//change the time to tomorrow morning
 		if(e.getActionCommand().equals("skip")){
 			Statistics.CURRENT_HOUR = Statistics.OPEN_TIME;
 			Statistics.CURRENT_MIN = 0;
