@@ -47,8 +47,14 @@ public class GuiMain extends JFrame{
 		
 	}
 	
+	public void resetComponents(){
+		this.getContentPane().removeAll();
+		this.repaint();
+		this.initComponents();
+	}
 	
 	private void initComponents(){
+	
 		TellerContainer tCont = new TellerContainer(bs.tellerList);
 		
 
@@ -112,8 +118,7 @@ public class GuiMain extends JFrame{
 		c.weighty = 0.8;
 		this.getContentPane().add(ocqList,c);
 		this.pack();
-		
-		
+	
 		
 	}
 }

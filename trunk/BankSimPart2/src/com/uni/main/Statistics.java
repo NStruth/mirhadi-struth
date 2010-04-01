@@ -26,8 +26,8 @@ public class Statistics {
 	public static int last_customer = 1001;
 	
 	//
-	public static final int OPEN_TIME = 9;
-	public static final int CLOSE_TIME = 17;
+	public static int OPEN_TIME = 9;
+	public static int CLOSE_TIME = 17;
 	//
 	
 	public static boolean MANUAL_CLOSE_OVERRIDE = true; //0 for false
@@ -49,6 +49,47 @@ public class Statistics {
 	public static boolean CLOSED = false;
 	public static boolean STOP = false;
 
+	
+	public static void reset(){
+		TRANSACTION_TOTAL = 0;
+		CUSTOMERS_SERVED = 0;
+		
+		ACCOUNTS_OPENED = 0;
+		ACCOUNTS_CLOSED = 0;
+		ACCOUNT_WITHDRAW = 0;
+		ACCOUNT_DEPOSIT = 0;
+		
+		TOTALS_WITHDRAW = 0;
+		TOTALS_DEPOSTIT = 0;
+		
+		last_customer = 1001;
+		
+		//
+		OPEN_TIME = 9;
+		CLOSE_TIME = 17;
+		//
+		
+		MANUAL_CLOSE_OVERRIDE = true; //0 for false
+		
+		
+		MINUTE_VAL = 10;
+		HOUR_VAL = 60 * MINUTE_VAL;
+		
+		CURRENT_HOUR = 9;
+		CURRENT_MIN = 0;
+		
+		SIMULATION_SPEED_FACTOR = 10;
+		
+		SIMULATION_SPEED = 1000;
+		GENERATOR_SPEED = 100;
+		TELLER_SPEED = 100;
+		CLOCK_SPEED = 25;
+		
+		CLOSED = false;
+		STOP = false;
+	}
+	
+	
 	/**
 	 * @param value the value to display
 	 * @return the value as a string in the format £##.##
