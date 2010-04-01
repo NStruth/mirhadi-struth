@@ -96,11 +96,11 @@ public class FileIO {
 		try{
 			if(Statistics.IS_JAR){
 				InputStream in = getClass().getResourceAsStream
-				  (cfilename);
+				  ("/" + cfilename);
 				  scanner = new Scanner(in);
 			}else{
-				File file = new File(cfilename);//REMOVE
-				scanner = new Scanner(file);//REMOVE
+				File file = new File(cfilename);
+				scanner = new Scanner(file);
 			}
 
 
