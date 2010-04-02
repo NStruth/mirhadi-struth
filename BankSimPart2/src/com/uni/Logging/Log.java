@@ -71,4 +71,22 @@ public class Log {
 		}
 		
 	}	
+	
+	/**
+	 * Write the summary to file
+	 * @param message the message to be written to the summary file
+	 */
+	public void writeSummary(String message){
+		//System.out.println(message);
+		try{
+			BufferedWriter writer = new BufferedWriter(new FileWriter("Summary.txt"));
+			writer.write(message + '\n');
+			writer.close();
+			}
+		catch (IOException e)
+		{
+			System.out.println("IO ERROR : " + e.getMessage());
+		}
+		
+	}	
 }
