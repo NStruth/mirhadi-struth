@@ -58,18 +58,10 @@ public class SummaryList extends ArrayList<Summary> {
 			}
 		}
 		
-		retV += "\n*******************\n";
-		retV+= "Customer Name:" + c.getFullName();
-		retV+="Total transactions:" +transactions + "\n";
-		retV+="\nTotal deposits:" + deposits + "\n";
-		retV+="Deposit amount:" + totalDeposited + "\n";
-		retV+="\nTotal withdraws:" + withdraws + "\n";
-		retV+="Withdraw amount:" + totalWithdrawn + "\n";
-		retV+="\nAccounts Opened:" + opened + "\n";
-		retV+="\nAccounts Closed:" + closed + "\n";
-		retV+="\n*******************\n";
+		retV = formatStat("Customer Name:" + c.getFullName(), transactions, deposits, totalDeposited,
+				withdraws, totalWithdrawn, closed, closed); 
 		
-		return "";
+		return retV;
 	}
 	
 	public String getTellerStats(Teller t){
@@ -97,18 +89,26 @@ public class SummaryList extends ArrayList<Summary> {
 					closed++;
 			}
 		}
+	
+		retV = formatStat("Teller id:" + t.getIdent(), transactions, deposits, totalDeposited,
+				withdraws, totalWithdrawn, closed, closed); 
+		return retV;
+
+	}
+	
+	public String formatStat(String firstLine, int transactions, int deposits, int totalDeposited,
+			int withdraws, int totalWithdrawn, int opened, int closed){
+		String retV = "";
 		retV += "\n*******************\n";
-		retV+= "Teller id:" + t.getIdent();
-		retV+="Total transactions:" +transactions + "\n";
+		retV +="\n" + firstLine + "\n";
+		retV+="\nTotal transactions:" +transactions + "\n";
 		retV+="\nTotal deposits:" + deposits + "\n";
-		retV+="Deposit amount:" + totalDeposited + "\n";
+		retV+="Deposit amount:" + Statistics.toPoundsAndPence(totalDeposited) + "\n";
 		retV+="\nTotal withdraws:" + withdraws + "\n";
-		retV+="Withdraw amount:" + totalWithdrawn + "\n";
+		retV+="Withdraw amount:" + Statistics.toPoundsAndPence(totalWithdrawn) + "\n";
 		retV+="\nAccounts Opened:" + opened + "\n";
 		retV+="\nAccounts Closed:" + closed + "\n";
 		retV+="\n*******************\n";
-		
 		return retV;
-
 	}
 }
