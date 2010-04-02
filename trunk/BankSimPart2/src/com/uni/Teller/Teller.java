@@ -303,8 +303,6 @@ public class Teller extends Thread implements Subject{
 		return transactionType;
 	}
 	
-	public int
-	
 	private String doWithdraw(int acNo, int value, boolean clear){
 		Account ac;
 		String message;
