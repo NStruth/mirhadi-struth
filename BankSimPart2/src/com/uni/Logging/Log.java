@@ -70,5 +70,5 @@ public class Log {
 			System.out.println("IO ERROR : " + e.getMessage());
 		}
 		
-	}
+	}	
 }
