@@ -189,8 +189,9 @@ public class ToolsPanel extends JPanel implements ActionListener {
 
 				int value = ((Integer)optionPane.getValue()).intValue();
 				if (value == JOptionPane.YES_OPTION) {
-					bs.reset();
 					bs.writeSummary();
+					bs.reset();
+					
 				} else if (value == JOptionPane.NO_OPTION) {
 					bs.reset();
 				}
