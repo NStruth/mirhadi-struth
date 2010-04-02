@@ -74,7 +74,8 @@ public class ToolsPanel extends JPanel implements ActionListener {
 
 		buttonPanel = new JPanel(new GridLayout(0,2));
 		
-		startButton = new JButton("Start Simulation");
+		startButton = new JButton("Start/Resume Simulation");
+		startButton.setActionCommand("Start Simulation");
 		
 		closeButton = new JButton("Override Bank Open");
 		closeButton.setActionCommand("closeswitch");
