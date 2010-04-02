@@ -45,5 +45,38 @@ public class SummaryList extends ArrayList<Summary> {
 				}
 		return Statistics.toPoundsAndPence(withdraw);
 	}
+	
+	public String getTotalDeposited(Customer c)
+	{
+		int deposited = 0;
+		for(Summary s: this)
+			if(s.getC() == c && s.getType() == Choices.DEPOSIT)
+			{
+				deposited += s.getAmount();
+			}
+		return Statistics.toPoundsAndPence(deposited);
+	}
+	
+	public String getTotalOpen(Customer c)
+	{
+		int open = 0;
+		for(Summary s: this)
+			if(s.getC() == c && s.getType() == Choices.OPEN)
+			{
+				open++;
+			}
+		return "Total Opened = "+open;
+	}
+	
+	public String getTotalClosed(Customer c)
+	{
+		int closed = 0;
+		for(Summary s: this)
+			if(s.getC() == c && s.getType() == Choices.CLOSE)
+			{
+				closed++;
+			}
+		return "Total Closed = "+closed;
+	}
 
 }
