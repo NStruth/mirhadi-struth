@@ -29,6 +29,8 @@ import com.uni.customer.Customer;
 import com.uni.main.Statistics;
 import com.uni.queue.CustomerQueue;
 import com.uni.queue.QueueItem;
+import com.uni.summary.Summary;
+import com.uni.summary.SummaryList;
 
 public class Teller extends Thread implements Subject{
 	
@@ -50,8 +52,8 @@ public class Teller extends Thread implements Subject{
 	public boolean pleaseWait = false;
 
 	public boolean serving = false ;
-
-		;
+	
+	SummaryList sl = SummaryList.getInstance();
 	
 	/**
 	 * Constructor for the teller.
@@ -99,7 +101,7 @@ public class Teller extends Thread implements Subject{
 			//form a message to write to the log
 			Statistics.TRANSACTION_TOTAL += 1;
 			message = "";
-			
+						
 			int acNo;
 			Account ac;
 			int value; 
@@ -129,6 +131,7 @@ public class Teller extends Thread implements Subject{
 					//int acNumber = cust.getAccountNo(acNo);
 					message += doWithdraw(acNo, value, false);
 					message += Language.WITHDRAW_END;
+					sl.add(new Summary(cust,this,t.getChoice(),t.getPrimaryAux()));
 					
 					break;
 				case DEPOSIT:
@@ -154,7 +157,7 @@ public class Teller extends Thread implements Subject{
 							//deposit the value
 						Statistics.TOTALS_DEPOSTIT += value; //update stats
 						message += Language.DepositInfo(value, ac.getBalance()); 
-						
+						sl.add(new Summary(cust,this,t.getChoice(),t.getPrimaryAux()));
 						
 						
 						
@@ -183,6 +186,7 @@ public class Teller extends Thread implements Subject{
 					cust.addAccount(acc.getAccountNumber());
 					message += Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acc.getAccountNumber()+"");
 					message += Language.OPEN_END;
+					sl.add(new Summary(cust,this,t.getChoice(),t.getPrimaryAux()));
 					
 					break;
 				case CLOSE:
@@ -213,6 +217,7 @@ public class Teller extends Thread implements Subject{
 					try{
 						int bal = al.getAccountAtIndex(acNo).getBalance();
 						message += doWithdraw(acNo, bal, true);	
+						sl.add(new Summary(cust,this,Transaction.Choices.WITHDRAW,bal));
 						Statistics.TRANSACTION_TOTAL += 1; //counts as seperate
 						message +=Language.CustomerInfo(cust.getFullName(), q.getCustNo() +"", acNo+"");	
 						if(cust.removeAccount(acId)){
@@ -230,6 +235,7 @@ public class Teller extends Thread implements Subject{
 					message += "\t" + Language.WITHDRAW_END;
 					//message
 					message += Language.CLOSE_END;
+					sl.add(new Summary(cust,this,t.getChoice(),t.getPrimaryAux()));
 					break;
 				}
 				//write the message
