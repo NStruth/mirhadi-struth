@@ -35,6 +35,8 @@ import com.uni.summary.SummaryList;
 public class Teller extends Thread implements Subject{
 	
 	private boolean open = true;
+	private static int master = 2000;
+	private int id;
 	
 	//list of accounts so the teller has access
 	private AccountList al;
@@ -63,6 +65,13 @@ public class Teller extends Thread implements Subject{
 		this.al = al;
 		this.q = q;
 		this.ocq = ocq;
+		master++;
+		this.id = master;
+	}
+	
+	public int getIdent()
+	{
+		return this.id;
 	}
 	
 	public void done()
@@ -293,6 +302,8 @@ public class Teller extends Thread implements Subject{
 	public String getTranType(){
 		return transactionType;
 	}
+	
+	public int
 	
 	private String doWithdraw(int acNo, int value, boolean clear){
 		Account ac;
