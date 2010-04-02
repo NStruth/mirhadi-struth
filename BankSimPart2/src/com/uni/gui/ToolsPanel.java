@@ -21,10 +21,14 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -41,6 +45,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 	private JButton pauseButton;
 	private JButton resetButton;
 	private JButton startButton;
+	private JPanel buttonPanel;
 
 	public ToolsPanel(BankSimulator bs){
 		this.bs = bs;
@@ -67,7 +72,7 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		cSlider.setChangeListener(new ClockListener());
 		this.add(cSlider);
 
-		JPanel buttonPanel = new JPanel(new GridLayout(0,2));
+		buttonPanel = new JPanel(new GridLayout(0,2));
 		
 		startButton = new JButton("Start Simulation");
 		
@@ -157,7 +162,40 @@ public class ToolsPanel extends JPanel implements ActionListener {
 		}
 		
 		if(arg0.getActionCommand().equals("reset")){
-			bs.reset();
+			final JOptionPane optionPane = new JOptionPane(
+	                "Would you like to write these summary stats to a file?\n",
+	                JOptionPane.QUESTION_MESSAGE,
+	                JOptionPane.YES_NO_CANCEL_OPTION);
+			final JDialog dialog = new JDialog();
+			dialog.setModal(true);
+			dialog.setContentPane(optionPane);
+			optionPane.addPropertyChangeListener(
+				    new PropertyChangeListener() {
+				        public void propertyChange(PropertyChangeEvent e) {
+				            String prop = e.getPropertyName();
+
+				            if (dialog.isVisible() 
+				             && (e.getSource() == optionPane)
+				             && (prop.equals(JOptionPane.VALUE_PROPERTY))) {
+				                //If you were going to check something
+				                //before closing the window, you'd do
+				                //it here.
+				                dialog.setVisible(false);
+				            }
+				        }
+				    });
+				dialog.pack();
+				dialog.setVisible(true);
+
+				int value = ((Integer)optionPane.getValue()).intValue();
+				if (value == JOptionPane.YES_OPTION) {
+					bs.reset();
+					//TODO
+					//WRITE stats
+				} else if (value == JOptionPane.NO_OPTION) {
+					bs.reset();
+				}
+			
 		}
 
 	}
