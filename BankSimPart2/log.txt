@@ -99,16 +99,43 @@ SIMULATION STARTED
 
  *** Processing open transaction *** 
 
-Customer: Mary Christmas No: 1002 AccountNo:60021
+Customer: Warren Peace No: 1001 AccountNo:60021
 
  *** End of open transaction *** 
 
 
 
+ *** Processing deposit transaction *** 
+
+Customer: Steven Harper No: 1002 AccountNo:60008
+Deposit: £230.16 New Balance: £1464.72
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Constance Noring No: 1003 AccountNo:60013
+Deposit: £949.04 New Balance: £1188.93
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Steven Harper No: 1002 AccountNo:60008
+Deposit: £912.30 New Balance: £2377.02
+
+ *** End of deposit transaction *** 
+
+
+
  *** Processing withdraw transaction *** 
 
-Customer: Jon Mirhadi No: 1001 AccountNo:60003
-Withdraw: £120.04 New Balance: £480.06
+Customer: Constance Noring No: 1003 AccountNo:60013
+Withdraw: £67.19 New Balance: £1121.74
 
  *** End of withdraw transaction *** 
 
@@ -116,8 +143,8 @@ Withdraw: £120.04 New Balance: £480.06
 
  *** Processing withdraw transaction *** 
 
-Customer: Carlton Banks No: 1003 AccountNo:60010
-Withdraw: £105.57 New Balance: £548.75
+Customer: Sergio Gonzales No: 1004 AccountNo:60020
+Withdraw: £89.83 New Balance: £999910.17
 
  *** End of withdraw transaction *** 
 
@@ -125,8 +152,35 @@ Withdraw: £105.57 New Balance: £548.75
 
  *** Processing deposit transaction *** 
 
-Customer: David Hall No: 1004 AccountNo:60016
-Deposit: £14.31 New Balance: £9014.31
+Customer: Carlton Banks No: 1005 AccountNo:60011
+Deposit: £888.61 New Balance: £1760.73
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Constance Noring No: 1003 AccountNo:60013
+Deposit: £268.65 New Balance: £1390.39
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Sergio Gonzales No: 1004 AccountNo:60020
+Deposit: £950.44 New Balance: £1000860.61
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Barack Obama No: 1007 AccountNo:60004
+Deposit: £49.18 New Balance: £549.48
 
  *** End of deposit transaction *** 
 
@@ -134,7 +188,7 @@ Deposit: £14.31 New Balance: £9014.31
 
  *** Processing open transaction *** 
 
-Customer: Warren Peace No: 1005 AccountNo:60022
+Customer: Emma Royds No: 1008 AccountNo:60022
 
  *** End of open transaction *** 
 
@@ -142,8 +196,8 @@ Customer: Warren Peace No: 1005 AccountNo:60022
 
  *** Processing withdraw transaction *** 
 
-Customer: Carlton Banks No: 1003 AccountNo:60010
-Withdraw: £50.14 New Balance: £498.61
+Customer: Jon Mirhadi No: 1006 AccountNo:60003
+Withdraw: £126.88 New Balance: £473.22
 
  *** End of withdraw transaction *** 
 
@@ -151,17 +205,60 @@ Withdraw: £50.14 New Balance: £498.61
 
  *** Processing withdraw transaction *** 
 
-Customer: David Hall No: 1004 AccountNo:60016
-Withdraw: £101.78 New Balance: £8912.53
+Customer: Jon Mirhadi No: 1006 AccountNo:60003
+Withdraw: £140.99 New Balance: £332.23
 
  *** End of withdraw transaction *** 
 
 
+
+ *** Processing deposit transaction *** 
+
+Customer: Jon Mirhadi No: 1009 AccountNo:60003
+Deposit: £395.05 New Balance: £727.28
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Jon Mirhadi No: 1006 AccountNo:60003
+Deposit: £627.92 New Balance: £1355.20
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Neil Struth No: 1010 AccountNo:60001
+Deposit: £882.18 New Balance: £1882.37
+
+ *** End of deposit transaction *** 
+
+
+
+ *** Processing close transaction ** 
+
+Customer: Al Bundy No: 1011 AccountNo:60010
+	
 
  *** Processing withdraw transaction *** 
 
-Customer: Ian Khama No: 1006 AccountNo:60006
-Withdraw: £24.47 New Balance: £175.55
-
+Withdraw: £654.32 New Balance: £0.00
+Customer: Al Bundy No: 1011 AccountNo:60010
+Successfully removed	
  *** End of withdraw transaction *** 
+
+ *** End of close transaction *** 
+
+
+
+ *** Processing deposit transaction *** 
+
+Customer: Al Bundy No: 1011 AccountNo:60011
+Deposit: £256.23 New Balance: £2016.96
+
+ *** End of deposit transaction *** 
 
