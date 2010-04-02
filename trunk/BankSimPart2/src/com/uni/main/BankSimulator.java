@@ -22,10 +22,12 @@ import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
 import com.uni.Teller.TellerList;
 import com.uni.account.AccountList;
+import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
 import com.uni.gui.GuiMain;
 import com.uni.queue.CustomerQueue;
+import com.uni.summary.SummaryList;
 
 
 public class BankSimulator {
@@ -49,6 +51,8 @@ public class BankSimulator {
 	private GuiMain gm;
 	
 	private boolean runOnce = false;
+
+	private Log l;
 	/**
 	 * The main class for this application
 	 * @param args
@@ -56,7 +60,7 @@ public class BankSimulator {
 	 */
 	public void run() throws InterruptedException {
 		//clear the log file
-		Log l = Log.getInstance();
+		l = Log.getInstance();
 		l.clearLog();
 		
 		//read in list of accounts and customers
@@ -278,6 +282,21 @@ public class BankSimulator {
 	public void reset(){
 		Statistics.reset();
 		this.restart();
+	}
+	
+	public void writeSummary(){
+		SummaryList s = SummaryList.getInstance();
+		
+		String summary = "Teller Summary:\n\n";
+		for(Teller t: tellerList){
+			summary += s.getTellerStats(t);
+		}
+		
+		summary += "Customer Summary: \n\n";
+		for(Customer c: cl)
+			summary += s.getCustomerStats(c);
+		
+		l.writeSummary(summary);
 	}
 	
 	/**
