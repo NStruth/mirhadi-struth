@@ -21,6 +21,9 @@ import com.uni.queue.CustomerQueue;
 
 public class OCQueueGui extends QueueGui {
 	
+	private Color borderColor = Color.RED;
+	private String headerText = "Open or Close";
+	
 	/**
 	 * 
 	 * The constructor for this panel
@@ -31,8 +34,8 @@ public class OCQueueGui extends QueueGui {
 	public OCQueueGui(Generator g, CustomerQueue cq)
 	{
 		super(g, cq);
-		this.header.setText("Open or Close");
-		this.setBorder(BorderFactory.createLineBorder(Color.RED));
+		this.header.setText(headerText);
+		this.setBorder(BorderFactory.createLineBorder(borderColor));
 	}
 	
 }
