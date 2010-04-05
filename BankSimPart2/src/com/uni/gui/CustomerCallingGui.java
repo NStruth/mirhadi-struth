@@ -36,7 +36,7 @@ public class CustomerCallingGui extends JPanel implements Observer {
 	private BankSimulator bs;
 	
 	/**
-	 * Constructo for this gui panel
+	 * Constructor for this gui panel
 	 * @param bs the bank simulator
 	 */
 	public CustomerCallingGui(BankSimulator bs){
