@@ -96,7 +96,7 @@ public class SummaryList extends ArrayList<Summary> {
 
 	}
 	
-	public String formatStat(String firstLine, int transactions, int deposits, int totalDeposited,
+	private String formatStat(String firstLine, int transactions, int deposits, int totalDeposited,
 			int withdraws, int totalWithdrawn, int opened, int closed){
 		String retV = "";
 		retV += "\n*******************\n";
