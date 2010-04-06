@@ -23,6 +23,7 @@ import javax.swing.JTextArea;
 
 public class LogViewer extends JFrame{
 
+	final String FILENAME = "log.txt";
 	/**
 	 * Constructor for this viewer
 	 */
@@ -48,7 +49,7 @@ public class LogViewer extends JFrame{
 	 * @return the log file as a string
 	 */
 	public String readFromFile(){
-		File file = new File("log.txt");
+		File file = new File(FILENAME);
         StringBuffer contents = new StringBuffer();
         BufferedReader reader = null;
 
