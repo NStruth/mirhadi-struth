@@ -1,6 +1,6 @@
 package com.uni.main;
 
-public class Test {
+public class RunSimulator {
 
 	/**
 	 * @param args

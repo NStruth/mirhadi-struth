@@ -32,8 +32,6 @@ import com.uni.main.Statistics;
 import com.uni.main.Timer;
 import com.uni.queue.CustomerQueue;
 
-
-
 public class ClockDisplay extends JPanel implements Observation.Observer, ActionListener{
 	
 	private JLabel clock; //the clock
@@ -82,7 +80,7 @@ public class ClockDisplay extends JPanel implements Observation.Observer, Action
 		else
 			clock = new JLabel(Statistics.CURRENT_HOUR+":00");
 		
-		if(Statistics.HOUR_VAL >= 9 && Statistics.HOUR_VAL <= 17)
+		if(Statistics.CURRENT_HOUR >= 9 && Statistics.CURRENT_HOUR <= 17)
 			clock.setForeground(Color.GREEN);
 		else
 			clock.setForeground(Color.RED);
