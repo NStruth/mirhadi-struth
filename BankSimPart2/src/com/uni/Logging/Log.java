@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * Object which implements the Singleton pattern as we only
  * wish one instance to update the log file.
@@ -17,9 +17,9 @@ import java.io.IOException;
 
 public class Log {
 	
+	//create the instance
 	private static Log instance = new Log();
 	
-
 	//Private constructor
 	private Log()
 	{}

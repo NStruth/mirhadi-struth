@@ -1,3 +1,15 @@
+/**
+ * @author Jon Mirhadi
+ * @author Neil Struth
+ * 
+ * @version 2.0
+ * 
+ * This is essentially a "dumb" gui panel that holds the 
+ * ToolsPanel class component, as well as a header.
+ * 
+ * Were made seperate in anticipation of a expansion
+ * and then remained seperate to keep things clean.
+ */
 package com.uni.gui;
 
 import java.awt.BorderLayout;
@@ -38,8 +50,4 @@ public class UserPanel extends JPanel{
 		this.add(tPanel, BorderLayout.CENTER);
 
 	}
-	
-
-
-
 }

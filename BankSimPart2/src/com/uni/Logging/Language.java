@@ -2,12 +2,15 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * This is a language class to allow easy modification of the words
  * used in the log file.
  * 
  * Contains some static methods for money formatting
+ * 
+ * No changes for version 2.  Static formatting methods are used for GUI 
+ * extension however language is hard coded for the GUI.
  */
 package com.uni.Logging;
 

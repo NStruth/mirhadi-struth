@@ -2,10 +2,13 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A class containing static fields and methods
  * for storing and formatting statistics.
+ * 
+ * Version 2 now includes some additional control values
+ * so not exclusively a "stats" class anymore.
  */
 package com.uni.main;
 
@@ -29,29 +32,32 @@ public class Statistics {
 	
 	public static int last_customer = 1001;
 	
-	//
+	//Bank opening hours
 	public static int OPEN_TIME = 9;
 	public static int CLOSE_TIME = 17;
 	//
 	
 	public static boolean MANUAL_CLOSE_OVERRIDE = true; //0 for false
 	
-	
+	//current time
+	//TODO Check
 	public static long MINUTE_VAL = 10;
 	public static long HOUR_VAL = 60 * MINUTE_VAL;
 	
 	public static int CURRENT_HOUR = 9;
 	public static int CURRENT_MIN = 0;
 	
+	//SPEED CONTROLS
+	//overall factor applied to everything
 	public static int SIMULATION_SPEED_FACTOR = 10;
 	
-	public static int SIMULATION_SPEED = 1000;
-	public static int GENERATOR_SPEED = 100;
-	public static int TELLER_SPEED = 100;
-	public static int CLOCK_SPEED = 25;
+	public static int SIMULATION_SPEED = 1000; //gloabl speed
+	public static int GENERATOR_SPEED = 100; //queue speed
+	public static int TELLER_SPEED = 100; //teller speed
+	public static int CLOCK_SPEED = 25; //how fast time is
 	
 	public static boolean CLOSED = false;
-	public static boolean STOP = false;
+	//has the sim run at least once (to distinguish start/restart)
 	public static boolean RUN_ONCE = false;
 
 	
@@ -91,7 +97,6 @@ public class Statistics {
 		CLOCK_SPEED = 25;
 		
 		CLOSED = false;
-		STOP = false;
 		RUN_ONCE = false;
 	}
 	
