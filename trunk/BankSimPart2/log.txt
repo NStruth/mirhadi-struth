@@ -70,54 +70,22 @@ Sergio Gonzales 118 Warm Street
 
 
 
-State AFTER transactions
-
-Printing account list
-60001 : £1000.19
-60002 : £500.23
-60003 : £600.10
-60004 : £500.30
-60005 : £1000.54
-60006 : £200.02
-60007 : £234.20
-60008 : £1234.56
-60009 : £321.32
-60010 : £654.32
-60011 : £872.12
-60012 : £190.21
-60013 : £239.89
-60014 : £478.29
-60015 : £836.10
-60016 : £9000.00
-60017 : £450.00
-60018 : £200.00
-60019 : £980.00
-60020 : £1000000.00
-
-SIMULATION STARTED
-
-
- *** Processing open transaction *** 
-
-Customer: Warren Peace No: 1002 AccountNo:60021
-
- *** End of open transaction *** 
-
 SIMULATION STARTED
 
 
  *** Processing withdraw transaction *** 
 
-Customer: David Hall No: 1001 AccountNo:60016
-Withdraw: £86.82 New Balance: £8913.18
+Customer: Mary Hall No: 1001 AccountNo:60016
+Withdraw: £37.90 New Balance: £8962.10
 
  *** End of withdraw transaction *** 
 
 
 
- *** Processing open transaction *** 
+ *** Processing withdraw transaction *** 
 
-Customer: Polly Ester No: 1003 AccountNo:60022
+Customer: Mary Hall No: 1001 AccountNo:60016
+Withdraw: £58.50 New Balance: £8903.60
 
- *** End of open transaction *** 
+ *** End of withdraw transaction *** 
 

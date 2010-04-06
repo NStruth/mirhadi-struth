@@ -8,7 +8,7 @@
  * 
  * Some rules are employed to ensure sensible(ish) transactions
  * 
- * Updated to include the observer pattern and to allow multi-threading 
+ * Updated to include the observer pattern and to allow threading 
  */
 
 package com.uni.main;

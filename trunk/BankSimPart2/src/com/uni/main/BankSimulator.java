@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * This is the main class for the BankSimulator.
  * This is based on requirements set out by Monica Farrow for
@@ -14,7 +14,13 @@
  * some with accounts and some without.  A random queue is 
  * generated with each customer containing transactions that 
  * are then processed by a teller.
- * Summary results are then displayed in a basic gui.
+ * 
+ * 
+ * Version 2 expands the initial system by utilising a GUI
+ * giving the user some basic controls and real time data.
+ * The simulation is now threaded so can run for an infinite 
+ * time, contains multiple tellers, summary statistics and 
+ * much more. 
  */
 package com.uni.main;
 
@@ -32,29 +38,35 @@ import com.uni.summary.SummaryList;
 
 public class BankSimulator {
 	
+	//The number of tellers
 	private static final int NUM_OF_TELLERS = 3;
-	
+	//a place to store the teller
 	public TellerList tellerList;
 	public Teller teller;
 	
-	private CustomerQueue cq;
-	private CustomerQueue ocq;
-
+	private CustomerQueue cq; //customer queue
+	private CustomerQueue ocq; //open/close queue
+	//the queue generator
 	private Generator g;
-	
+	//Timer to manage time
 	private Timer time;
-
+	//a list of customers
 	private CustomerList cl;
-
+	//a list of accounts
 	private AccountList al;
-
+	//the gui 
 	private GuiMain gm;
-	
+	/*
+	 * this variable is required when to 
+	 * distinguish between starting or resuming
+	 * the simulation
+	 */
 	private boolean runOnce = false;
-
+	//the object to write to a log file
 	private Log l;
+	
 	/**
-	 * The main class for this application
+	 * The main method for this application
 	 * @param args
 	 * @throws InterruptedException 
 	 */
@@ -95,8 +107,7 @@ public class BankSimulator {
 		TransactionList tList4 = new TransactionList();
 		tList4.add(new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(5).getAccountNo(0)));
 		testArray[4] = new QueueItem(cl.get(5), tList4);
-		
-		
+				
 		TransactionList tList5 = new TransactionList();
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
@@ -104,9 +115,7 @@ public class BankSimulator {
 		testArray[5] = new QueueItem(cl.get(4), tList5);
 		/* END TEST DATA */
 		
-		/* Generate a random queue */
-		
-		
+		/* Write customers to log file */	
 		l.writeMessage(al.toString());
 		l.writeMessage("DISPLAYING CUSTOMER LIST");
 		cl.print();
@@ -117,9 +126,9 @@ public class BankSimulator {
 		
 		//The clock thread for the simulation
 		time = new Timer();
-		
+		//set up the generator
 		g = new Generator(cl, al, cq, ocq);
-		
+		//TODO don't need next line
 		l.writeMessage("\n\n" + cq.toString());
 		
 		/* Set up the tellers */
@@ -131,11 +140,18 @@ public class BankSimulator {
 		}
 		
 		
-		/* Uncomment for testing */
+		/* Uncomment following block for testing.
+		 * Uses the test queue instead of 
+		 * randomly generating it.
+		 */
+		
 		/*for(QueueItem qi: testArray){
 			cq.add(qi);
 		}*/
+		/*END UNCOMMENT SECTION */
 		
+		
+		//TODO version 1 clean up 
 		/* Process the queue 
 		int size = cq.size();
 		for(int i=0; i<size;i++){
@@ -143,27 +159,17 @@ public class BankSimulator {
 		}*/
 		
 		
-		l.writeMessage("State AFTER transactions");
-		l.writeMessage(al.toString());
-		
-		//display summary results
-		//GuiDisplay gd = new GuiDisplay();
-		
 		//Display the Graphical User Interface
 		gm = new GuiMain(this);
-		
-		//startSimulation();
-		//Thread.sleep(10000);
-		//this.resetSimulation();
-
-
 	}
+	
 	/**
 	 * Get next customer from queue
 	 * Checks to see if there are any customers in the open/close queue
 	 * if not get the next customer number from the main queue.
 	 * @return customer number
 	 */
+	//TODO could make this throw an exception instead of -1
 	 public int getNext(){
 		 if(ocq.size() > 0)
 		 return ocq.get(0).getCustNo();
@@ -177,76 +183,60 @@ public class BankSimulator {
 	 * Starts the threads required for the simulation
 	 */
 	public void startSimulation(){
-		
+		//if it's already been initialised restart
+		//otherwise it has now run once!
 		if(runOnce){
 			restart();
 		}else{
 			runOnce = true;
 		}
-		
+		//start the tellers
 		for(Teller t: tellerList){
 			t.start();
 		}
-		//g.generate();
-		g.start();
-		time.start();
+		g.start(); //start generator
+		time.start(); //start the timer
+		//make sure the bank is open even on resume
 		Statistics.MANUAL_CLOSE_OVERRIDE = false;
 	}
 	
-	/*public void resetSimulation(){
-		g.done();
-		time.done();
-		
-		cq = new CustomerQueue();
-		ocq = new CustomerQueue();
-		
-		time = new Timer();
-		
-		g = new Generator(cl, al, cq, ocq);
-		
-			
-		//CustomerQueue cq = g.generate();
-		//l.writeMessage("\n\n" + cq.toString());
-		
-		// Set up the teller 
-		tellerList = new TellerList();
-		for(int i = 0; i < NUM_OF_TELLERS; i++){
-			teller = new Teller(al, cq, ocq);
-			tellerList.add(teller);
-			
-		}
-		this.startSimulation();
-	}*/
 	
-	
+	/**
+	 * A method to pause the simulation.
+	 * Teller will not pause until transaction is finished
+	 */
 	public void pause(){
-
-
+		// -----START BLOCK -----
+		//it appears the following "Block" is not enough.
+		//seems best to kill the threads and try restart 
+		//in previous state
+		//do for all tellers
 		for(Teller t: tellerList){
-		if(t.pleaseWait){
-			synchronized (t) { t.pleaseWait = false; t.notify(); } 
-		}else{
-			synchronized (t) { t.pleaseWait = true; } 
-			
+			//change the thread state
+			if(t.pleaseWait){
+				synchronized (t) { t.pleaseWait = false; t.notify(); } 
+			}else{
+				synchronized (t) { t.pleaseWait = true; } 
+				
+			}
 		}
-		}
+		//same for generator
 		if(g.pleaseWait){
 			synchronized (g) { g.pleaseWait = false; g.notify(); } 
 		}else{
 			synchronized (g) { g.pleaseWait = true; } 
 			
 		}
-		
-		//while()
-		
+		//and finally time		
 		if(time.pleaseWait){
 			synchronized (time) { time.pleaseWait = false; time.notify(); } 
 		}else{
 			synchronized (time) { time.pleaseWait = true; } 
 			
 		}
+		// -------END BLOCK ------
 		
-		
+		//seems they need to be marked as "done" instead
 		g.done();
 		for(Teller t: tellerList)
 			t.done();
@@ -257,17 +247,15 @@ public class BankSimulator {
 		
 	}
 	
+	/**
+	 * Restarts the simualtion
+	 */
 	private void restart(){
-		//cq = new CustomerQueue();
-		//ocq = new CustomerQueue();
-		
-		//The clock thread for the simulation
+		//recreate the timer
 		time = new Timer();
-		
+		//recreate generator
 		g = new Generator(cl, al, cq, ocq);
-		
-		//l.writeMessage("\n\n" + cq.toString());
-		
+				
 		/* Set up the tellers */
 		tellerList = new TellerList();
 		for(int i = 0; i < NUM_OF_TELLERS; i++){
@@ -275,27 +263,35 @@ public class BankSimulator {
 			tellerList.add(teller);
 			
 		}
-		
+		//reset the gui
 		gm.resetComponents();
 	}
 	
+	/**
+	 * Reset the simulation
+	 * This restores the default state of the 
+	 * program and restarts
+	 */
 	public void reset(){
 		Statistics.reset();
 		this.restart();
 	}
 	
+	/**
+	 * Write the collected summary stats to a file
+	 */
 	public void writeSummary(){
 		SummaryList s = SummaryList.getInstance();
-		
+		//the teller stats
 		String summary = "Teller Summary:\n\n";
 		for(Teller t: tellerList){
 			summary += s.getTellerStats(t);
 		}
-		
+		//customer stats
 		summary += "Customer Summary: \n\n";
 		for(Customer c: cl)
 			summary += s.getCustomerStats(c);
-		
+		//write it
 		l.writeSummary(summary);
 	}
 	
@@ -342,20 +338,9 @@ public class BankSimulator {
 	}
 	
 	/**
-	 * Closes the bank
+	 * Closes the bank 
 	 */
 	public void closeBank() {
-	
-			/*g.done();
-			time.done();
-			for(Teller t: tellerList)
-			{
-				t.done();
-			}*/
 		Statistics.MANUAL_CLOSE_OVERRIDE = true;
-		
-		
-		
-		System.out.println("Simulation Stopped!");
 	}
 }

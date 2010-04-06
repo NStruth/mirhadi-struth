@@ -8,6 +8,7 @@
  * and their current activity.
  * Provides options to open/close the teller.
  * 
+ *   
  */
 package com.uni.gui;
 
@@ -61,13 +62,13 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 	 * @param t the teller for which this gui is associated
 	 */
 	public TellerGui(Teller t){
-		
-		this.setLayout(new BorderLayout());
-		
+		//use a grid bag layout		
 		gbl = new GridBagLayout();
 		c = new GridBagConstraints();
 		this.setLayout(gbl);
+		//distinguish section with a border
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		//add association with a teller
 		this.teller = t;
 		//register the observer
 		t.registerObserver(this);
@@ -100,7 +101,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c.weighty = 1.0;
 		c.gridwidth = 2;
 		this.add(serving,c);
-		
+				
 		/* Add status label */
 		c.gridwidth=1;
 		c.gridx = 2;
@@ -177,9 +178,7 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		c.gridx = 0;
 		c.gridy++;
 		c.weightx = 1;
-		this.add(buttonPanel, c);
-		
-		
+		this.add(buttonPanel, c);	
 	}
 
 	@Override
@@ -205,10 +204,9 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 		/* If the teller is open update all values */
 		if(teller.getOpen()){
 			status.setText("Open");
-			
+			//different colour when open
 			Color open = new Color(20,200,20);
 			status.setForeground(open);
-			
 			
 			custName.setText(teller.getCustomerName());
 			serving.setText(teller.getCustNumber() + "");
@@ -223,10 +221,10 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			 */
 			status.setText("Closing");
 			status.setForeground(Color.ORANGE);
-			
+			//customer
 			custName.setText(teller.getCustomerName());
 			serving.setText(teller.getCustNumber() + "");
-			
+			//type and status
 			typeText.setText(teller.getTranType());
 			statusText.setText(teller.getMessage());
 		}else{
@@ -234,9 +232,5 @@ public class TellerGui extends JPanel implements Observer, ActionListener{
 			status.setText("Closed");
 			status.setForeground(Color.RED);
 		}
-
 	}
-	
-	
-	
 }
