@@ -265,6 +265,7 @@ public class BankSimulator {
 		}
 		//reset the gui
 		gm.resetComponents();
+		Statistics.RUN_ONCE = true;
 	}
 	
 	/**

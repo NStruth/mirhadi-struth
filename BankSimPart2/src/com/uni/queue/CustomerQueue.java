@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A customer queue represents a list of customers in the queue
  * at the bank, each with one or more transactions.
@@ -20,10 +20,7 @@ import Observation.Subject;
 import com.uni.customer.Customer;
 
 public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
-	
-	int next;
-	int last;
-	
+		
 	/**
 	 * Constructor for the customer queue
 	 */
@@ -46,6 +43,11 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		return retV;
 	}
 	
+	/**
+	 * Determines if a customer is in the queue
+	 * @param c the customer to check
+	 * @return true if in the queue
+	 */
 	public boolean customerInQueue(Customer c){
 		boolean retV = false;
 		for(QueueItem i: this){
@@ -55,9 +57,6 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		return retV;
 	}
 	
-	public int getNextNumber(){
-		return last;
-	}
 	
 	/**
 	 * get the first queue item in the list
@@ -69,8 +68,6 @@ public class CustomerQueue extends ArrayList<QueueItem> implements Subject{
 		
 		if(!this.isEmpty()){
 			QueueItem q = this.remove(0);
-			//last = q.getCustNo();
-			//next = last + 1;
 			notifyObservers();
 			return q;
 		}

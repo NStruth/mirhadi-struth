@@ -2,11 +2,12 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * This is the class to control the teller.
  * The teller can fetch the queue item from the head of the queue and
  * process the transactions.
+ * Runs until simulation stopped.
  * 
  */
 package com.uni.Teller;
@@ -34,8 +35,8 @@ import com.uni.summary.SummaryList;
 
 public class Teller extends Thread implements Subject{
 	
-	private boolean open = true;
-	private static int master = 2000;
+	private boolean open = true; //flag if teller is open or closed
+	private static int master = 2000;//teller ID
 	private int id;
 	
 	//list of accounts so the teller has access

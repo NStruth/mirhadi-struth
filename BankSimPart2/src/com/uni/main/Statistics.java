@@ -39,11 +39,7 @@ public class Statistics {
 	
 	public static boolean MANUAL_CLOSE_OVERRIDE = true; //0 for false
 	
-	//current time
-	//TODO Check
-	public static long MINUTE_VAL = 10;
-	public static long HOUR_VAL = 60 * MINUTE_VAL;
-	
+	//the actual time
 	public static int CURRENT_HOUR = 9;
 	public static int CURRENT_MIN = 0;
 	
@@ -61,6 +57,9 @@ public class Statistics {
 	public static boolean RUN_ONCE = false;
 
 	
+	/**
+	 * Reset the changable values back to the default values
+	 */
 	public static void reset(){
 		TRANSACTION_TOTAL = 0;
 		CUSTOMERS_SERVED = 0;
@@ -82,9 +81,6 @@ public class Statistics {
 		
 		MANUAL_CLOSE_OVERRIDE = true; //0 for false
 		
-		
-		MINUTE_VAL = 10;
-		HOUR_VAL = 60 * MINUTE_VAL;
 		
 		CURRENT_HOUR = 9;
 		CURRENT_MIN = 0;

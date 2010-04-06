@@ -2,7 +2,7 @@
  * @author Jon Mirhadi
  * @author Neil Struth
  * 
- * @version 1.0
+ * @version 2.0
  * 
  * A queue item consists of a customer and a transaction, as well as a
  * queue number.
@@ -55,6 +55,9 @@ public class QueueItem {
 		return this.custId;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		String v = "";
 		for(Transaction t: this.tList){
