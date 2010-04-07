@@ -28,11 +28,14 @@ import com.uni.Logging.Log;
 import com.uni.Teller.Teller;
 import com.uni.Teller.TellerList;
 import com.uni.account.AccountList;
+import com.uni.account.Transaction;
+import com.uni.account.TransactionList;
 import com.uni.customer.Customer;
 import com.uni.customer.CustomerList;
 import com.uni.file.FileIO;
 import com.uni.gui.GuiMain;
 import com.uni.queue.CustomerQueue;
+import com.uni.queue.QueueItem;
 import com.uni.summary.SummaryList;
 
 
@@ -82,7 +85,7 @@ public class BankSimulator {
 		
 		/* TEST DATA - Left in for convenience
 		//TODO move this test data somewhere nicer
-		QueueItem[] testArray = new QueueItem[6];
+		QueueItem[] testArray = new QueueItem[12];
 		
 		TransactionList tList0 = new TransactionList();
 		tList0.add((new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(3).getAccountNo(0))));
@@ -113,6 +116,33 @@ public class BankSimulator {
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		testArray[5] = new QueueItem(cl.get(4), tList5);
+		
+
+		
+		TransactionList tList6 = new TransactionList();
+		tList6.add(new Transaction(Transaction.Choices.WITHDRAW, 800000, cl.get(20).getAccountNo(0)));
+		testArray[6] = new QueueItem(cl.get(20), tList6);
+		
+		TransactionList tList7 = new TransactionList();
+		tList7.add(new Transaction(Transaction.Choices.WITHDRAW, 100000, cl.get(21).getAccountNo(0)));
+		testArray[7] = new QueueItem(cl.get(21), tList7);
+		
+		TransactionList tList8 = new TransactionList();
+		tList8.add(new Transaction(Transaction.Choices.WITHDRAW, 10000, cl.get(20).getAccountNo(0)));
+		testArray[8] = new QueueItem(cl.get(20), tList8);
+		
+		TransactionList tList9 = new TransactionList();
+		tList9.add(new Transaction(Transaction.Choices.WITHDRAW, 10000, cl.get(21).getAccountNo(0)));
+		testArray[9] = new QueueItem(cl.get(21), tList9);
+		
+		TransactionList tList10 = new TransactionList();
+		tList10.add(new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(20).getAccountNo(0)));
+		testArray[10] = new QueueItem(cl.get(20), tList10);
+		
+		TransactionList tList11 = new TransactionList();
+		tList11.add(new Transaction(Transaction.Choices.WITHDRAW, 10000, cl.get(21).getAccountNo(0)));
+		testArray[11] = new QueueItem(cl.get(21), tList10);
+		
 		/* END TEST DATA */
 		
 		/* Write customers to log file */	
