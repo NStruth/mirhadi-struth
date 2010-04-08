@@ -83,9 +83,9 @@ public class BankSimulator {
 		al = filehandle.readAccountLines();
 		cl = filehandle.readCustomerLines();
 		
-		/* TEST DATA - Left in for convenience
+		/* TEST DATA - Left in for convenience */
 		//TODO move this test data somewhere nicer
-		QueueItem[] testArray = new QueueItem[12];
+		QueueItem[] testArray = new QueueItem[16];
 		
 		TransactionList tList0 = new TransactionList();
 		tList0.add((new Transaction(Transaction.Choices.DEPOSIT, 10000, cl.get(3).getAccountNo(0))));
@@ -117,7 +117,7 @@ public class BankSimulator {
 		tList5.add(new Transaction(Transaction.Choices.OPEN));
 		testArray[5] = new QueueItem(cl.get(4), tList5);
 		
-
+//new data
 		
 		TransactionList tList6 = new TransactionList();
 		tList6.add(new Transaction(Transaction.Choices.WITHDRAW, 800000, cl.get(20).getAccountNo(0)));
@@ -141,7 +141,24 @@ public class BankSimulator {
 		
 		TransactionList tList11 = new TransactionList();
 		tList11.add(new Transaction(Transaction.Choices.WITHDRAW, 10000, cl.get(21).getAccountNo(0)));
-		testArray[11] = new QueueItem(cl.get(21), tList10);
+		testArray[11] = new QueueItem(cl.get(21), tList11);
+		
+		TransactionList tList12 = new TransactionList();
+		tList11.add(new Transaction(Transaction.Choices.CLOSE,0));
+		testArray[12] = new QueueItem(cl.get(20), tList12);
+		
+		TransactionList tList13 = new TransactionList();
+		tList11.add(new Transaction(Transaction.Choices.WITHDRAW, 10000, cl.get(21).getAccountNo(0)));
+		testArray[13] = new QueueItem(cl.get(21), tList13);
+		
+		TransactionList tList14 = new TransactionList();
+		tList11.add(new Transaction(Transaction.Choices.OPEN));
+		testArray[14] = new QueueItem(cl.get(21), tList14);
+		
+		TransactionList tList15 = new TransactionList();
+		tList11.add(new Transaction(Transaction.Choices.OPEN));
+		testArray[15] = new QueueItem(cl.get(21), tList15);
+			
 		
 		/* END TEST DATA */
 		
@@ -151,8 +168,21 @@ public class BankSimulator {
 		cl.print();
 				
 		//Create main queue and the open/close account queue
+		
 		cq = new CustomerQueue();
 		ocq = new CustomerQueue();
+		
+		
+		/* Uncomment following block for testing.
+		 * Uses the test queue instead of 
+		 * randomly generating it.
+		 */
+		cq = new CustomerQueue();
+		for(QueueItem qi: testArray){
+			cq.add(qi);
+		}
+		/*END UNCOMMENT SECTION */
+		
 		
 		//The clock thread for the simulation
 		time = new Timer();
@@ -168,17 +198,6 @@ public class BankSimulator {
 			tellerList.add(teller);
 			
 		}
-		
-		
-		/* Uncomment following block for testing.
-		 * Uses the test queue instead of 
-		 * randomly generating it.
-		 */
-		
-		/*for(QueueItem qi: testArray){
-			cq.add(qi);
-		}*/
-		/*END UNCOMMENT SECTION */
 		
 		
 		//TODO version 1 clean up 
@@ -224,7 +243,7 @@ public class BankSimulator {
 		for(Teller t: tellerList){
 			t.start();
 		}
-		g.start(); //start generator
+		//g.start(); //start generator
 		time.start(); //start the timer
 		//make sure the bank is open even on resume
 		Statistics.MANUAL_CLOSE_OVERRIDE = false;
